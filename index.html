@@ -417,6 +417,111 @@ button{font-family:var(--font);cursor:pointer}
 ::-webkit-scrollbar-thumb:hover{background:var(--text3)}
 ::-webkit-scrollbar-track{background:transparent}
 
+
+/* ═══ ANIMATED COUNTER ═══ */
+.stat-num-anim{transition:all .3s}
+/* ═══ LANDMARK CARDS ═══ */
+.lm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 32px 16px}
+@media(max-width:900px){.lm-cards{grid-template-columns:1fr 1fr;margin:0 20px 14px}}
+@media(max-width:600px){.lm-cards{grid-template-columns:1fr;margin:0 14px 14px}}
+.lm-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.lm-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(23,201,164,.12);transform:translateY(-1px)}
+.lm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.lm-card.dp::before{background:var(--primary)}
+.lm-card.ai::before{background:var(--accent)}
+.lm-card.cy::before{background:#f59e0b}
+.lm-card.df::before{background:#6366f1}
+.lm-card.co::before{background:#ec4899}
+.lm-year{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.lm-tag{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;background:var(--accent-bg);color:var(--accent)}
+.lm-title{font-size:13.5px;font-weight:700;margin-bottom:5px;line-height:1.3}
+.lm-desc{font-size:12px;color:var(--text2);line-height:1.55}
+.lm-flag{font-size:18px;margin-bottom:8px;display:block}
+/* ═══ TIMELINE ═══ */
+.tl-wrap{margin:0 32px 0;overflow-x:auto;padding-bottom:16px}
+@media(max-width:900px){.tl-wrap{margin:0 20px 0}}
+@media(max-width:600px){.tl-wrap{margin:0 14px 0}}
+.tl-scroll{min-width:900px;padding:20px 0 10px;position:relative}
+.tl-axis{height:3px;background:var(--border);border-radius:2px;position:relative;margin:60px 0 30px}
+.tl-dot{position:absolute;transform:translateX(-50%);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px}
+.tl-dot-circle{width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s;position:relative;z-index:2;top:0}
+.tl-dot:hover .tl-dot-circle{transform:scale(1.45);box-shadow:0 4px 14px rgba(0,0,0,.22)}
+.tl-dot-lbl{font-size:10px;font-weight:600;color:var(--text2);white-space:nowrap;max-width:90px;text-align:center;line-height:1.25;position:absolute}
+.tl-dot-lbl.above{bottom:calc(100% + 30px)}
+.tl-dot-lbl.below{top:calc(100% + 24px)}
+.tl-year-tick{position:absolute;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px}
+.tl-year-line{width:1px;height:14px;background:var(--border)}
+.tl-year-txt{font-size:10px;font-weight:700;color:var(--text3);white-space:nowrap;margin-top:4px}
+.tl-tooltip{position:fixed;background:var(--primary);color:#fff;border-radius:8px;padding:10px 14px;font-size:12px;z-index:999;pointer-events:none;max-width:220px;box-shadow:0 8px 28px rgba(0,0,0,.22);opacity:0;transition:opacity .15s;line-height:1.5}
+.tl-tooltip.visible{opacity:1}
+.tl-tt-title{font-weight:700;font-size:13px;margin-bottom:3px}
+.tl-tt-meta{color:rgba(255,255,255,.7);font-size:11px}
+/* ═══ AREA COLORS ═══ */
+.ac-dp{background:#0d3b2c}.ac-ai{background:#17c9a4}.ac-cy{background:#f59e0b}.ac-df{background:#6366f1}.ac-de{background:#ec4899}.ac-di{background:#94a3b8}
+/* ═══ FILTER PILLS ═══ */
+.fp-row{display:flex;gap:6px;flex-wrap:wrap;padding:0 32px 14px}
+@media(max-width:600px){.fp-row{padding:0 14px 12px}}
+.fp{padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap}
+.fp:hover{border-color:var(--primary);color:var(--primary)}
+.fp.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.fp.on.ai{background:var(--accent);border-color:var(--accent);color:#fff}
+.fp.on.cy{background:#f59e0b;border-color:#f59e0b;color:#fff}
+.fp.on.df{background:#6366f1;border-color:#6366f1;color:#fff}
+/* ═══ STAT PULSE ═══ */
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+.stat-pulse{position:relative}.stat-pulse::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);animation:pulse-ring 2.5s ease-out infinite;pointer-events:none}
+/* ═══ HOVER GLOW on policy cards ═══ */
+.pc{transition:background .1s,border-left-color .1s}
+.cc{transition:all .18s}
+.pa-card{transition:all .18s}
+/* ═══ LIVE DOT HERO ═══ */
+@keyframes globe-pulse{0%,100%{opacity:.8}50%{opacity:.4}}
+/* ═══ INSIGHT CALLOUT ═══ */
+.ins-callout{margin:0 32px 16px;background:linear-gradient(135deg,var(--primary) 0%,#1a5c3e 100%);border-radius:var(--r);padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+@media(max-width:900px){.ins-callout{grid-template-columns:1fr 1fr;margin:0 20px 14px;gap:10px}}
+@media(max-width:600px){.ins-callout{grid-template-columns:1fr 1fr;margin:0 14px 14px;padding:16px}}
+.ic-item{padding:0 20px;border-right:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:3px}
+.ic-item:first-child{padding-left:0}
+.ic-item:last-child{border-right:none}
+@media(max-width:900px){.ic-item{padding:10px;border-right:none;border:none}}
+.ic-num{font-size:28px;font-weight:800;color:#fff;line-height:1}
+.ic-lbl{font-size:11px;color:rgba(255,255,255,.55);font-weight:500}
+.ic-delta{font-size:11px;color:var(--accent);font-weight:600;margin-top:1px}
+/* ═══ TREND SECTION HEADER ═══ */
+.ts-hd{padding:20px 32px 12px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:600px){.ts-hd{padding:16px 14px 10px}}
+.ts-title{font-size:16px;font-weight:800}
+.ts-sub{font-size:12.5px;color:var(--text2)}
+.ts-legend{display:flex;gap:12px;flex-wrap:wrap}
+.ts-li{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--text2)}
+.ts-ld{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ─── TRENDS PAGE ─── */
+.ts-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:0 32px 10px;flex-wrap:wrap}
+.ts-title{font-size:15px;font-weight:800}
+.ts-sub{font-size:12px;color:var(--text3);margin-top:2px}
+.ts-legend{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.ts-li{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text2)}
+.ts-ld{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+@media(max-width:900px){.ts-hd{padding:0 20px 10px}}
+@media(max-width:600px){.ts-hd{padding:0 14px 10px;flex-direction:column;gap:8px}}
+/* ─── PILL FILTER ─── */
+.fp:hover{border-color:var(--primary);color:var(--primary)}
+.fp.on{background:var(--primary);color:#fff;border-color:var(--primary)}
+.fp.ai.on{background:var(--accent);border-color:var(--accent)}
+.fp.cy.on{background:#f59e0b;border-color:#f59e0b;color:#fff}
+.fp.df.on{background:#6366f1;border-color:#6366f1;color:#fff}
+.fp.co.on{background:#ec4899;border-color:#ec4899;color:#fff}
+/* ─── CARD MICRO-INTERACTIONS ─── */
+.cc{transition:all .18s}.cc:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(23,201,164,.12);transform:translateY(-2px)}
+.pa-card{transition:all .18s}.pa-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(23,201,164,.1);transform:translateY(-2px)}
+.pc:hover .pc-name{color:var(--primary)}
+.db-stat{transition:all .16s}.db-stat:hover{border-color:var(--accent);box-shadow:0 3px 14px rgba(0,0,0,.07)}
+.et-item{transition:all .14s}.et-item:hover{border-color:var(--accent)!important;background:var(--accent-bg,#e6faf5)!important}
+.tb-search input:not(:placeholder-shown){background:#fff;border-color:var(--primary)}
+#main-content > *{animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
 /* ═══ MOBILE SIDEBAR OVERLAY ═══ */
 .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:49;opacity:0;transition:opacity .25s}
 .sb-overlay.show{display:block;opacity:1}
@@ -577,20 +682,20 @@ button{font-family:var(--font);cursor:pointer}
     </div>
     <div class="ln-acts">
       <button class="btn-gh" style="display:none;font-size:20px;border:none;background:none;padding:4px 8px;cursor:pointer" id="ln-burger" onclick="goApp('all-policies')">☰</button>
-      <button class="btn-gh"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Star on GitHub</button>
-      <button class="btn-os" onclick="goApp('all-policies')">Open Source</button>
+      <button class="btn-gh" onclick="window.open('https://github.com/cercuit-ola/Okediji-Africa-Digital-Policy-Tracker','_blank')"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Star on GitHub</button>
+      <button class="btn-os" onclick="window.open('https://github.com/cercuit-ola/Okediji-Africa-Digital-Policy-Tracker','_blank')">Open Source</button>
     </div>
   </nav>
   <div class="hero">
     <div>
-      <div class="live-badge"><div class="l-dot"></div><span class="l-lbl">LIVE</span><span class="l-txt">&nbsp;Monitoring digital policy across all <span class="l-lnk">55 African Union member states</span></span></div>
+      <div class="live-badge" onclick="goApp('all-policies')" style="cursor:pointer"><div class="l-dot"></div><span class="l-lbl">LIVE</span><span class="l-txt">&nbsp;Monitoring digital policy across all <span class="l-lnk">55 African Union member states</span></span></div>
       <h1 class="h1">Africa's Digital<br>Policy Intelligence<br><span class="h1-g">Infrastructure</span></h1>
       <p class="hdesc">We track, classify and analyse laws, regulations and policy initiatives on AI, data protection, cybersecurity, digital finance and more — across Africa.</p>
       <div class="stats-row">
-        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><path d="M8 24V16M13 24V11M18 24V18M23 24V9" stroke="#17a865" stroke-width="1.8" stroke-linecap="round"/></svg><div><div class="sn">2,451</div><div class="sl">Policies<br>Tracked</div></div></div>
-        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><path d="M17 8C17 8 10 12 10 18c0 3.86 3.13 7 7 7s7-3.14 7-7c0-6-7-10-7-10z" stroke="#17a865" stroke-width="1.6" fill="none"/><circle cx="17" cy="18" r="2.2" fill="#17a865"/></svg><div><div class="sn">55</div><div class="sl">AU Member<br>States</div></div></div>
-        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><rect x="7" y="8" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="18" y="8" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="7" y="18" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="18" y="18" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/></svg><div><div class="sn">28</div><div class="sl">Policy<br>Areas</div></div></div>
-        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><ellipse cx="17" cy="13" rx="7" ry="3.5" stroke="#17a865" stroke-width="1.5"/><path d="M10 13v5c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-5" stroke="#17a865" stroke-width="1.5" fill="none"/><path d="M10 18v4c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-4" stroke="#17a865" stroke-width="1.5" fill="none"/></svg><div><div class="sn">7</div><div class="sl">Data<br>Sources</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><path d="M8 24V16M13 24V11M18 24V18M23 24V9" stroke="#17a865" stroke-width="1.8" stroke-linecap="round"/></svg><div><div class="sn" data-count="2451" id="c1">2,451</div><div class="sl">Policies<br>Tracked</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><path d="M17 8C17 8 10 12 10 18c0 3.86 3.13 7 7 7s7-3.14 7-7c0-6-7-10-7-10z" stroke="#17a865" stroke-width="1.6" fill="none"/><circle cx="17" cy="18" r="2.2" fill="#17a865"/></svg><div><div class="sn" data-count="55" id="c2">55</div><div class="sl">AU Member<br>States</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><rect x="7" y="8" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="18" y="8" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="7" y="18" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="18" y="18" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/></svg><div><div class="sn" data-count="28" id="c3">28</div><div class="sl">Policy<br>Areas</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><ellipse cx="17" cy="13" rx="7" ry="3.5" stroke="#17a865" stroke-width="1.5"/><path d="M10 13v5c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-5" stroke="#17a865" stroke-width="1.5" fill="none"/><path d="M10 18v4c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-4" stroke="#17a865" stroke-width="1.5" fill="none"/></svg><div><div class="sn" data-count="7" id="c4">7</div><div class="sl">Data<br>Sources</div></div></div>
       </div>
       <div class="cta-row">
         <button class="btn-ep" onclick="goApp('all-policies')">Explore Policies &nbsp;→</button>
@@ -684,7 +789,7 @@ button{font-family:var(--font);cursor:pointer}
           <div style="display:flex;gap:14px;align-items:flex-start;flex:1">
             <div style="flex:1">
               <p style="font-size:14px;color:var(--text2);line-height:1.65;flex:1;margin-bottom:18px">An open-source public good to promote transparent and evidence-based digital governance in Africa.</p>
-              <div class="gl-link">View on GitHub &nbsp;→</div>
+              <div class="gl-link" onclick="window.open('https://github.com/cercuit-ola/Okediji-Africa-Digital-Policy-Tracker','_blank')" style="cursor:pointer">View on GitHub &nbsp;→</div>
             </div>
             <svg width="100" height="120" viewBox="0 0 100 120" fill="none" style="flex-shrink:0;opacity:.55">
               <defs><clipPath id="ac"><path d="M35,4 C40,2 48,1 54,2 C60,3 66,5 71,9 C76,13 79,18 80,24 C81,30 80,36 81,41 C83,47 87,52 89,58 C91,64 91,71 89,77 C87,82 83,86 82,91 C81,96 82,102 80,107 C78,112 73,116 68,119 C63,122 57,123 52,121 C47,119 43,114 39,109 C35,104 31,98 27,92 C23,86 18,79 16,72 C14,65 14,57 16,50 C18,44 22,39 25,33 C28,27 28,21 31,15 C33,10 34,6 35,4 Z"/></clipPath></defs>
@@ -700,7 +805,7 @@ button{font-family:var(--font);cursor:pointer}
         <div class="card" style="display:flex;flex-direction:column">
           <div class="c-title">Why This Matters</div>
           <p class="why-desc">Africa's digital future is being shaped by policy. Access to reliable, structured policy intelligence is essential for informed decisions, innovation, and protecting fundamental rights.</p>
-          <div class="gl-link" style="margin-top:auto;padding-top:16px">Learn more about our mission &nbsp;→</div>
+          <div class="gl-link" onclick="goApp('dashboard')" style="margin-top:auto;padding-top:16px;cursor:pointer">Learn more about our mission &nbsp;→</div>
           <svg class="why-sh" width="110" height="110" viewBox="0 0 110 110" fill="none"><path d="M55 10L15 28V60C15 80 32 98 55 104C78 98 95 80 95 60V28L55 10Z" stroke="#17a865" stroke-width="2.5" fill="rgba(23,168,101,.05)"/><path d="M38 55l12 12 24-24" stroke="#17a865" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="card">
@@ -716,12 +821,12 @@ button{font-family:var(--font);cursor:pointer}
   <footer class="foot">
     <div class="foot-in">
       <div class="foot-top">
-        <div><div class="flogo"><div class="fbox"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M11 2L18 6.2V14.8L11 19L4 14.8V6.2L11 2Z" stroke="rgba(255,255,255,.7)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="2.5" fill="rgba(255,255,255,.65)"/></svg></div><div class="ftxt">Africa Digital<br>Policy Tracker</div></div><p class="fdesc">Empowering Africa's digital future through transparent and accessible policy intelligence. A public good for research, innovation, and governance.</p><div class="fsoc"><div class="fsi"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div><div class="fsi"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div></div></div>
-        <div><div class="fc-t">Product</div><ul class="fl"><li><a onclick="goApp('all-policies')">Explore Policies</a></li><li><a onclick="goApp('dashboard')">Dashboard</a></li><li><a>API</a></li><li><a onclick="goApp('taxonomy')">Taxonomy</a></li><li><a>Roadmap</a></li></ul></div>
+        <div><div class="flogo"><div class="fbox"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M11 2L18 6.2V14.8L11 19L4 14.8V6.2L11 2Z" stroke="rgba(255,255,255,.7)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="2.5" fill="rgba(255,255,255,.65)"/></svg></div><div class="ftxt">Africa Digital<br>Policy Tracker</div></div><p class="fdesc">Empowering Africa's digital future through transparent and accessible policy intelligence. A public good for research, innovation, and governance.</p><div class="fsoc"><div class="fsi" onclick="window.open('https://github.com/cercuit-ola/Okediji-Africa-Digital-Policy-Tracker','_blank')" style="cursor:pointer"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div><div class="fsi"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div></div></div>
+        <div><div class="fc-t">Product</div><ul class="fl"><li><a onclick="goApp('all-policies')" style="cursor:pointer">Explore Policies</a></li><li><a onclick="goApp('dashboard')">Dashboard</a></li><li><a>API</a></li><li><a onclick="goApp('taxonomy')">Taxonomy</a></li><li><a>Roadmap</a></li></ul></div>
         <div><div class="fc-t">Resources</div><ul class="fl"><li><a>Documentation</a></li><li><a>Blog</a></li><li><a>Case Studies</a></li><li><a>FAQs</a></li><li><a>Community</a></li></ul></div>
         <div><div class="fc-t">Company</div><ul class="fl"><li><a>About Us</a></li><li><a>Team</a></li><li><a>Careers</a></li><li><a>Contact</a></li><li><a>Privacy Policy</a></li></ul></div>
       </div>
-      <div class="fbot"><span class="fcp">© 2024 Africa Digital Policy Tracker. Open Source. All rights reserved.</span></div>
+      <div class="fbot"><span class="fcp">© 2025 Africa Digital Policy Tracker. Open Source. All rights reserved.</span></div>
     </div>
   </footer>
 </div>
@@ -762,7 +867,7 @@ button{font-family:var(--font);cursor:pointer}
       </div>
     </div>
     <div class="sb-foot">
-      <button class="sb-contrib"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Contribute on GitHub</button>
+      <button class="sb-contrib" onclick="window.open('https://github.com/cercuit-ola/Okediji-Africa-Digital-Policy-Tracker','_blank')"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Contribute on GitHub</button>
       <div class="sb-mit">⊙ MIT Licensed</div>
     </div>
   </aside>
@@ -770,7 +875,7 @@ button{font-family:var(--font);cursor:pointer}
     <header class="tb">
       <button class="tb-burger" onclick="openSidebar()">☰</button>
       <span id="tb-brand" class="tb-brand" style="display:none">Africa Digital Policy Tracker</span>
-      <div class="tb-search"><span class="tb-si">🔍</span><input id="tb-input" type="text" placeholder="Search policies, countries, keywords..."><span class="tb-kbd">⌘K</span></div>
+      <div class="tb-search"><span class="tb-si">🔍</span><input id="tb-input" type="text" placeholder="Search policies, countries, keywords..." oninput="handleTopSearch(this.value)" onkeydown="if(event.key==='Enter')handleTopSearch(this.value,true)"><span class="tb-kbd">⌘K</span></div>
       <div class="tb-sp"></div>
       <div class="tb-ico tb-notif">🔔<div class="tb-notif-dot"></div></div>
       <div class="tb-ico">?</div>
@@ -839,6 +944,47 @@ const statusClass={'in-force':'b-in','under-consultation':'b-uc','under-review':
 let selPolicy=policies[0];
 let activeTab='overview';
 let selOecdPols=[0,4,6];
+let filterArea='';
+let filterStatus='';
+let filterCountry='';
+let filterSearch='';
+
+// ─── AREA COLOR HELPER ───
+const areaColor={
+  'Data Protection':'#0d3b2c',
+  'Artificial Intelligence':'#17c9a4',
+  'Cybersecurity':'#f59e0b',
+  'Digital Finance':'#6366f1',
+  'Digital Economy':'#ec4899',
+  'Digital Infrastructure':'#94a3b8'
+};
+const areaClass={'Data Protection':'dp','Artificial Intelligence':'ai','Cybersecurity':'cy','Digital Finance':'df','Digital Economy':'co','Digital Infrastructure':'di'};
+
+// ─── ANIMATED COUNTER ───
+function handleTopSearch(val,enter){
+  filterSearch=(val||'').trim().toLowerCase();
+  const isExplorer=!!document.getElementById('policy-list');
+  if(isExplorer){refreshExplorer();}
+  else if(filterSearch.length>=2){goApp('all-policies');}
+}
+
+function animateCounter(el, target, suffix=''){
+  let start=0, step=Math.ceil(target/40);
+  const tick=()=>{
+    start=Math.min(start+step, target);
+    el.textContent=start.toLocaleString()+(suffix||'');
+    if(start<target)requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+function runCounters(){
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const v=parseInt(el.dataset.count);
+    const s=el.dataset.suffix||'';
+    animateCounter(el,v,s);
+  });
+}
+
 
 // ═══════════════ SIDEBAR MOBILE ═══════════════
 function openSidebar(){
@@ -927,59 +1073,91 @@ function computeInsights(){
 function renderDashboard(){
   const ins=computeInsights();
   const inForcePct=Math.round((ins.byStatus['in-force']||0)/ins.total*100);
-  const consultPct=Math.round(((ins.byStatus['under-consultation']||0)+(ins.byStatus['proposed']||0))/ins.total*100);
-  const reviewPct=Math.round((ins.byStatus['under-review']||0)/ins.total*100);
+  const gdprAligned=policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length;
+  const recentPols=policies.filter(p=>p.year>=2022).sort((a,b)=>b.year-a.year).slice(0,6);
   const areaEntries=Object.entries(ins.byArea).sort((a,b)=>b[1]-a[1]);
   const countryEntries=Object.entries(ins.byCountry).filter(([k])=>k!=='African Union'&&k!=='ECOWAS').sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const recentPols=policies.filter(p=>p.year>=2022).sort((a,b)=>b.year-a.year).slice(0,6);
-  const gdprAligned=policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length;
+  // Landmark firsts — handpicked
+  const landmarks=[
+    {id:38,label:'First in Africa',color:'ai',insight:'Mauritius published Africa\'s first National AI Strategy in 2018, two years before any other AU member state.'},
+    {id:28,label:'First in Africa',color:'df',insight:'Nigeria launched Africa\'s first Central Bank Digital Currency (eNaira) in October 2021 — among the first globally.'},
+    {id:44,label:'Regional Landmark',color:'dp',insight:'The ECOWAS Supplementary Act 2010 seeded data protection law across 10+ West African states and remains the most influential sub-regional instrument.'},
+    {id:3,label:'Strongest GDPR Alignment',color:'dp',insight:'South Africa\'s POPIA (2013, enforced 2021) remains Africa\'s most comprehensive data protection law, with Very High GDPR similarity.'},
+    {id:37,label:'Most Advanced Framework',color:'dp',insight:'Mauritius Data Protection Act 2017 scores highest on OECD dimensions of any single-country framework in the dataset.'},
+    {id:16,label:'Continental Instrument',color:'cy',insight:'The AU Malabo Convention (2014) finally entered into force in 2023 after reaching its 15th ratification — 9 years after adoption.'},
+  ];
+  setTimeout(runCounters, 80);
   return`
-<div class="ph" style="padding-bottom:20px">
+<div class="ph" style="padding-bottom:16px">
   <div class="ph-title">Dashboard</div>
-  <div class="ph-sub">Live intelligence overview — ${ins.total} real Sub-Saharan African digital policies from 2008–2024, parsed and classified.</div>
+  <div class="ph-sub">${ins.total} real Sub-Saharan African digital policies · 2008–2024 · parsed by DPA methodology</div>
 </div>
-<div class="db-grid">
-  <div class="db-stat"><div><div class="db-sn">${ins.total}</div><div class="db-sl">Policies Ingested</div><div class="db-change up">↑ ${ins.recentPols} from 2022–2024</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">📋</div></div>
-  <div class="db-stat"><div><div class="db-sn">${ins.countries}</div><div class="db-sl">Jurisdictions Covered</div><div class="db-change up">↑ incl. 3 regional bodies</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🌍</div></div>
-  <div class="db-stat"><div><div class="db-sn">${Object.keys(ins.byArea).length}</div><div class="db-sl">Policy Areas</div><div class="db-change up">↑ ${ins.topArea[0]} leads (${ins.topArea[1]})</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🏷️</div></div>
-  <div class="db-stat"><div><div class="db-sn">${ins.avgOecd}%</div><div class="db-sl">Avg OECD Alignment</div><div class="db-change up">↑ ${gdprAligned} GDPR-benchmarked</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">📐</div></div>
+<div class="ins-callout">
+  <div class="ic-item"><div class="ic-num" data-count="${ins.total}" style="font-size:28px;font-weight:800;color:#fff">${ins.total}</div><div class="ic-lbl">Policies ingested</div><div class="ic-delta">↑ ${ins.recentPols} since 2022</div></div>
+  <div class="ic-item"><div class="ic-num" data-count="${ins.countries}" style="font-size:28px;font-weight:800;color:#fff">${ins.countries}</div><div class="ic-lbl">Jurisdictions</div><div class="ic-delta">incl. 3 regional bodies</div></div>
+  <div class="ic-item"><div class="ic-num" data-count="${inForcePct}" data-suffix="%" style="font-size:28px;font-weight:800;color:#fff">${inForcePct}%</div><div class="ic-lbl">In Force</div><div class="ic-delta">${ins.inForce} active laws</div></div>
+  <div class="ic-item"><div class="ic-num" data-count="${gdprAligned}" style="font-size:28px;font-weight:800;color:#fff">${gdprAligned}</div><div class="ic-lbl">GDPR-benchmarked</div><div class="ic-delta">strongest global signal</div></div>
+</div>
+<div style="padding:0 32px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+  <div style="font-size:15px;font-weight:800">🏆 Landmark Firsts & Defining Moments</div>
+  <span style="font-size:12.5px;color:var(--accent2);cursor:pointer;font-weight:600" onclick="goApp('trends')">See full timeline →</span>
+</div>
+<div class="lm-cards">
+  ${landmarks.map(lm=>{
+    const p=policies.find(x=>x.id===lm.id);
+    return`<div class="lm-card ${lm.color}" onclick="goApp('all-policies');setTimeout(()=>selectPol(${lm.id}),120)" style="cursor:pointer">
+      <span class="lm-flag">${p.flag}</span>
+      <div class="lm-year">${p.year} <span class="lm-tag">${lm.label}</span></div>
+      <div class="lm-title">${p.title}</div>
+      <div class="lm-desc">${lm.insight}</div>
+    </div>`;
+  }).join('')}
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:0 32px 16px">
   <div class="db-recent">
-    <div class="db-rt"><span>Status Breakdown</span></div>
-    ${[['In Force',inForcePct,'#0d3b2c'],['Draft/Consultation',consultPct,'#17c9a4'],['Under Review',reviewPct,'#fbbf24'],['Proposed',100-inForcePct-consultPct-reviewPct,'#9ca3af']].map(([l,v,c])=>`
-    <div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12.5px;font-weight:600">${l}</span><span style="font-size:12.5px;font-weight:700">${v}%</span></div>
-      <div style="height:7px;background:var(--border2);border-radius:4px;overflow:hidden"><div style="height:100%;background:${c};border-radius:4px;width:${v}%"></div></div>
-    </div>`).join('')}
-  </div>
-  <div class="db-recent">
-    <div class="db-rt"><span>By Policy Area</span></div>
+    <div class="db-rt"><span>Policy Area Breakdown</span></div>
     ${areaEntries.map(([area,count])=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-      <span style="font-size:12px;flex:1;font-weight:600;color:var(--text2)">${area}</span>
-      <div style="width:80px;height:6px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--primary);border-radius:3px;width:${Math.round(count/areaEntries[0][1]*100)}%"></div></div>
-      <span style="font-size:12px;font-weight:700;width:16px;text-align:right">${count}</span>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:9px;cursor:pointer" onclick="filterArea='${area}';goApp('all-policies')" title="Filter by ${area}">
+      <div style="width:8px;height:8px;border-radius:50%;background:${areaColor[area]||'#9ca3af'};flex-shrink:0"></div>
+      <span style="font-size:12.5px;flex:1;font-weight:600;color:var(--text2)">${area}</span>
+      <div style="width:70px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:${areaColor[area]||'#9ca3af'};border-radius:3px;width:${Math.round(count/areaEntries[0][1]*100)}%;opacity:.8"></div></div>
+      <span style="font-size:12px;font-weight:700;color:var(--text2);width:18px;text-align:right">${count}</span>
     </div>`).join('')}
   </div>
   <div class="db-recent">
     <div class="db-rt"><span>Top Jurisdictions</span></div>
     ${countryEntries.map(([c,n])=>{const p=policies.find(x=>x.country===c);return`
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border2)">
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border2);cursor:pointer" onclick="filterCountry='${c}';goApp('all-policies')">
       <span style="font-size:18px">${p?p.flag:'🌍'}</span>
       <span style="font-size:13px;font-weight:600;flex:1">${c}</span>
+      <div style="width:50px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--primary);border-radius:3px;width:${Math.round(n/countryEntries[0][1]*100)}%"></div></div>
       <span style="font-size:13px;font-weight:700;color:var(--primary)">${n}</span>
     </div>`}).join('')}
-    <div style="margin-top:10px;padding:10px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--text2)">
-      <div style="font-weight:700;margin-bottom:4px">🔍 Key Insight</div>
-      Nigeria leads with the most policies tracked (${ins.byCountry['Nigeria']||0}), followed by Kenya (${ins.byCountry['Kenya']||0}) and South Africa (${ins.byCountry['South Africa']||0}).
+    <div style="margin-top:10px;font-size:12px;color:var(--text3);font-style:italic">Click a country to filter policies</div>
+  </div>
+  <div class="db-recent">
+    <div class="db-rt"><span>Legislative Status</span></div>
+    ${[['In Force',(ins.byStatus['in-force']||0),'#0d3b2c','in-force'],['Under Review',(ins.byStatus['under-review']||0),'#f59e0b','under-review'],['Proposed',(ins.byStatus['proposed']||0),'#6366f1','proposed'],['Consultation',(ins.byStatus['under-consultation']||0),'#17c9a4','under-consultation']].map(([l,n,c,s])=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer" onclick="filterStatus='${s}';goApp('all-policies')">
+      <div style="width:10px;height:10px;border-radius:50%;background:${c};flex-shrink:0"></div>
+      <span style="font-size:12.5px;flex:1;font-weight:600;color:var(--text2)">${l}</span>
+      <span style="font-size:13px;font-weight:800;color:var(--text)">${n}</span>
+    </div>`).join('')}
+    <div style="margin-top:12px;padding:12px;background:var(--primary);border-radius:8px">
+      <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:4px">Data Protection Wave</div>
+      <div style="font-size:11.5px;color:rgba(255,255,255,.65);line-height:1.6">19 of 50 tracked policies cover data protection — the fastest growing area in Sub-Saharan Africa since 2019.</div>
     </div>
   </div>
 </div>
 <div class="db-2col">
   <div class="db-recent">
-    <div class="db-rt"><span>Recent Policy Activity (2022–2024)</span><span style="font-size:12px;color:var(--accent2);cursor:pointer;font-weight:500" onclick="goApp('all-policies')">View all →</span></div>
-    ${recentPols.map(p=>`<div class="db-item"><span style="font-size:20px">${p.flag}</span><div style="flex:1"><div class="db-iname">${p.title}</div><div class="db-imeta">${p.country} · ${p.year} · ${p.area}</div></div><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>`).join('')}
+    <div class="db-rt"><span>Recent Activity (2022–2024)</span><span style="font-size:12px;color:var(--accent2);cursor:pointer;font-weight:600" onclick="goApp('all-policies')">View all →</span></div>
+    ${recentPols.map(p=>`
+    <div class="db-item" style="cursor:pointer" onclick="goApp('all-policies');setTimeout(()=>selectPol(${p.id}),120)">
+      <span style="font-size:20px">${p.flag}</span>
+      <div style="flex:1"><div class="db-iname">${p.title}</div><div class="db-imeta">${p.country} · ${p.year} · ${p.area}</div></div>
+      <span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span>
+    </div>`).join('')}
   </div>
   <div style="display:flex;flex-direction:column;gap:14px">
     <div class="db-recent">
@@ -987,44 +1165,53 @@ function renderDashboard(){
       ${Object.entries(ins.byRegion).sort((a,b)=>b[1]-a[1]).map(([r,n])=>`
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
         <span style="font-size:12px;flex:1;color:var(--text2)">${r}</span>
-        <div style="width:80px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:3px;width:${Math.round(n/ins.total*100)*2.5}%"></div></div>
+        <div style="width:80px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:3px;width:${Math.round(n/ins.total*200)}%"></div></div>
         <span style="font-size:12px;font-weight:700;width:16px">${n}</span>
       </div>`).join('')}
     </div>
-    <div class="db-recent" style="background:var(--primary);border-color:var(--primary)">
-      <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:10px">📊 Intelligence Summary</div>
-      <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.7">
-        <div style="margin-bottom:6px">• <strong style="color:#fff">${inForcePct}%</strong> of tracked policies are In Force</div>
-        <div style="margin-bottom:6px">• <strong style="color:#fff">Data Protection</strong> is the most legislated area</div>
-        <div style="margin-bottom:6px">• <strong style="color:#fff">${gdprAligned}</strong> policies benchmark against GDPR</div>
-        <div style="margin-bottom:6px">• <strong style="color:#fff">${ins.recentPols}</strong> new policies enacted since 2022</div>
-        <div>• <strong style="color:#fff">East Africa</strong> leads in AI governance adoption</div>
-      </div>
+    <div class="db-recent" style="cursor:pointer" onclick="goApp('trends')">
+      <div style="font-size:13.5px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">Global Alignment Snapshot <span style="font-size:11px;color:var(--accent2);font-weight:600">See full analysis →</span></div>
+      ${[['GDPR (EU)',gdprAligned,'#0d3b2c'],['Budapest Convention',policies.filter(p=>p.closestFW&&p.closestFW.includes('Budapest')).length,'#f59e0b'],['OECD AI Principles',policies.filter(p=>p.closestFW&&p.closestFW.includes('OECD')).length,'#17c9a4'],['NIST Framework',policies.filter(p=>p.closestFW&&p.closestFW.includes('NIST')).length,'#6366f1']].map(([fw,n,c])=>`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="font-size:12px;flex:1;color:var(--text2)">${fw}</span>
+        <div style="width:70px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:${c};border-radius:3px;width:${Math.round(n/ins.total*100)*4}%"></div></div>
+        <span style="font-size:12px;font-weight:700;width:14px;text-align:right">${n}</span>
+      </div>`).join('')}
     </div>
   </div>
 </div>`;
 }
 
-function renderExplorer(){return`
-<div class="ph"><div class="ph-title">Explore Policies</div><div class="ph-sub">Browse, filter and analyse digital policies across Africa.</div></div>
+
+function renderExplorer(){
+  // Apply pre-set filters from dashboard clicks
+  const areas=[...new Set(policies.map(p=>p.area))].sort();
+  const statuses=['in-force','under-consultation','under-review','proposed'];
+  const countries=[...new Set(policies.map(p=>p.country))].filter(c=>c!=='African Union'&&c!=='ECOWAS').sort();
+  const filtered=getFiltered();
+  return`
+<div class="ph"><div class="ph-title">Explore Policies</div><div class="ph-sub">Browse, filter and analyse ${policies.length} real digital policies across Africa.</div></div>
 <div class="pfilt">
-  <button class="filt-btn">All Countries ▾</button>
-  <button class="filt-btn">All Policy Areas ▾</button>
-  <button class="filt-btn">All Statuses ▾</button>
-  <button class="filt-btn">Instrument Type ▾</button>
+  <select class="filt-btn" id="f-area" onchange="filterArea=this.value;refreshExplorer()" style="padding-right:24px">
+    <option value="">All Policy Areas</option>
+    ${areas.map(a=>`<option value="${a}" ${filterArea===a?'selected':''}>${a}</option>`).join('')}
+  </select>
+  <select class="filt-btn" id="f-status" onchange="filterStatus=this.value;refreshExplorer()" style="padding-right:24px">
+    <option value="">All Statuses</option>
+    ${statuses.map(s=>`<option value="${s}" ${filterStatus===s?'selected':''}>${statusLabel[s]}</option>`).join('')}
+  </select>
+  <select class="filt-btn" id="f-country" onchange="filterCountry=this.value;refreshExplorer()" style="padding-right:24px">
+    <option value="">All Countries</option>
+    ${countries.map(c=>`<option value="${c}" ${filterCountry===c?'selected':''}>${c}</option>`).join('')}
+  </select>
   <div class="fc-sp"></div>
-  <button class="filt-btn">⚙ Filters</button>
-  <span class="res-count">2,451 results</span>
+  ${filterArea||filterStatus||filterCountry?`<button class="filt-btn" onclick="filterArea='';filterStatus='';filterCountry='';refreshExplorer()" style="color:#ef4444;border-color:#ef4444">✕ Clear</button>`:''}
+  <span class="res-count" id="ex-count">${filtered.length} results</span>
 </div>
+<div class="fp-row" id="fp-pills">${buildFilterPills()}</div>
 <div class="ex-layout">
   <div class="ex-list">
-    <div id="policy-list">${policies.map(p=>`
-      <div class="pc${p.id===selPolicy.id?' sel':''}" onclick="selectPol(${p.id})">
-        <div class="pc-hd"><span class="pc-flag">${p.flag}</span><span class="pc-name">${p.title}</span><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>
-        <div class="pc-meta"><span class="cn">${p.country}</span> • ${p.areas.join(' • ')}</div>
-        <div style="font-size:11px;color:var(--text3);margin-top:4px">Updated: ${p.updated}</div>
-      </div>`).join('')}
-    </div>
+    <div id="policy-list">${renderPolicyCards(filtered)}</div>
     <div class="ex-pag">
       <div class="pg-btn">‹</div>
       <div class="pg-btn active">1</div>
@@ -1037,7 +1224,56 @@ function renderExplorer(){return`
   <div class="ex-detail" id="detail-panel">${renderDetail(selPolicy)}</div>
 </div>`}
 
-function initExplorer(){}
+function buildFilterPills(){
+  const all=['Data Protection','Artificial Intelligence','Cybersecurity','Digital Finance','Digital Economy','Digital Infrastructure'];
+  return all.map(a=>`<button class="fp ${areaClass[a]||''} ${filterArea===a?'on':''}" onclick="filterArea=filterArea==='${a}'?'':'${a}';refreshExplorer()">${a}</button>`).join('');
+}
+function getFiltered(){
+  return policies.filter(p=>{
+    if(filterArea&&p.area!==filterArea)return false;
+    if(filterStatus&&p.status!==filterStatus)return false;
+    if(filterCountry&&p.country!==filterCountry)return false;
+    if(filterSearch){
+      const q=filterSearch;
+      const hit=p.title.toLowerCase().includes(q)||p.country.toLowerCase().includes(q)||p.area.toLowerCase().includes(q)||(p.summary||'').toLowerCase().includes(q)||(p.tags||[]).some(t=>t.toLowerCase().includes(q));
+      if(!hit)return false;
+    }
+    return true;
+  });
+}
+function renderPolicyCards(list){
+  return list.map(p=>`
+  <div class="pc${p.id===selPolicy.id?' sel':''}" onclick="selectPol(${p.id})">
+    <div class="pc-hd"><span class="pc-flag">${p.flag}</span><span class="pc-name">${p.title}</span><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>
+    <div class="pc-meta"><span class="cn">${p.country}</span> · ${p.area}</div>
+    <div style="font-size:11px;color:var(--text3);margin-top:3px;display:flex;align-items:center;gap:6px">
+      <span style="width:7px;height:7px;border-radius:50%;background:${areaColor[p.area]||'#9ca3af'};flex-shrink:0;display:inline-block"></span>
+      ${p.year} · ${p.instrument}
+    </div>
+  </div>`).join('')||`<div style="padding:28px;text-align:center;color:var(--text3)">No policies match this filter</div>`;
+}
+function refreshExplorer(){
+  const filtered=getFiltered();
+  const el=document.getElementById('policy-list');
+  const cnt=document.getElementById('ex-count');
+  const pills=document.getElementById('fp-pills');
+  if(el)el.innerHTML=renderPolicyCards(filtered);
+  if(cnt)cnt.textContent=`${filtered.length} results`;
+  if(pills)pills.innerHTML=buildFilterPills();
+  // Update filter selects
+  ['f-area','f-status','f-country'].forEach(id=>{
+    const s=document.getElementById(id);
+    if(!s)return;
+    if(id==='f-area')s.value=filterArea;
+    if(id==='f-status')s.value=filterStatus;
+    if(id==='f-country')s.value=filterCountry;
+  });
+}
+
+function initExplorer(){
+  if(filterArea||filterStatus||filterCountry)refreshExplorer();
+}
+
 
 function selectPol(id){
   selPolicy=policies.find(p=>p.id===id);
@@ -1079,7 +1315,10 @@ function switchDetTab(tab,pid){
 }
 
 function detTabContent(p,tab){
-  if(tab==='overview')return`
+  if(tab==='overview'){
+    // Related policies: same area, different country
+    const related=policies.filter(x=>x.id!==p.id&&x.area===p.area).slice(0,3);
+    return`
 <div class="ed-3col">
   <div class="ed-box"><div class="eb-lbl">1. WHAT IS THIS?</div>
     <div class="eb-row"><div class="eb-key">Instrument Type</div><div class="eb-val">${p.instrument}</div></div>
@@ -1094,27 +1333,70 @@ function detTabContent(p,tab){
     <div style="font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:8px">${p.demand}</div>
     <div class="eb-key">Key Obligations</div><div class="eb-val">${p.keyObs}</div>
   </div>
+</div>
+${p.summary?`<div class="ed-box" style="margin-top:10px;background:var(--bg)"><div class="eb-lbl">Analyst Summary</div><div style="font-size:13px;color:var(--text2);line-height:1.65;margin-top:6px">${p.summary}</div></div>`:''}
+${related.length?`<div style="margin-top:12px"><div class="eb-lbl" style="padding:0 0 8px">Related Policies in ${p.area}</div>
+<div style="display:flex;flex-direction:column;gap:6px">${related.map(r=>`
+<div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:#fff;border:1px solid var(--border);border-radius:7px;cursor:pointer;transition:border-color .12s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'" onclick="selectPol(${r.id})">
+  <span style="font-size:16px">${r.flag}</span>
+  <div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${r.title}</div><div style="font-size:11px;color:var(--text3)">${r.country} · ${r.year}</div></div>
+  <span class="badge ${statusClass[r.status]}">${statusLabel[r.status]}</span>
+</div>`).join('')}</div></div>`:''}`;
+  }
+  if(tab==='taxonomy')return`
+<div class="ed-box" style="margin-bottom:10px">
+  <div class="eb-lbl">Classification Tags</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+    ${[...new Set([...p.areas,p.area,p.instrument,p.country])].map(t=>`<span style="padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:12px;font-weight:500;cursor:pointer" onclick="filterArea='${t===p.area?p.area:''}';filterCountry='${t===p.country?p.country:''}';goApp('all-policies')">${t}</span>`).join('')}
+  </div>
+</div>
+<div class="ed-box">
+  <div class="eb-lbl">Sub-Area</div>
+  <div class="eb-val" style="margin-top:6px">${p.area} · ${p.instrument}</div>
+</div>
+${p.tags&&p.tags.length?`<div class="ed-box" style="margin-top:10px"><div class="eb-lbl">Intelligence Tags</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px">${p.tags.map(t=>`<span style="padding:2px 8px;background:var(--accent-bg,#e6faf5);border-radius:3px;font-size:11.5px;font-weight:500;color:var(--primary)">${t}</span>`).join('')}</div></div>`:''}`;
+  if(tab==='oecd-mapping')return`
+<div style="margin-bottom:10px;font-size:12.5px;color:var(--text2)">OECD AI Principles alignment for <strong>${p.title}</strong></div>
+<canvas id="small-radar" width="380" height="220" style="display:block;margin:0 auto;max-width:100%"></canvas>
+<div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
+${['Inclusive Growth','Fairness','Transparency','Robustness','Accountability'].map((dim,i)=>`
+<div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:12px;font-weight:600">${dim}</span><span style="font-size:12px;font-weight:700;color:var(--primary)">${Math.round((p.oecd?p.oecd[i]:0.7)*100)}%</span></div>
+<div style="height:6px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:3px;width:${Math.round((p.oecd?p.oecd[i]:0.7)*100)}%"></div></div>
+</div>`).join('')}
 </div>`;
-  if(tab==='taxonomy')return`<div class="ed-box" style="margin-bottom:12px"><div class="eb-lbl">Classification</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${[...p.areas,p.area,p.instrument,p.country].filter((v,i,a)=>a.indexOf(v)===i).map(t=>`<span style="padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:12px;font-weight:500">${t}</span>`).join('')}</div></div><div class="ed-box"><div class="eb-lbl">Sub-Area</div><div class="eb-val" style="margin-top:6px">${p.area} · ${p.instrument}</div></div>`;
-  if(tab==='oecd-mapping')return`<canvas id="small-radar" width="380" height="220" style="display:block;margin:0 auto"></canvas>`;
-  if(tab==='comparators')return`<div class="ed-box"><div class="eb-lbl">Closest Global Framework</div><div style="font-size:15px;font-weight:800;color:var(--primary);margin:8px 0 4px">GDPR (EU)</div><span class="badge b-in">High Similarity</span><div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6">Shares data subject rights framework, lawful basis requirements, and breach notification obligations.</div></div>`;
+  if(tab==='comparators'){
+    const sim=p.simLevel||'Medium';
+    const simBadge=sim==='Very High'?'b-in':sim==='High'?'b-in':sim==='Medium'?'b-uc':'b-pr';
+    const related=policies.filter(x=>x.id!==p.id&&x.area===p.area&&x.closestFW===p.closestFW).slice(0,2);
+    return`
+<div class="ed-box" style="margin-bottom:10px">
+  <div class="eb-lbl">Closest Global Framework</div>
+  <div style="font-size:16px;font-weight:800;color:var(--primary);margin:8px 0 6px">${p.closestFW||'GDPR (EU)'}</div>
+  <span class="badge ${simBadge}">${sim} Similarity</span>
+  <div style="margin-top:12px;font-size:12.5px;color:var(--text2);line-height:1.6">${p.summary||''}</div>
+</div>
+${related.length?`<div class="ed-box" style="margin-top:10px"><div class="eb-lbl">Other ${p.area} policies also aligned to ${p.closestFW||'GDPR'}</div><div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">${related.map(r=>`<div style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:7px 0;border-bottom:1px solid var(--border2)" onclick="selectPol(${r.id})"><span style="font-size:15px">${r.flag}</span><span style="font-size:12.5px;font-weight:600;flex:1">${r.title}</span><span class="badge ${statusClass[r.status]}">${statusLabel[r.status]}</span></div>`).join('')}</div></div>`:''}`;
+  }
   return '';
 }
 
 function drawSmallRadar(p){
   const c=document.getElementById('small-radar');
   if(!c)return;
-  const vals=[.82,.75,.88,.71,.85];
+  const vals=p.oecd||[0.75,0.72,0.74,0.68,0.76];
+  const parent=c.parentElement;
+  const mw=parent?Math.min(380,parent.clientWidth-20):380;
+  c.width=mw;c.height=Math.round(mw*.58);
   const ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+8,R=Math.min(W,H)*.32,n=5;
   const labs=['Inclusive\nGrowth','Fairness','Transparency','Robustness','Accountability'];
   ctx.clearRect(0,0,W,H);
   function pt(i,r){const a=i/n*2*Math.PI-Math.PI/2;return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}}
-  for(let g=1;g<=5;g++){const r=g/5*R;ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,r);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.strokeStyle='#e0eae5';ctx.lineWidth=g===5?1.2:.6;ctx.stroke()}
-  for(let i=0;i<n;i++){const p=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#e0eae5';ctx.lineWidth=.7;ctx.stroke()}
-  ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,vals[i]*R);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.fillStyle='rgba(23,201,164,.18)';ctx.fill();ctx.strokeStyle='#17c9a4';ctx.lineWidth=2;ctx.stroke();
-  for(let i=0;i<n;i++){const p=pt(i,vals[i]*R);ctx.beginPath();ctx.arc(p.x,p.y,4,0,2*Math.PI);ctx.fillStyle='#17c9a4';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke()}
+  for(let g=1;g<=5;g++){const r=g/5*R;ctx.beginPath();for(let i=0;i<n;i++){const pp=pt(i,r);i?ctx.lineTo(pp.x,pp.y):ctx.moveTo(pp.x,pp.y)}ctx.closePath();ctx.strokeStyle='#e0eae5';ctx.lineWidth=g===5?1.2:.6;ctx.stroke()}
+  for(let i=0;i<n;i++){const pp=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(pp.x,pp.y);ctx.strokeStyle='#e0eae5';ctx.lineWidth=.7;ctx.stroke()}
+  ctx.beginPath();for(let i=0;i<n;i++){const pp=pt(i,vals[i]*R);i?ctx.lineTo(pp.x,pp.y):ctx.moveTo(pp.x,pp.y)}ctx.closePath();ctx.fillStyle='rgba(23,201,164,.18)';ctx.fill();ctx.strokeStyle='#17c9a4';ctx.lineWidth=2;ctx.stroke();
+  for(let i=0;i<n;i++){const pp=pt(i,vals[i]*R);ctx.beginPath();ctx.arc(pp.x,pp.y,4,0,2*Math.PI);ctx.fillStyle='#17c9a4';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke()}
   ctx.font='9px Plus Jakarta Sans,sans-serif';ctx.fillStyle='#9ca3af';ctx.textAlign='center';ctx.textBaseline='middle';
-  for(let i=0;i<n;i++){const p=pt(i,R+20);const ls=labs[i].split('\n');ls.forEach((ln,li)=>ctx.fillText(ln,p.x,p.y+(li-(ls.length-1)/2)*11))}
+  for(let i=0;i<n;i++){const pp=pt(i,R+20);const ls=labs[i].split('\n');ls.forEach((ln,li)=>ctx.fillText(ln,pp.x,pp.y+(li-(ls.length-1)/2)*11))}
 }
 
 // ═══════════════ KNOWLEDGE GRAPH ═══════════════
@@ -1192,27 +1474,29 @@ const countries=[
   {flag:'🇹🇿',name:'Tanzania',region:'East Africa',group:'EAC',status:'Developing',policies:7},
 ];
 function renderCountries(){return`
-<div class="ph"><div class="ph-title">Member States</div><div class="ph-sub">Track digital policy development and implementation status across all 55 African Union member states.</div></div>
+<div class="ph"><div class="ph-title">Member States</div><div class="ph-sub">Track digital policy development across African Union member states. Click a country to see all its policies.</div></div>
 <div class="pfilt">
   <button class="filt-btn">All Regions ▾</button>
   <button class="filt-btn">Economic Grouping ▾</button>
   <button class="filt-btn">Policy Status ▾</button>
   <div class="fc-sp"></div>
-  <span class="res-count">Showing 55 countries</span>
+  <span class="res-count">Showing ${countries.length} countries</span>
   <div class="view-tog"><button class="vt-btn active">⊞</button><button class="vt-btn">≡</button></div>
 </div>
 <div class="pcont">
   <div class="cc-grid">
-    ${countries.map(c=>`
-    <div class="cc">
+    ${countries.map(c=>{
+      const polCount=policies.filter(p=>p.country===c.name).length;
+      return`
+    <div class="cc" onclick="filterCountry='${c.name}';filterArea='';filterStatus='';goApp('all-policies')" style="cursor:pointer">
       <div class="cc-hd"><span class="cc-flag">${c.flag}</span><span class="badge ${c.status==='Advanced'?'b-adv':'b-dev'}">${c.status}</span></div>
       <div class="cc-name">${c.name}</div>
       <div class="cc-reg">${c.region} • ${c.group}</div>
       <div class="cc-div"></div>
-      <div class="cc-bot"><div><div class="cc-num">${c.policies}</div><div class="cc-sub">Tracked Policies</div></div><span style="color:var(--text3);font-size:16px">→</span></div>
-    </div>`).join('')}
+      <div class="cc-bot"><div><div class="cc-num">${polCount||c.policies}</div><div class="cc-sub">Tracked Policies</div></div><span style="color:var(--accent2);font-size:16px;font-weight:700">→</span></div>
+    </div>`}).join('')}
   </div>
-  <div class="lm-btn">Load More Countries</div>
+  <div class="lm-btn" style="cursor:pointer">Load More Countries</div>
 </div>`}
 
 // ═══════════════ POLICY AREAS ═══════════════
@@ -1237,7 +1521,7 @@ function renderPolicyAreas(){return`
 <div class="pcont">
   <div class="pa-grid">
     ${pAreas.map(a=>`
-    <div class="pa-card">
+    <div class="pa-card" onclick="filterArea='${a.areaKey||a.title.split(' &')[0]}';filterStatus='';filterCountry='';goApp('all-policies')">
       <div class="pa-hd"><div class="pa-ico-wrap" style="font-size:18px">${a.icon}</div><span class="badge ${a.sc}">${a.status}</span></div>
       <div class="pa-t">${a.title}</div>
       <div class="pa-desc">${a.desc}</div>
@@ -1246,8 +1530,9 @@ function renderPolicyAreas(){return`
         <div class="pa-stat"><div class="pa-stat-k">${a.s2k}</div><div class="pa-stat-v">${a.s2v}</div></div>
       </div>
       <div class="pa-div"></div>
-      <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">${a.tags.length>0?a.s1k==='STRATEGIES'?'LEADING FRAMEWORKS':'TOP PERFORMING COUNTRIES':''}</div>
-      <div class="pa-tags">${a.tags.map(t=>`<span class="pa-tag">${t}</span>`).join('')}</div>
+      <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">${a.s1k==='STRATEGIES'?'LEADING FRAMEWORKS':'TOP PERFORMING COUNTRIES'}</div>
+      <div class="pa-tags">${a.tags.map(t=>`<span class="pa-tag" onclick="event.stopPropagation();filterCountry='${t}';filterArea='';filterStatus='';goApp('all-policies')">${t}</span>`).join('')}</div>
+      <div style="margin-top:12px;font-size:12px;color:var(--accent2);font-weight:600">Explore ${a.s1v} policies →</div>
     </div>`).join('')}
   </div>
 </div>`}
@@ -1330,109 +1615,186 @@ function renderTaxonomy(){return`
 // ═══════════ TRENDS (REAL DATA) ═══════════
 function renderTrends(){
   const ins=computeInsights();
-  const yearData={};
-  policies.forEach(p=>{if(p.year>=2008&&p.year<=2024){yearData[p.year]=(yearData[p.year]||0)+1}});
-  const dpByYear={},cyberByYear={},aiByYear={};
-  policies.forEach(p=>{
-    if(p.year<2008||p.year>2024)return;
-    if(p.area==='Data Protection'){dpByYear[p.year]=(dpByYear[p.year]||0)+1}
-    if(p.area==='Cybersecurity'){cyberByYear[p.year]=(cyberByYear[p.year]||0)+1}
-    if(p.area==='Artificial Intelligence'){aiByYear[p.year]=(aiByYear[p.year]||0)+1}
-  });
+  const inForcePct=Math.round((ins.byStatus['in-force']||0)/ins.total*100);
+  setTimeout(()=>{drawTrendsChart();buildTimeline();},80);
   return`
 <div class="ph" style="padding-bottom:14px">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
-    <div><div class="ph-title">Policy Trends Analysis</div><div class="ph-sub">Based on ${policies.length} real Sub-Saharan African digital policies (2008–2024). Data sourced and parsed by DPA methodology.</div></div>
-    <button class="filt-btn primary" style="margin-top:4px;flex-shrink:0">⬇ Export Report</button>
+    <div><div class="ph-title">Policy Trends Analysis</div><div class="ph-sub">${policies.length} real policies · Sub-Saharan Africa 2008–2024 · click any milestone to open the policy</div></div>
+    <button class="filt-btn primary" style="margin-top:4px;flex-shrink:0">⬇ Export</button>
   </div>
 </div>
-<div class="pfilt" style="padding-top:0"><button class="filt-btn">All Regions ▾</button><button class="filt-btn">All Policy Areas ▾</button><button class="filt-btn">📅 2008–2024 ▾</button></div>
-<div class="tr-top">
-  <div class="tc">
-    <div class="tc-t">Policy Enactment by Year <span class="tc-leg"><div class="tc-li"><div class="tc-ld" style="background:var(--primary)"></div>Data Protection</div><div class="tc-li"><div class="tc-ld" style="background:var(--accent)"></div>AI Governance</div></span></div>
-    <div class="tc-sub">Annual count of enacted digital policies — Sub-Saharan Africa 2008–2024</div>
-    <canvas id="trend-chart" width="580" height="220"></canvas>
+<div class="pfilt" style="padding-top:0">
+  <button class="filt-btn">All Regions ▾</button>
+  <button class="filt-btn">All Policy Areas ▾</button>
+  <button class="filt-btn">📅 2008–2024</button>
+</div>
+
+<!-- LEGEND + chart -->
+<div class="ts-hd">
+  <div><div class="ts-title">Enactment Velocity by Area</div><div class="ts-sub">Cumulative policies enacted 2008–2024</div></div>
+  <div class="ts-legend">
+    ${Object.entries(areaColor).map(([a,c])=>`<div class="ts-li"><div class="ts-ld" style="background:${c}"></div>${a}</div>`).join('')}
   </div>
+</div>
+<div style="margin:0 32px 14px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px;overflow:hidden">
+  <canvas id="trend-chart" width="720" height="200" style="display:block;width:100%"></canvas>
+</div>
+
+<!-- TIMELINE -->
+<div style="padding:0 32px;margin-bottom:8px">
+  <div style="font-size:15px;font-weight:800;margin-bottom:3px">📍 Policy Milestone Timeline</div>
+  <div style="font-size:12.5px;color:var(--text2)">Every policy plotted chronologically. Hover or tap to preview. Click to open.</div>
+</div>
+<div class="tl-wrap">
+  <div class="tl-scroll" id="tl-scroll"></div>
+</div>
+<div id="tl-tooltip" class="tl-tooltip"></div>
+
+<!-- BOTTOM PANELS -->
+<div class="tr-top" style="margin-top:14px">
   <div class="tc">
-    <div class="tc-t">Legislative Status</div>
-    <div class="tc-sub">Distribution across ${policies.length} tracked policies</div>
-    <div style="margin-top:24px">
-      ${Object.entries({
-        'In Force': Math.round((ins.byStatus['in-force']||0)/ins.total*100),
-        'Under Review': Math.round((ins.byStatus['under-review']||0)/ins.total*100),
-        'Proposed': Math.round((ins.byStatus['proposed']||0)/ins.total*100),
-        'Consultation': Math.round((ins.byStatus['under-consultation']||0)/ins.total*100)
-      }).map(([l,v])=>`
-      <div class="ls-row">
+    <div class="tc-t">Legislative Status Breakdown</div>
+    <div class="tc-sub">${ins.total} tracked policies across Sub-Saharan Africa</div>
+    <div style="margin-top:18px">
+      ${[['In Force',(ins.byStatus['in-force']||0),'#0d3b2c','in-force'],['Under Review',(ins.byStatus['under-review']||0),'#f59e0b','under-review'],['Proposed',(ins.byStatus['proposed']||0),'#6366f1','proposed'],['Consultation',(ins.byStatus['under-consultation']||0),'#17c9a4','under-consultation']].map(([l,n,c,s])=>`
+      <div class="ls-row" style="cursor:pointer" onclick="filterStatus='${s}';filterArea='';filterCountry='';goApp('all-policies')">
         <span class="ls-label">${l}</span>
-        <div class="ls-bar-wrap"><div class="ls-bar" style="width:${v}%;background:${l==='In Force'?'var(--primary)':l==='Under Review'?'#fbbf24':l==='Proposed'?'#a5b4fc':'var(--accent)'}"></div></div>
-        <span class="ls-pct">${v}%</span>
+        <div class="ls-bar-wrap"><div class="ls-bar" style="width:${Math.round(n/ins.total*100)}%;background:${c}"></div></div>
+        <span class="ls-pct">${n}</span>
       </div>`).join('')}
-    </div>
-    <div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.6">
-      <strong>${ins.inForce} of ${ins.total}</strong> policies are actively in force across Sub-Saharan Africa.
-    </div>
-  </div>
-</div>
-<div class="tr-bot">
-  <div class="tc">
-    <div class="tc-t">Emerging Policy Topics <span style="font-size:13px">↗</span></div>
-    <div class="tc-sub">Fastest growing by year-on-year enactment velocity (2020–2024).</div>
-    <div style="margin-top:12px">
-      ${[
-        ['Data Protection Wave','14 laws in 5 years — fastest growing area in SSA','#1'],
-        ['CBDC & Digital Finance','Nigeria eNaira (2021) triggered regional fintech wave','#2'],
-        ['AI Governance Emergence','From 0 strategies in 2017 to 5 by 2023','#3'],
-        ['Cross-Border Data Frameworks','AU-driven harmonisation gaining momentum','#4']
-      ].map(([n,s,num])=>`
-      <div class="et-item"><div><div class="et-name">${n}</div><div class="et-sub">${s}</div></div><span class="et-num">${num}</span></div>`).join('')}
+      <div style="margin-top:14px;font-size:12px;color:var(--text3)">Click a status bar to filter policies</div>
     </div>
   </div>
   <div class="tc">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><div class="tc-t" style="margin:0">Regional Policy Density</div></div>
-    <div class="tc-sub">Policy concentration by regional economic community</div>
-    <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px">
-      <div class="tm-block" style="background:#1a3d2e;color:#fff;grid-column:1;grid-row:1 / span 2;min-height:130px;justify-content:flex-start;padding:14px">
-        <div class="tm-n" style="font-size:13px">ECOWAS</div>
-        <div class="tm-s" style="color:rgba(255,255,255,.6)">West Africa</div>
-        <div style="font-size:26px;font-weight:800;color:#fff;margin-top:10px">${policies.filter(p=>p.group==='ECOWAS').length}</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.5)">policies</div>
-      </div>
-      <div class="tm-block" style="background:#e6f5ee;border:1px solid var(--border)">
-        <div class="tm-n" style="font-size:12px">EAC</div>
-        <div style="font-size:20px;font-weight:800">${policies.filter(p=>p.group==='EAC').length}</div>
-      </div>
-      <div class="tm-block" style="background:#ccecdf;">
-        <div class="tm-n" style="font-size:12px">SADC</div>
-        <div style="font-size:20px;font-weight:800">${policies.filter(p=>p.group==='SADC').length}</div>
-      </div>
-      <div class="tm-block" style="background:var(--bg);border:1px solid var(--border);grid-column:1 / span 2;min-height:40px;flex-direction:row;gap:12px">
-        <span style="font-size:11.5px;color:var(--text3)">AU: ${policies.filter(p=>p.group==='AU').length}</span>
-        <span style="font-size:11.5px;color:var(--text3)">IGAD: ${policies.filter(p=>p.group==='IGAD').length}</span>
-        <span style="font-size:11.5px;color:var(--text3)">CEMAC: ${policies.filter(p=>p.group==='CEMAC').length}</span>
-        <span style="font-size:11.5px;color:var(--text3)">COMESA: ${policies.filter(p=>p.group==='COMESA').length}</span>
-      </div>
-    </div>
-  </div>
-  <div class="tc">
-    <div class="tc-t">Global Framework Alignment <span style="font-size:13px">🌐</span></div>
-    <div class="tc-sub">How SSA policies benchmark against global frameworks.</div>
+    <div class="tc-t">Global Framework Alignment 🌐</div>
+    <div class="tc-sub">How SSA policies benchmark against global comparators</div>
     <div style="margin-top:16px">
       ${[
-        ['GDPR (EU) Alignment',policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length,'hi','Strongest influence — '+policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length+' policies cite GDPR as closest comparator.'],
-        ['Budapest Convention',policies.filter(p=>p.closestFW&&p.closestFW.includes('Budapest')).length,'me','Primary cybercrime benchmark for 6 national frameworks.'],
-        ['OECD AI Principles',policies.filter(p=>p.closestFW&&p.closestFW.includes('OECD')).length,'me','Growing adoption across AI strategies and policies.'],
-        ['NIST Cybersecurity',policies.filter(p=>p.closestFW&&p.closestFW.includes('NIST')).length,'mo','Referenced by 2 cybersecurity frameworks (Rwanda, Ghana).']
-      ].map(([n,count,cls,sub])=>`
+        ['GDPR (EU)',policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length,'#0d3b2c','Strongest influence — shapes data protection law across the continent.'],
+        ['Budapest Convention',policies.filter(p=>p.closestFW&&p.closestFW.includes('Budapest')).length,'#f59e0b','Primary cybercrime benchmark for 6+ national frameworks.'],
+        ['OECD AI Principles',policies.filter(p=>p.closestFW&&p.closestFW.includes('OECD')).length,'#17c9a4','Growing alignment as AI strategies multiply post-2021.'],
+        ['NIST Cybersecurity',policies.filter(p=>p.closestFW&&p.closestFW.includes('NIST')).length,'#6366f1','Referenced structurally by Rwanda and Ghana.'],
+        ['BIS / CBDC Guidelines',policies.filter(p=>p.closestFW&&p.closestFW.includes('BIS')).length,'#ec4899','Emerging signal — Nigeria eNaira triggered regional interest.']
+      ].map(([n,count,c,sub])=>`
       <div class="gb-row">
-        <div class="gb-hd"><span class="gb-name">${n}</span><span class="gb-val ${cls}">${count} policies</span></div>
-        <div class="gb-bar"><div class="gb-fill" style="width:${Math.round(count/ins.total*100)*4}%;background:${cls==='hi'?'var(--primary)':cls==='me'?'var(--accent)':'#d1d5db'}"></div></div>
+        <div class="gb-hd"><span class="gb-name">${n}</span><span style="font-size:13px;font-weight:700;color:${c}">${count} policies</span></div>
+        <div class="gb-bar"><div class="gb-fill" style="width:${Math.round(count/ins.total*280)}%;background:${c};opacity:.8"></div></div>
         <div class="gb-sub">${sub}</div>
       </div>`).join('')}
     </div>
   </div>
+</div>
+<div class="tr-bot" style="margin-top:0">
+  <div class="tc">
+    <div class="tc-t">Emerging Topics ↗</div>
+    <div class="tc-sub">Fastest growing by enactment velocity 2020–2024</div>
+    <div style="margin-top:12px">
+      ${[
+        ['Data Protection Wave','19 laws tracked — fastest growing area in SSA. 14 enacted since 2019.','#1','dp'],
+        ['CBDC & Digital Finance','Nigeria eNaira (2021) triggered regional digital currency attention.','#2','df'],
+        ['AI Governance Emergence','From 0 AI strategies in 2017 to 6 by 2024. AU strategy endorsed 2024.','#3','ai'],
+        ['Cross-Border Data','AU Digital Compact 2024 signals push for harmonised cross-border rules.','#4','dp'],
+      ].map(([n,s,num,cls])=>`
+      <div class="et-item" style="cursor:pointer" onclick="filterArea='${cls==='dp'?'Data Protection':cls==='ai'?'Artificial Intelligence':'Digital Finance'}';filterStatus='';filterCountry='';goApp('all-policies')">
+        <div><div class="et-name">${n}</div><div class="et-sub">${s}</div></div>
+        <span style="font-size:18px;font-weight:800;color:${cls==='dp'?'var(--primary)':cls==='ai'?'var(--accent)':'#6366f1'}">${num}</span>
+      </div>`).join('')}
+    </div>
+  </div>
+  <div class="tc">
+    <div class="tc-t">Regional Policy Density</div>
+    <div class="tc-sub">Policy concentration by economic community</div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="tm-block" style="background:var(--primary);color:#fff;grid-column:1;grid-row:1 / span 2;min-height:130px;justify-content:flex-start;padding:14px;cursor:pointer" onclick="filterCountry='';filterArea='';filterStatus='';goApp('all-policies')">
+        <div class="tm-n" style="font-size:13px">ECOWAS</div>
+        <div class="tm-s" style="color:rgba(255,255,255,.5)">West Africa · Most active</div>
+        <div style="font-size:30px;font-weight:800;color:#fff;margin-top:12px">${policies.filter(p=>p.group==='ECOWAS').length}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:2px">tracked policies</div>
+      </div>
+      <div class="tm-block" style="background:#e6f5ee;border:1px solid var(--border);cursor:pointer" onclick="filterCountry='';filterArea='';filterStatus='';goApp('all-policies')">
+        <div class="tm-n" style="font-size:12px">EAC</div><div style="font-size:22px;font-weight:800">${policies.filter(p=>p.group==='EAC').length}</div>
+      </div>
+      <div class="tm-block" style="background:#ccecdf;cursor:pointer" onclick="filterCountry='';filterArea='';filterStatus='';goApp('all-policies')">
+        <div class="tm-n" style="font-size:12px">SADC</div><div style="font-size:22px;font-weight:800">${policies.filter(p=>p.group==='SADC').length}</div>
+      </div>
+      <div class="tm-block" style="background:var(--bg);border:1px solid var(--border);grid-column:1/span 2;flex-direction:row;gap:14px;padding:10px 14px">
+        <span style="font-size:12px;color:var(--text2);font-weight:600">AU: ${policies.filter(p=>p.group==='AU').length}</span>
+        <span style="font-size:12px;color:var(--text2);font-weight:600">IGAD: ${policies.filter(p=>p.group==='IGAD').length}</span>
+        <span style="font-size:12px;color:var(--text2);font-weight:600">CEMAC: ${policies.filter(p=>p.group==='CEMAC').length}</span>
+        <span style="font-size:12px;color:var(--text2);font-weight:600">COMESA: ${policies.filter(p=>p.group==='COMESA').length}</span>
+      </div>
+    </div>
+  </div>
+  <div class="tc">
+    <div class="tc-t">Key Insight Cards</div>
+    <div class="tc-sub">Notable patterns in the dataset</div>
+    ${[
+      ['🌍','Continental Wave','39 of 55 AU states now have data protection laws — up from just 10 in 2012. The fastest regulatory adoption wave in African governance history.'],
+      ['🚀','East Africa Leads AI','Mauritius (2018), Rwanda (2023), Kenya (2022) and Ethiopia (2020) — 4 of Africa\'s 6 AI strategies originate in East Africa.'],
+      ['⚖️','GDPR Effect','18 of 50 tracked policies formally benchmark against GDPR — evidence of the EU\'s extraterritorial policy influence on the continent.'],
+    ].map(([ico,t,d])=>`
+    <div style="padding:12px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;margin-bottom:8px">
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">${ico} ${t}</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6">${d}</div>
+    </div>`).join('')}
+  </div>
 </div>`;
 }
+
+function buildTimeline(){
+  const wrap=document.getElementById('tl-scroll');
+  if(!wrap)return;
+  const tt=document.getElementById('tl-tooltip');
+  const sorted=[...policies].sort((a,b)=>a.year-b.year);
+  const minY=2008,maxY=2024,span=maxY-minY;
+  const W=Math.max(900,sorted.length*22);
+  wrap.style.width=W+'px';
+  const pct=y=>((y-minY)/span*100);
+
+  // Axis
+  let html=`<div class="tl-axis" style="margin:70px 20px 50px">`;
+  // Year ticks
+  for(let y=minY;y<=maxY;y++){
+    html+=`<div class="tl-year-tick" style="left:${pct(y)}%">
+      <div class="tl-year-line"></div>
+      <div class="tl-year-txt">${y}</div>
+    </div>`;
+  }
+  // Policy dots
+  sorted.forEach((p,i)=>{
+    const col=areaColor[p.area]||'#9ca3af';
+    const above=i%2===0;
+    const xPct=pct(p.year);
+    // Jitter same-year policies horizontally
+    const sameYear=sorted.filter(x=>x.year===p.year);
+    const idxInYear=sameYear.indexOf(p);
+    const jitter=sameYear.length>1?(idxInYear-(sameYear.length-1)/2)*2:0;
+    html+=`<div class="tl-dot" style="left:calc(${xPct}% + ${jitter}px);top:0;height:100%"
+      onmouseenter="showTT(event,${p.id})" onmouseleave="hideTT()"
+      onclick="goApp('all-policies');setTimeout(()=>selectPol(${p.id}),120)"
+      title="${p.title}">
+      <div class="tl-dot-lbl ${above?'above':'below'}" style="${above?'':'top:calc(100% + 24px)'}">${p.flag} ${p.country.split(' ')[0]}</div>
+      <div class="tl-dot-circle" style="background:${col};margin-top:${above?'0':'auto'}"></div>
+    </div>`;
+  });
+  html+=`</div>`;
+  wrap.innerHTML=html;
+}
+function showTT(e,id){
+  const p=policies.find(x=>x.id===id);
+  if(!p)return;
+  const tt=document.getElementById('tl-tooltip');
+  tt.innerHTML=`<div class="tl-tt-title">${p.title}</div><div class="tl-tt-meta">${p.country} · ${p.year} · ${p.area}</div><div style="margin-top:4px;font-size:11px;opacity:.8">${statusLabel[p.status]}</div>`;
+  tt.style.left=(e.clientX+12)+'px';
+  tt.style.top=(e.clientY-10)+'px';
+  tt.classList.add('visible');
+}
+function hideTT(){
+  const tt=document.getElementById('tl-tooltip');
+  if(tt)tt.classList.remove('visible');
+}
+
 function renderOECD(){return`
 <div class="ph" style="padding-bottom:14px">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
