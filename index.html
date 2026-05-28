@@ -416,6 +416,144 @@ button{font-family:var(--font);cursor:pointer}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--text3)}
 ::-webkit-scrollbar-track{background:transparent}
+
+/* ═══ MOBILE SIDEBAR OVERLAY ═══ */
+.sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:49;opacity:0;transition:opacity .25s}
+.sb-overlay.show{display:block;opacity:1}
+.sb-close{display:none;position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:6px;background:var(--bg);border:none;font-size:16px;cursor:pointer;align-items:center;justify-content:center;color:var(--text)}
+.tb-burger{display:none;width:34px;height:34px;border-radius:7px;border:1px solid var(--border);background:#fff;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0}
+
+/* ═══ TABLET (≤900px) ═══ */
+@media(max-width:900px){
+  :root{--sb:220px}
+  /* Landing nav */
+  .ln-links{display:none}
+  .btn-gh{display:none}
+  /* Hero */
+  .hero{grid-template-columns:1fr;padding:36px 20px 32px;gap:28px}
+  .globe-wrap{width:100%;height:0;padding-bottom:75%;position:relative}
+  .globe{width:100%;height:100%;position:absolute;top:0;left:0;border-radius:20px}
+  .h1{font-size:38px}
+  /* Stats */
+  .stats-row{width:100%;border-radius:var(--r);overflow-x:auto}
+  .stat{padding:12px 14px;flex-shrink:0}
+  /* Sections */
+  .row2c,.row-why{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px}
+  /* App */
+  .sb{transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+  .sb.open{transform:translateX(0)}
+  .sb-close{display:flex}
+  .app-right{margin-left:0}
+  .tb-burger{display:flex}
+  .tb-search{max-width:none;flex:1}
+  .tb-kbd{display:none}
+  /* Pages */
+  .ph{padding:20px 20px 0}
+  .pfilt{padding:14px 20px}
+  .pcont{padding:0 20px 24px}
+  .db-grid{grid-template-columns:1fr 1fr;margin:0 20px 16px;gap:10px}
+  .db-2col{grid-template-columns:1fr;margin:0 20px 14px}
+  .ex-layout{grid-template-columns:1fr;height:auto;margin:0 20px 24px;grid-template-rows:auto 1fr}
+  .ex-detail{height:calc(100vh - 52px);overflow-y:auto}
+  .kg-layout{grid-template-columns:1fr;grid-template-rows:360px auto;margin:0 20px 24px;height:auto}
+  .cc-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .pa-grid{grid-template-columns:1fr;gap:14px}
+  .tax-layout{grid-template-columns:1fr;grid-template-rows:220px 1fr;margin:0 20px 24px;height:auto}
+  .tr-top{grid-template-columns:1fr;margin:0 20px 14px}
+  .tr-bot{grid-template-columns:1fr;margin:0 20px 24px}
+  .oc-layout{grid-template-columns:1fr;margin:0 20px 24px}
+  .ed-3col{grid-template-columns:1fr}
+}
+
+/* ═══ MOBILE (≤600px) ═══ */
+@media(max-width:600px){
+  /* Landing */
+  .ln{padding:0 16px;height:58px}
+  .ln-acts .btn-gh{display:none}
+  .btn-os{padding:7px 14px;font-size:13px}
+  .hero{padding:24px 16px 28px}
+  .h1{font-size:32px;letter-spacing:-.02em}
+  .hdesc{font-size:14px}
+  .globe-wrap{padding-bottom:90%}
+  .stats-row{flex-wrap:wrap;border:none;border-radius:0;width:100%;gap:8px}
+  .stat{flex:1 1 calc(50% - 4px);border:1px solid var(--border);border-radius:var(--r);min-width:0}
+  .cta-row{flex-direction:column;gap:8px}
+  .cta-row button,.btn-ep,.btn-ol{width:100%;justify-content:center}
+  .built{flex-direction:column;gap:10px;align-items:flex-start}
+  .b-items{gap:12px;flex-wrap:wrap}
+  .secs-in{padding:0 16px}
+  .card{padding:20px 18px}
+  .flow-row{flex-direction:column;gap:12px;align-items:center}
+  .f-arr{transform:rotate(90deg)}
+  .foot{padding:36px 16px 24px}
+  .foot-top{grid-template-columns:1fr;gap:24px}
+  /* App topbar */
+  .tb{padding:0 14px;gap:8px}
+  .tb-search{min-width:0}
+  .tb-ico:not(.tb-notif):not(.tb-burger){display:none}
+  /* Dashboard */
+  .db-grid{grid-template-columns:1fr 1fr;margin:0 14px 14px;gap:8px}
+  .db-sn{font-size:22px}
+  .db-2col{margin:0 14px 14px}
+  .db-2col>div:first-child>div[style*="grid-template-columns"]{grid-template-columns:1fr !important}
+  /* Explorer */
+  .ex-layout{margin:0 14px 20px;grid-template-rows:280px 1fr}
+  .ph{padding:16px 14px 0}
+  .pfilt{padding:10px 14px;gap:6px}
+  .pcont{padding:0 14px 20px}
+  .filt-btn{font-size:12px;padding:5px 9px}
+  /* Explorer detail */
+  .ed-hd{padding:14px 14px 0}
+  .ed-tabs{overflow-x:auto}
+  .ed-tab{font-size:12px;padding:7px 11px}
+  .ed-body{padding:14px}
+  .ed-title{font-size:17px}
+  .ed-tr{flex-direction:column;gap:8px;align-items:flex-start}
+  .ed-dl{align-self:flex-start}
+  /* KG */
+  .kg-layout{margin:0 14px 20px;grid-template-rows:280px auto}
+  .kg-panel{padding:14px}
+  /* Countries */
+  .cc-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .cc{padding:14px}
+  .cc-flag{font-size:22px}
+  .cc-name{font-size:14px}
+  .cc-num{font-size:18px}
+  /* Policy Areas */
+  .pa-grid{gap:10px}
+  .pa-card{padding:16px}
+  /* Taxonomy */
+  .tax-layout{margin:0 14px 20px;grid-template-rows:200px 1fr}
+  .tax-detail{padding:14px 16px}
+  /* Trends */
+  .tr-top,.tr-bot{margin:0 14px 12px}
+  .tc{padding:14px 16px}
+  canvas{max-width:100%}
+  /* OECD */
+  .oc-layout{margin:0 14px 20px}
+  .oc-config,.oc-pols,.oc-radar-card,.oc-table-card{padding:14px}
+  .oc-table{font-size:11.5px}
+  .oc-th{padding:8px 10px}
+  .oc-td{padding:10px 10px}
+  /* KG panel inside layout */
+  .kg-panel{border-left:none;border-top:1px solid var(--border)}
+  /* DB sections */
+  .db-recent{padding:14px 16px}
+}
+
+@media(max-width:600px){
+  #ln-burger{display:flex !important;align-items:center;font-size:22px;color:var(--text) !important;border:1px solid var(--border) !important;background:#fff !important;border-radius:7px;padding:6px 10px !important;cursor:pointer}
+  .btn-os{display:none}
+}
+@media(max-width:400px){
+  .h1{font-size:28px}
+  .db-grid{grid-template-columns:1fr}
+  .cc-grid{grid-template-columns:1fr}
+  .hero{padding:20px 14px 24px}
+  .stats-row .stat{flex:1 1 100%}
+  .ph-title{font-size:22px}
+}
 </style>
 </head>
 <body>
@@ -438,6 +576,7 @@ button{font-family:var(--font);cursor:pointer}
       <span class="ln-link">About</span>
     </div>
     <div class="ln-acts">
+      <button class="btn-gh" style="display:none;font-size:20px;border:none;background:none;padding:4px 8px;cursor:pointer" id="ln-burger" onclick="goApp('all-policies')">☰</button>
       <button class="btn-gh"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Star on GitHub</button>
       <button class="btn-os" onclick="goApp('all-policies')">Open Source</button>
     </div>
@@ -588,8 +727,10 @@ button{font-family:var(--font);cursor:pointer}
 </div>
 
 <!-- ════ APP SHELL ════ -->
+<div id="sb-overlay" class="sb-overlay" onclick="closeSidebar()"></div>
 <div id="app">
-  <aside class="sb">
+  <aside class="sb" id="sidebar">
+    <button class="sb-close" onclick="closeSidebar()">✕</button>
     <div class="sb-head">
       <div class="sb-logo-ico"><svg width="17" height="17" viewBox="0 0 22 22" fill="none"><path d="M11 2L18 6.2V14.8L11 19L4 14.8V6.2L11 2Z" stroke="rgba(255,255,255,.85)" stroke-width="1.5" fill="none"/><circle cx="11" cy="11" r="3" fill="rgba(255,255,255,.7)"/></svg></div>
       <div class="sb-logo-txt" onclick="goLanding()">Africa Digital<br>Policy Tracker</div>
@@ -627,6 +768,7 @@ button{font-family:var(--font);cursor:pointer}
   </aside>
   <div class="app-right">
     <header class="tb">
+      <button class="tb-burger" onclick="openSidebar()">☰</button>
       <span id="tb-brand" class="tb-brand" style="display:none">Africa Digital Policy Tracker</span>
       <div class="tb-search"><span class="tb-si">🔍</span><input id="tb-input" type="text" placeholder="Search policies, countries, keywords..."><span class="tb-kbd">⌘K</span></div>
       <div class="tb-sp"></div>
@@ -641,19 +783,86 @@ button{font-family:var(--font);cursor:pointer}
 <script>
 // ═══════════════ DATA ═══════════════
 const policies=[
-  {id:1,title:'Nigeria Data Protection Act 2023',country:'Nigeria',flag:'🇳🇬',areas:['Data Protection','Legislation'],status:'in-force',updated:'May 3, 2024',act:'Act No. 3 of 2023',enacted:'June 12, 2023',inForce:'June 12, 2023',instrument:'Legislation',area:'Data Protection',authority:'National Assembly',whoAffects:'Data controllers, processors, public & private entities operating in Nigeria.',sectorImpact:'All sectors handling personal data',demand:'To protect fundamental rights to privacy and regulate processing of personal data.',keyObs:'Lawful processing, data minimization, security safeguards'},
-  {id:2,title:'Kenya AI Strategy (Draft)',country:'Kenya',flag:'🇰🇪',areas:['AI Governance','Strategy'],status:'under-consultation',updated:'May 2, 2024',act:'Draft — 2024',enacted:'Under Consultation',inForce:'TBD',instrument:'Strategy',area:'AI Governance',authority:'Ministry of ICT',whoAffects:'Government agencies, private sector, AI developers in Kenya.',sectorImpact:'Technology, government, research',demand:'To guide responsible AI development and deployment.',keyObs:'Transparency requirements, human oversight, fairness assessments'},
-  {id:3,title:'EU AI Act (Regulation 2024/1689)',country:'European Union',flag:'🇪🇺',areas:['AI Governance','Regulation'],status:'in-force',updated:'Apr 30, 2024',act:'Regulation (EU) 2024/1689',enacted:'Aug 1, 2024',inForce:'Aug 1, 2024',instrument:'Regulation',area:'AI Governance',authority:'European Parliament',whoAffects:'AI providers and deployers in the EU.',sectorImpact:'All AI-related sectors',demand:'Ensure AI systems are safe and respect fundamental rights.',keyObs:'Risk classification, conformity assessment, transparency'},
-  {id:4,title:'South Africa Cybercrimes Act',country:'South Africa',flag:'🇿🇦',areas:['Cybersecurity','Draft Bill'],status:'under-review',updated:'Apr 28, 2024',act:'Amendment Bill 2024',enacted:'Under Review',inForce:'TBD',instrument:'Draft Bill',area:'Cybersecurity',authority:'National Assembly',whoAffects:'All SA residents and digital service providers.',sectorImpact:'ISPs, financial institutions, government',demand:'Strengthen cybercrime prosecution and digital security.',keyObs:'Criminal liability, reporting obligations, investigation powers'},
-  {id:5,title:'Rwanda Personal Data Protection Law',country:'Rwanda',flag:'🇷🇼',areas:['Data Protection','Legislation'],status:'in-force',updated:'Apr 25, 2024',act:'Law No. 058/2021',enacted:'Oct 15, 2021',inForce:'Oct 15, 2021',instrument:'Legislation',area:'Data Protection',authority:'RURA',whoAffects:'Data subjects and controllers in Rwanda.',sectorImpact:'All organizations processing personal data',demand:'Protect personal data and privacy rights of Rwandan citizens.',keyObs:'Consent, data subject rights, DPO requirement'},
-  {id:6,title:'Ghana Data Protection Act 2012',country:'Ghana',flag:'🇬🇭',areas:['Data Protection','Legislation'],status:'in-force',updated:'Apr 20, 2024',act:'Act 843 of 2012',enacted:'May 16, 2012',inForce:'May 16, 2012',instrument:'Legislation',area:'Data Protection',authority:'Data Protection Commission',whoAffects:'Data controllers and processors in Ghana.',sectorImpact:'All sectors',demand:'Protect privacy and personal data of individuals.',keyObs:'Data quality, purpose specification, security'},
-  {id:7,title:'Egypt Fintech Regulatory Framework',country:'Egypt',flag:'🇪🇬',areas:['Digital Finance','Framework'],status:'proposed',updated:'Apr 18, 2024',act:'Proposed Framework 2024',enacted:'Proposed',inForce:'TBD',instrument:'Framework',area:'Digital Finance',authority:'Central Bank of Egypt',whoAffects:'Fintech companies and digital payment providers.',sectorImpact:'Finance, banking, fintech',demand:'Create supportive regulatory environment for fintech.',keyObs:'Regulatory sandbox, licensing regime, consumer protection'}
+  {id:1,title:"Nigeria Data Protection Act 2023",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2023,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act No. 3 of 2023",enacted:"June 12, 2023",inForce:"June 12, 2023",authority:"National Assembly / NDPC",closestFW:"GDPR (EU)",simLevel:"High",oecd:[0.85,0.78,0.82,0.71,0.88],summary:"Replaces the 2019 NDPR. Establishes NDPC as independent regulator. Introduces controller/processor liability, data subject rights, cross-border transfer controls and 72-hr breach notification.",areas:["Data Protection","Legislation"],updated:"Jun 12, 2023",whoAffects:"Data controllers, processors, public & private entities operating in Nigeria.",sectorImpact:"All sectors handling personal data",demand:"To protect personal data and establish NDPC as independent regulator.",keyObs:"Lawful basis, data minimisation, 72-hr breach notification, DPO appointment",tags:["Data Protection","Privacy","GDPR-Aligned","West Africa"]},
+  {id:2,title:"Kenya Data Protection Act 2019",country:"Kenya",flag:"🇰🇪",region:"East Africa",group:"EAC",year:2019,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"No. 24 of 2019",enacted:"Nov 8, 2019",inForce:"Nov 25, 2019",authority:"National Assembly / ODPC",closestFW:"GDPR (EU)",simLevel:"High",oecd:[0.83,0.80,0.79,0.74,0.85],summary:"Kenya's first standalone data protection law. Establishes ODPC. Grants data subjects rights to access, correction, deletion and portability. 184 compensation orders issued as of 2026.",areas:["Data Protection","Legislation"],updated:"Nov 8, 2019",whoAffects:"All data controllers and processors in Kenya.",sectorImpact:"All sectors including government",demand:"Protect personal data of Kenyan residents.",keyObs:"Consent, data subject rights, impact assessments, breach notification",tags:["Data Protection","Privacy","East Africa","GDPR-Inspired"]},
+  {id:3,title:"South Africa POPIA 2013",country:"South Africa",flag:"🇿🇦",region:"Southern Africa",group:"SADC",year:2013,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act No. 4 of 2013",enacted:"Nov 26, 2013",inForce:"July 1, 2021",authority:"Parliament / Information Regulator",closestFW:"GDPR (EU)",simLevel:"Very High",oecd:[0.88,0.85,0.87,0.80,0.90],summary:"South Africa's comprehensive data protection law, among Africa's most GDPR-aligned. Enforced from July 2021. Information Regulator has issued enforcement notices and fines including against Dis-Chem.",areas:["Data Protection","Legislation"],updated:"Jul 1, 2021",whoAffects:"All responsible parties (public and private)",sectorImpact:"Public and private sectors",demand:"Protect personal information of South Africans.",keyObs:"8 conditions for lawful processing, Information Officer, DPIA, security safeguards",tags:["Data Protection","Privacy","GDPR-Aligned","Southern Africa","Landmark"]},
+  {id:4,title:"Ghana Data Protection Act 2012",country:"Ghana",flag:"🇬🇭",region:"West Africa",group:"ECOWAS",year:2012,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act 843 of 2012",enacted:"May 16, 2012",inForce:"May 16, 2012",authority:"Parliament / DPC",closestFW:"EU Directive 95/46/EC",simLevel:"Medium",oecd:[0.70,0.68,0.72,0.65,0.75],summary:"West Africa's earliest comprehensive data protection legislation. Modelled on the EU Directive pre-GDPR. Requires controller registration. Under review to align with GDPR standards.",areas:["Data Protection","Legislation"],updated:"May 16, 2012",whoAffects:"Data controllers and processors in Ghana.",sectorImpact:"All sectors",demand:"Protect privacy and personal data of individuals.",keyObs:"DPC registration, data subject rights, data quality principles",tags:["Data Protection","Privacy","West Africa","Pre-GDPR"]},
+  {id:5,title:"Rwanda Personal Data Protection Law 2021",country:"Rwanda",flag:"🇷🇼",region:"East Africa",group:"EAC",year:2021,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Law No. 058/2021",enacted:"Oct 15, 2021",inForce:"Oct 15, 2021",authority:"Parliament / RURA",closestFW:"GDPR (EU)",simLevel:"High",oecd:[0.80,0.75,0.78,0.72,0.82],summary:"Rwanda's comprehensive data protection framework. Mandatory DPO, cross-border transfer rules. RURA acts as enforcement body. Rwanda positions itself as a regional data governance leader.",areas:["Data Protection","Legislation"],updated:"Oct 15, 2021",whoAffects:"Data subjects and controllers in Rwanda.",sectorImpact:"All data controllers",demand:"Protect personal data of Rwandan citizens.",keyObs:"Consent, DPO, DPIA, cross-border safeguards, breach notification",tags:["Data Protection","Privacy","East Africa","GDPR-Aligned"]},
+  {id:6,title:"Tanzania Personal Data Protection Act 2022",country:"Tanzania",flag:"🇹🇿",region:"East Africa",group:"EAC",year:2022,status:"under-review",area:"Data Protection",instrument:"Legislation",act:"Act No. 11 of 2022",enacted:"Nov 1, 2022",inForce:"Pending commencement notice",authority:"Ministry of ICT",closestFW:"GDPR (EU)",simLevel:"Medium",oecd:[0.74,0.70,0.73,0.65,0.72],summary:"Passed but awaiting commencement notice. Sets minimum requirements for data collection and processing. Applies to all public and private institutions. Fine up to TZS 100M.",areas:["Data Protection","Legislation"],updated:"Nov 1, 2022",whoAffects:"All public and private institutions in Tanzania.",sectorImpact:"All sectors",demand:"Establish minimum data protection standards.",keyObs:"Data collection standards, data subject rights, security safeguards",tags:["Data Protection","East Africa","Awaiting Commencement"]},
+  {id:7,title:"Uganda Data Protection and Privacy Act 2019",country:"Uganda",flag:"🇺🇬",region:"East Africa",group:"EAC",year:2019,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act of 2019",enacted:"2019",inForce:"2019",authority:"Parliament / PDPO",closestFW:"GDPR (EU)",simLevel:"Medium",oecd:[0.72,0.68,0.70,0.62,0.74],summary:"Uganda's data protection framework. Supplemented by Computer Misuse (Amendment) Act 2022 which added child data protections. Controller registration required.",areas:["Data Protection","Legislation"],updated:"2019",whoAffects:"All data controllers in Uganda.",sectorImpact:"All sectors",demand:"Protect personal data and privacy rights.",keyObs:"Controller registration, data subject rights, security measures",tags:["Data Protection","East Africa"]},
+  {id:8,title:"Zambia Data Protection Act 2021",country:"Zambia",flag:"🇿🇲",region:"Southern Africa",group:"SADC",year:2021,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act of 2021",enacted:"2021",inForce:"2021",authority:"ZICTA",closestFW:"GDPR (EU)",simLevel:"Medium",oecd:[0.68,0.65,0.67,0.60,0.70],summary:"Zambia enacted data protection legislation in 2021. Regulated by ZICTA. Establishes minimum data protection standards aligned with regional frameworks.",areas:["Data Protection","Legislation"],updated:"2021",whoAffects:"All organisations processing personal data in Zambia.",sectorImpact:"All sectors",demand:"Establish data protection standards.",keyObs:"Lawful processing, data subject rights, security obligations",tags:["Data Protection","Southern Africa","SADC"]},
+  {id:9,title:"Zimbabwe Data Protection Act 2021",country:"Zimbabwe",flag:"🇿🇼",region:"Southern Africa",group:"SADC",year:2021,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act of 2021",enacted:"2021",inForce:"2021",authority:"POTRAZ",closestFW:"GDPR (EU)",simLevel:"Low",oecd:[0.62,0.60,0.63,0.55,0.65],summary:"Zimbabwe's data protection law regulated by POTRAZ. Implementation still maturing. Limited enforcement capacity noted.",areas:["Data Protection","Legislation"],updated:"2021",whoAffects:"Data controllers and processors in Zimbabwe.",sectorImpact:"ICT sectors",demand:"Establish data protection requirements.",keyObs:"Data collection principles, breach notification, data subject rights",tags:["Data Protection","Southern Africa","Developing"]},
+  {id:10,title:"Ethiopia Personal Data Protection Proclamation 2022",country:"Ethiopia",flag:"🇪🇹",region:"East Africa",group:"IGAD",year:2022,status:"in-force",area:"Data Protection",instrument:"Proclamation",act:"Proclamation No. 1321/2022",enacted:"2022",inForce:"2022",authority:"Ministry of Innovation and Technology",closestFW:"GDPR (EU)",simLevel:"Medium",oecd:[0.70,0.65,0.68,0.60,0.68],summary:"Ethiopia's data protection proclamation as part of the Digital Ethiopia 2025 initiative. Applies to organisations processing personal data in Ethiopia.",areas:["Data Protection","Proclamation"],updated:"2022",whoAffects:"Organisations processing personal data in Ethiopia.",sectorImpact:"Public and private sectors",demand:"Protect personal data within Ethiopia.",keyObs:"Lawful processing, data subject rights, security measures",tags:["Data Protection","East Africa","New Law"]},
+  {id:11,title:"Nigeria Cybercrimes Act 2015",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2015,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Cybercrimes Act 2015",enacted:"May 15, 2015",inForce:"May 15, 2015",authority:"National Assembly",closestFW:"Budapest Convention",simLevel:"High",oecd:[0.75,0.62,0.70,0.85,0.72],summary:"Nigeria's primary cybercrime legislation. Criminalises hacking, identity theft, cyberstalking. Section 24 ruled in violation of freedom of expression by ECOWAS Court in 2020. Contains international cooperation chapter.",areas:["Cybersecurity","Legislation"],updated:"May 15, 2015",whoAffects:"All digital users and service providers in Nigeria.",sectorImpact:"Finance, telecoms, government",demand:"Criminalise cybercrime and protect digital infrastructure.",keyObs:"Financial institution reporting, ISP cooperation, international cooperation",tags:["Cybersecurity","West Africa","Budapest-Aligned"]},
+  {id:12,title:"Kenya Computer Misuse and Cybercrimes Act 2018",country:"Kenya",flag:"🇰🇪",region:"East Africa",group:"EAC",year:2018,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Act No. 5 of 2018",enacted:"May 16, 2018",inForce:"May 30, 2018",authority:"National Assembly",closestFW:"Budapest Convention",simLevel:"High",oecd:[0.78,0.65,0.72,0.88,0.75],summary:"Kenya's cybercrime framework. Criminalises computer offences. Amended in 2024 to include CSAM removal powers. Contains some provisions with freedom of expression implications.",areas:["Cybersecurity","Legislation"],updated:"May 16, 2018",whoAffects:"All digital users and service providers.",sectorImpact:"All digital sectors",demand:"Criminalise computer misuse and protect digital infrastructure.",keyObs:"ISP takedown compliance, cybercrime reporting, CII protection",tags:["Cybersecurity","East Africa","Amended 2024"]},
+  {id:13,title:"Ghana Cybersecurity Act 2020",country:"Ghana",flag:"🇬🇭",region:"West Africa",group:"ECOWAS",year:2020,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Act 1038 of 2020",enacted:"Dec 29, 2020",inForce:"Dec 29, 2020",authority:"Parliament / CSA",closestFW:"Budapest Convention",simLevel:"High",oecd:[0.80,0.68,0.75,0.88,0.78],summary:"Ghana's comprehensive cybersecurity act establishing the Cyber Security Authority. Ratified both Budapest and Malabo Conventions. CSA maintains 24/7 international cooperation contact point.",areas:["Cybersecurity","Legislation"],updated:"Dec 29, 2020",whoAffects:"Critical infrastructure operators, digital service providers.",sectorImpact:"CII, finance, telecoms",demand:"Establish cybersecurity governance and protect critical infrastructure.",keyObs:"Operator licensing, incident reporting, CII protection, cybersecurity audits",tags:["Cybersecurity","West Africa","Landmark","Budapest-Aligned"]},
+  {id:14,title:"Rwanda Cybersecurity Law 2021",country:"Rwanda",flag:"🇷🇼",region:"East Africa",group:"EAC",year:2021,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Updated Cybersecurity Law 2021",enacted:"2021",inForce:"2021",authority:"Rwanda Information Society Authority (RISA)",closestFW:"NIST Cybersecurity Framework",simLevel:"Medium",oecd:[0.78,0.70,0.72,0.85,0.80],summary:"Rwanda's cybersecurity framework covering critical information infrastructure, incident response and international cooperation via ECOWAS and AU channels.",areas:["Cybersecurity","Legislation"],updated:"2021",whoAffects:"Government agencies, CII operators.",sectorImpact:"Government, finance, CII",demand:"Protect Rwanda's critical digital infrastructure.",keyObs:"CII protection, incident reporting, CERT coordination",tags:["Cybersecurity","East Africa"]},
+  {id:15,title:"South Africa Cybercrimes Act 2020",country:"South Africa",flag:"🇿🇦",region:"Southern Africa",group:"SADC",year:2020,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Act No. 19 of 2020",enacted:"June 1, 2021",inForce:"June 1, 2021",authority:"Parliament / SAPS",closestFW:"Budapest Convention",simLevel:"High",oecd:[0.82,0.72,0.78,0.90,0.80],summary:"South Africa's Cybercrimes Act criminalising cybercrimes and providing forensic investigation powers. Applies to electronic communications providers who must assist law enforcement.",areas:["Cybersecurity","Legislation"],updated:"Jun 1, 2021",whoAffects:"All digital users; ECP obligations for service providers.",sectorImpact:"ISPs, financial institutions, government",demand:"Criminalise cybercrimes and enable digital forensic investigations.",keyObs:"ECPs assist law enforcement, report cybercrimes, investigation powers",tags:["Cybersecurity","Southern Africa","Landmark"]},
+  {id:16,title:"AU Malabo Convention 2014",country:"African Union",flag:"🌍",region:"Continental",group:"AU",year:2014,status:"in-force",area:"Cybersecurity",instrument:"International Convention",act:"AU Convention June 27, 2014",enacted:"June 27, 2014",inForce:"June 8, 2023",authority:"African Union Commission",closestFW:"Budapest Convention",simLevel:"Medium",oecd:[0.72,0.68,0.70,0.78,0.75],summary:"The continent's flagship cyber law instrument covering cybercrime, e-transactions, personal data and cybersecurity. 15 countries ratified by 2024 including Ghana, Senegal, Niger. Implementation slow.",areas:["Cybersecurity","Data Protection"],updated:"Jun 8, 2023",whoAffects:"All AU member states and their digital sectors.",sectorImpact:"All sectors across AU members",demand:"Harmonise African cyber law and personal data protection.",keyObs:"Harmonise national cybercrime laws, establish data protections, promote e-commerce",tags:["Cybersecurity","Data Protection","Continental","Landmark","AU"]},
+  {id:17,title:"Kenya National AI Strategy 2022",country:"Kenya",flag:"🇰🇪",region:"East Africa",group:"EAC",year:2022,status:"in-force",area:"Artificial Intelligence",instrument:"Strategy",act:"National AI Strategy 2022",enacted:"2022",inForce:"2022",authority:"Ministry of ICT",closestFW:"OECD AI Principles",simLevel:"Medium",oecd:[0.72,0.60,0.68,0.65,0.70],summary:"Kenya's national AI strategy focusing on inclusive growth across all counties, public sector AI and AI as a driver of the digital economy. Part of Kenya's Digital Master Plan 2022-2032.",areas:["AI Governance","Strategy"],updated:"2022",whoAffects:"Government agencies, AI developers, private sector.",sectorImpact:"Government, agriculture, health, finance",demand:"Guide responsible AI development and deployment in Kenya.",keyObs:"Risk assessment for government AI, transparency, human oversight",tags:["AI Governance","East Africa","Strategy"]},
+  {id:18,title:"Rwanda National AI Policy 2023",country:"Rwanda",flag:"🇷🇼",region:"East Africa",group:"EAC",year:2023,status:"in-force",area:"Artificial Intelligence",instrument:"Policy",act:"National AI Policy 2023",enacted:"2023",inForce:"2023",authority:"Ministry of ICT / Rwanda AI Centre",closestFW:"OECD AI Principles",simLevel:"High",oecd:[0.80,0.78,0.80,0.75,0.82],summary:"Rwanda's adopted AI policy with explicit 'AI for Good' framing. Pillar 2 focuses on SDG achievement. Mandates bias auditing for high-risk public sector AI. Among Africa's strongest AI governance frameworks.",areas:["AI Governance","Policy"],updated:"2023",whoAffects:"Government, AI developers, private sector.",sectorImpact:"Government, health, agriculture, education",demand:"Establish responsible AI governance aligned with SDGs.",keyObs:"Bias auditing for public AI, explainability, AI for SDGs",tags:["AI Governance","East Africa","Strong Policy"]},
+  {id:19,title:"South Africa National AI Policy Framework 2023",country:"South Africa",flag:"🇿🇦",region:"Southern Africa",group:"SADC",year:2023,status:"under-consultation",area:"Artificial Intelligence",instrument:"Policy Framework",act:"Draft National AI Policy 2023",enacted:"Under Consultation",inForce:"TBD",authority:"DSIT / DCDT",closestFW:"EU AI Act",simLevel:"Medium",oecd:[0.82,0.78,0.80,0.75,0.85],summary:"South Africa's draft AI policy framework under public consultation. Aligns with responsible innovation agenda. Positions SA as Africa's AI governance leader.",areas:["AI Governance","Policy Framework"],updated:"2023",whoAffects:"All AI developers and deployers in SA.",sectorImpact:"All sectors",demand:"Establish responsible AI governance framework for South Africa.",keyObs:"AI risk assessment, sector guidelines, ethics principles",tags:["AI Governance","Southern Africa","Draft"]},
+  {id:20,title:"Ethiopia National AI Strategy 2020",country:"Ethiopia",flag:"🇪🇹",region:"East Africa",group:"IGAD",year:2020,status:"in-force",area:"Artificial Intelligence",instrument:"Strategy",act:"National AI Strategy 2020",enacted:"2020",inForce:"2020",authority:"Ministry of Innovation and Technology",closestFW:"OECD AI Principles",simLevel:"Low",oecd:[0.62,0.55,0.58,0.60,0.62],summary:"Ethiopia's AI strategy launched as part of Digital Ethiopia 2025. Focuses on AI for agriculture and health. Limited binding obligations. Strategic document only.",areas:["AI Governance","Strategy"],updated:"2020",whoAffects:"Government agencies, research institutions.",sectorImpact:"Agriculture, health, education",demand:"Guide Ethiopia's AI development toward inclusive growth.",keyObs:"AI literacy, agricultural AI, digital infrastructure",tags:["AI Governance","East Africa","Strategy"]},
+  {id:21,title:"AU Continental AI Strategy 2024",country:"African Union",flag:"🌍",region:"Continental",group:"AU",year:2024,status:"in-force",area:"Artificial Intelligence",instrument:"Continental Strategy",act:"Endorsed June 2024 AU STC-ICT",enacted:"June 2024",inForce:"June 2024",authority:"African Union Commission",closestFW:"OECD AI Principles",simLevel:"Medium",oecd:[0.75,0.70,0.72,0.68,0.78],summary:"Africa's continental AI governance strategy. Constitutes Africa's contribution to the UN Global Digital Compact. Anchored on the Digital Transformation Strategy for Africa 2020-2030.",areas:["AI Governance","Continental Strategy"],updated:"Jun 2024",whoAffects:"All 55 AU member states and their AI sectors.",sectorImpact:"All sectors across Africa",demand:"Harmonise African AI governance and contribute to Global Digital Compact.",keyObs:"Harmonise national AI policies, AI skills, ethical AI deployment",tags:["AI Governance","Continental","AU","2024","Landmark"]},
+  {id:22,title:"Nigeria National Digital Economy Policy 2019",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2019,status:"in-force",area:"Digital Economy",instrument:"Policy",act:"NDEPS 2019",enacted:"2019",inForce:"2019",authority:"Federal Ministry of Communications",closestFW:"ITU Digital Strategy",simLevel:"Medium",oecd:[0.70,0.65,0.68,0.62,0.72],summary:"Nigeria's digital economy policy covering eight pillars: developmental regulation, digital literacy, solid infrastructure, service infrastructure and digital services. Part of Nigeria's digital transformation.",areas:["Digital Economy","Policy"],updated:"2019",whoAffects:"All digital economy participants in Nigeria.",sectorImpact:"All digital sectors",demand:"Drive Nigeria's digital economy transformation.",keyObs:"Infrastructure investment, digital literacy, regulatory modernisation",tags:["Digital Economy","West Africa","ICT Policy"]},
+  {id:23,title:"Kenya National Digital Master Plan 2022-2032",country:"Kenya",flag:"🇰🇪",region:"East Africa",group:"EAC",year:2022,status:"in-force",area:"Digital Economy",instrument:"Strategy",act:"NDMP 2022-2032",enacted:"2022",inForce:"2022",authority:"Ministry of ICT",closestFW:"ITU Digital Strategy",simLevel:"Medium",oecd:[0.75,0.68,0.72,0.70,0.74],summary:"Kenya's 10-year digital master plan covering connectivity, AI, digital services and data governance. Positions Kenya as East Africa's digital hub and BPO capital.",areas:["Digital Economy","Strategy"],updated:"2022",whoAffects:"All Kenyan digital economy participants.",sectorImpact:"All sectors",demand:"Guide Kenya's digital transformation 2022-2032.",keyObs:"Universal broadband, digital ID, e-government expansion",tags:["Digital Economy","East Africa","Long-Term"]},
+  {id:24,title:"Rwanda Digital Strategy 2021-2025",country:"Rwanda",flag:"🇷🇼",region:"East Africa",group:"EAC",year:2021,status:"in-force",area:"Digital Economy",instrument:"Strategy",act:"Digital Rwanda 2021-2025",enacted:"2021",inForce:"2021",authority:"Ministry of ICT / RDB",closestFW:"ITU Digital Strategy",simLevel:"High",oecd:[0.80,0.74,0.78,0.75,0.82],summary:"Rwanda's ambitious 5-year digital strategy. Covers AI, data governance, fintech, smart cities and digital trade. Rwanda consistently ranks among Africa's top digital performers.",areas:["Digital Economy","Strategy"],updated:"2021",whoAffects:"All Rwandan digital economy participants.",sectorImpact:"All sectors",demand:"Drive Rwanda's digital transformation 2021-2025.",keyObs:"Digital infrastructure, data governance, innovation ecosystem",tags:["Digital Economy","East Africa","High Performance"]},
+  {id:25,title:"South Africa SA Connect Phase 2 2020",country:"South Africa",flag:"🇿🇦",region:"Southern Africa",group:"SADC",year:2020,status:"in-force",area:"Digital Infrastructure",instrument:"Policy",act:"SA Connect Phase 2 2020",enacted:"2020",inForce:"2020",authority:"DCDT / ICASA",closestFW:"ITU Broadband Policy",simLevel:"Medium",oecd:[0.78,0.70,0.75,0.72,0.76],summary:"South Africa's broadband policy accelerating rural broadband rollout and government connectivity. Phase 2 targets universal access across all 9 provinces.",areas:["Digital Infrastructure","Policy"],updated:"2020",whoAffects:"ISPs, rural communities, government.",sectorImpact:"Telecoms, ISPs, rural areas",demand:"Achieve universal broadband access across South Africa.",keyObs:"ISP universal service, rural targets, government site connectivity",tags:["Digital Infrastructure","Connectivity","Southern Africa","Broadband"]},
+  {id:26,title:"Nigeria National Broadband Plan 2020-2025",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2020,status:"in-force",area:"Digital Infrastructure",instrument:"Plan",act:"NBP 2020-2025",enacted:"2020",inForce:"2020",authority:"Fed. Ministry of Communications / NCC",closestFW:"ITU Broadband Policy",simLevel:"Medium",oecd:[0.72,0.65,0.70,0.68,0.70],summary:"Nigeria's broadband plan targeting 70% coverage by 2025. Includes right-of-way harmonisation, spectrum management and infrastructure sharing provisions.",areas:["Digital Infrastructure","Plan"],updated:"2020",whoAffects:"ISPs, telecoms operators.",sectorImpact:"Telecoms, ISPs",demand:"Achieve 70% broadband coverage by 2025.",keyObs:"Infrastructure sharing, ROW harmonisation, 25 Mbps targets",tags:["Digital Infrastructure","West Africa","Broadband"]},
+  {id:27,title:"Tanzania National ICT Policy 2016",country:"Tanzania",flag:"🇹🇿",region:"East Africa",group:"EAC",year:2016,status:"in-force",area:"Digital Economy",instrument:"Policy",act:"National ICT Policy 2016",enacted:"2016",inForce:"2016",authority:"Ministry of Works, Transport and Communications",closestFW:"ITU Digital Strategy",simLevel:"Low",oecd:[0.60,0.55,0.58,0.62,0.62],summary:"Tanzania's ICT policy framework guiding digital infrastructure and e-government. Predates more recent digital laws but foundational to Tanzania's ICT governance.",areas:["Digital Economy","Policy"],updated:"2016",whoAffects:"ICT sector participants in Tanzania.",sectorImpact:"All sectors",demand:"Guide Tanzania's ICT sector development.",keyObs:"E-government, infrastructure investment, digital skills",tags:["Digital Economy","East Africa","ICT Policy"]},
+  {id:28,title:"Nigeria eNaira CBDC Framework 2021",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2021,status:"in-force",area:"Digital Finance",instrument:"Regulatory Framework",act:"CBN eNaira Framework Oct 2021",enacted:"Oct 25, 2021",inForce:"Oct 25, 2021",authority:"Central Bank of Nigeria",closestFW:"BIS CBDC Guidelines",simLevel:"Medium",oecd:[0.68,0.62,0.70,0.65,0.68],summary:"Nigeria launched Africa's first Central Bank Digital Currency in October 2021. Aimed at financial inclusion, cross-border payments and monetary policy. First CBDC in Africa and among the first globally.",areas:["Digital Finance","Regulatory Framework"],updated:"Oct 25, 2021",whoAffects:"All Nigerian financial system participants.",sectorImpact:"Banking, fintech, telecoms",demand:"Expand financial inclusion via digital currency.",keyObs:"AML/KYC, transaction limits, wallet registration",tags:["Digital Finance","CBDC","West Africa","First-In-Africa","Landmark"]},
+  {id:29,title:"Kenya National Payment System Act 2011",country:"Kenya",flag:"🇰🇪",region:"East Africa",group:"EAC",year:2011,status:"in-force",area:"Digital Finance",instrument:"Legislation",act:"Act No. 39 of 2011",enacted:"2011",inForce:"2012",authority:"Central Bank of Kenya",closestFW:"BIS Payment Standards",simLevel:"Medium",oecd:[0.72,0.68,0.70,0.68,0.74],summary:"Legal framework governing payment systems including M-Pesa. Kenya pioneered mobile money regulation globally. Includes AML/CFT requirements and consumer protection provisions.",areas:["Digital Finance","Legislation"],updated:"2012",whoAffects:"Payment service providers, MNOs, banks.",sectorImpact:"Banking, MNOs, fintech",demand:"Regulate payment systems including mobile money.",keyObs:"PSP licensing, AML/CFT, consumer protection, interoperability",tags:["Digital Finance","Mobile Money","East Africa","M-Pesa","Landmark"]},
+  {id:30,title:"South Africa FSCA Crypto Assets Framework 2022",country:"South Africa",flag:"🇿🇦",region:"Southern Africa",group:"SADC",year:2022,status:"in-force",area:"Digital Finance",instrument:"Regulatory Framework",act:"FSCA Communication 3 of 2022",enacted:"2022",inForce:"Oct 19, 2022",authority:"Financial Sector Conduct Authority",closestFW:"MiCA (EU)",simLevel:"Medium",oecd:[0.76,0.72,0.74,0.70,0.78],summary:"FSCA declared crypto assets as financial products under FAIS, requiring crypto asset service providers to be licensed. SA among Africa's most advanced in crypto asset regulation.",areas:["Digital Finance","Regulatory Framework"],updated:"Oct 19, 2022",whoAffects:"Crypto exchanges, digital asset managers, DeFi.",sectorImpact:"Crypto, digital assets, finance",demand:"Regulate crypto assets and protect consumers.",keyObs:"CASP licensing, AML/CFT, consumer disclosure, client asset segregation",tags:["Digital Finance","Crypto","Southern Africa"]},
+  {id:31,title:"Ghana Electronic Transactions Act 2008",country:"Ghana",flag:"🇬🇭",region:"West Africa",group:"ECOWAS",year:2008,status:"in-force",area:"Digital Economy",instrument:"Legislation",act:"Act 772 of 2008",enacted:"2008",inForce:"2008",authority:"Parliament / NCA",closestFW:"UNCITRAL Model Law",simLevel:"Medium",oecd:[0.65,0.62,0.68,0.60,0.65],summary:"Ghana's electronic transactions framework legally recognising electronic contracts, signatures and records. Under review with new Electronic Transactions Bill proposed in 2025 to include children's data protections.",areas:["Digital Economy","Legislation"],updated:"2008",whoAffects:"E-commerce participants, government.",sectorImpact:"E-commerce, finance, government",demand:"Enable digital commerce and electronic government.",keyObs:"E-signature standards, e-contract validity, consumer protection",tags:["Digital Economy","E-Commerce","West Africa"]},
+  {id:32,title:"Nigeria NDPR 2019",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2019,status:"in-force",area:"Data Protection",instrument:"Regulation",act:"NDPR 2019",enacted:"Jan 25, 2019",inForce:"Jan 25, 2019",authority:"NITDA",closestFW:"GDPR (EU)",simLevel:"High",oecd:[0.78,0.72,0.75,0.68,0.80],summary:"Nigeria's first dedicated data protection regulation. Introduced consent requirements and data audits. Predecessor to the 2023 NDPA. Still referenced for historical compliance assessments.",areas:["Data Protection","Regulation"],updated:"Jan 25, 2019",whoAffects:"All organisations processing Nigerian data.",sectorImpact:"All sectors",demand:"Establish first data protection standards in Nigeria.",keyObs:"Consent, data audits, PIAs, foreign transfer safeguards",tags:["Data Protection","West Africa","Historical"]},
+  {id:33,title:"Senegal Data Protection Law 2008",country:"Senegal",flag:"🇸🇳",region:"West Africa",group:"ECOWAS",year:2008,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Law No. 2008-12",enacted:"2008",inForce:"2008",authority:"Commission des Données Personnelles (CDP)",closestFW:"EU Directive 95/46/EC",simLevel:"Medium",oecd:[0.68,0.65,0.65,0.60,0.70],summary:"One of West Africa's earliest data protection laws. Established the CDP. French-language framework influenced other ECOWAS members. Under review to align with GDPR.",areas:["Data Protection","Legislation"],updated:"2008",whoAffects:"Data controllers in Senegal.",sectorImpact:"All sectors",demand:"Protect personal data of Senegalese citizens.",keyObs:"CDP registration, data subject rights, export restrictions",tags:["Data Protection","West Africa","French-Language","Early Adopter"]},
+  {id:34,title:"Botswana Data Protection Act 2024",country:"Botswana",flag:"🇧🇼",region:"Southern Africa",group:"SADC",year:2024,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Data Protection Act 2024",enacted:"Oct 2024",inForce:"Oct 2024",authority:"Parliament / DPC",closestFW:"GDPR (EU)",simLevel:"High",oecd:[0.80,0.75,0.78,0.70,0.80],summary:"Botswana's updated data protection law published October 2024. Introduces stronger obligations, explicit sensitive personal data categories including race, religion, sexual orientation and health. Higher penalty regime.",areas:["Data Protection","Legislation"],updated:"Oct 2024",whoAffects:"All data controllers in Botswana.",sectorImpact:"All sectors",demand:"Modernise data protection with enhanced protections.",keyObs:"Sensitive data controls, higher penalties, enhanced subject rights",tags:["Data Protection","Southern Africa","2024","Enhanced Protections"]},
+  {id:35,title:"Malawi Electronic Transactions & Cybersecurity Act 2017",country:"Malawi",flag:"🇲🇼",region:"Southern Africa",group:"SADC",year:2017,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Act of 2017",enacted:"2017",inForce:"2017",authority:"MACRA",closestFW:"Budapest Convention",simLevel:"Low",oecd:[0.58,0.52,0.55,0.62,0.58],summary:"Malawi's combined e-transactions and cybersecurity legislation. Controversial: journalist charged in 2022 for publishing procurement scandal. Raises freedom of expression concerns. Regulated by MACRA.",areas:["Cybersecurity","E-Commerce"],updated:"2017",whoAffects:"All digital users in Malawi.",sectorImpact:"All digital sectors",demand:"Enable e-transactions and prohibit cybercrimes.",keyObs:"E-transaction validity, cybercrime prohibition, MACRA oversight",tags:["Cybersecurity","E-Commerce","Southern Africa","Controversial"]},
+  {id:36,title:"Côte d'Ivoire Cybersecurity Strategy 2020",country:"Côte d'Ivoire",flag:"🇨🇮",region:"West Africa",group:"ECOWAS",year:2020,status:"in-force",area:"Cybersecurity",instrument:"Strategy",act:"National Cybersecurity Strategy 2020",enacted:"2020",inForce:"2020",authority:"ARTCI",closestFW:"ITU Cybersecurity Framework",simLevel:"Medium",oecd:[0.72,0.65,0.68,0.80,0.70],summary:"Ivory Coast's cybersecurity strategy with international cooperation as a strategic pillar. Committed to ratifying Budapest and Malabo Conventions. Among most advanced frameworks in Francophone West Africa.",areas:["Cybersecurity","Strategy"],updated:"2020",whoAffects:"Government, critical infrastructure, digital sector.",sectorImpact:"Government, finance, CII",demand:"Establish cybersecurity governance and international cooperation.",keyObs:"CERT, CII protection, Budapest/Malabo ratification, international cooperation",tags:["Cybersecurity","West Africa","Francophone","Strategy"]},
+  {id:37,title:"Mauritius Data Protection Act 2017",country:"Mauritius",flag:"🇲🇺",region:"East Africa",group:"COMESA",year:2017,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Act No. 20 of 2017",enacted:"Jan 15, 2018",inForce:"Jan 15, 2018",authority:"Data Protection Office (DPO)",closestFW:"GDPR (EU)",simLevel:"Very High",oecd:[0.88,0.84,0.86,0.80,0.88],summary:"Mauritius enacted a GDPR-inspired data protection act in 2017 — one of Africa's most advanced. Combined with the 2018 National AI Strategy, Mauritius stands out as Africa's leading digital policy pioneer.",areas:["Data Protection","Legislation"],updated:"Jan 15, 2018",whoAffects:"All organisations processing personal data in Mauritius.",sectorImpact:"Finance, tourism, digital services",demand:"Protect personal data aligned with international standards.",keyObs:"Controller/processor obligations, data subject rights, DPIA, DPO",tags:["Data Protection","East Africa","GDPR-Aligned","Pioneer"]},
+  {id:38,title:"Mauritius National AI Strategy 2018",country:"Mauritius",flag:"🇲🇺",region:"East Africa",group:"COMESA",year:2018,status:"in-force",area:"Artificial Intelligence",instrument:"Strategy",act:"National AI Strategy 2018",enacted:"2018",inForce:"2018",authority:"Ministry of Information Technology",closestFW:"OECD AI Principles",simLevel:"High",oecd:[0.84,0.78,0.82,0.76,0.86],summary:"Africa's first national AI strategy published in 2018. Mauritius set the benchmark for African AI governance. Focuses on inclusive growth, digital economy and AI for public services.",areas:["AI Governance","Strategy"],updated:"2018",whoAffects:"Government, private sector, AI developers.",sectorImpact:"Government, finance, tourism",demand:"Lead Africa's AI governance through responsible strategy.",keyObs:"Government AI deployment, AI for public services, skills development",tags:["AI Governance","East Africa","First-In-Africa","Landmark"]},
+  {id:39,title:"Uganda Computer Misuse (Amendment) Act 2022",country:"Uganda",flag:"🇺🇬",region:"East Africa",group:"EAC",year:2022,status:"in-force",area:"Cybersecurity",instrument:"Legislation",act:"Computer Misuse (Amendment) Act 2022",enacted:"Oct 14, 2022",inForce:"Oct 14, 2022",authority:"Parliament",closestFW:"Budapest Convention",simLevel:"Low",oecd:[0.60,0.48,0.55,0.70,0.60],summary:"Uganda's 2022 amendment adding child data protections but also controversial speech provisions. Part of broader pattern of using cybercrime laws with implications for online expression.",areas:["Cybersecurity","Legislation"],updated:"Oct 14, 2022",whoAffects:"All digital users in Uganda.",sectorImpact:"All digital users",demand:"Protect children's data and prohibit computer misuse.",keyObs:"Child data protection, unauthorised sharing prohibition",tags:["Cybersecurity","East Africa","Child Protection"]},
+  {id:40,title:"AU Digital Transformation Strategy 2020-2030",country:"African Union",flag:"🌍",region:"Continental",group:"AU",year:2020,status:"in-force",area:"Digital Economy",instrument:"Continental Strategy",act:"AU Digital Transformation Strategy 2020",enacted:"Feb 2020",inForce:"Feb 2020",authority:"African Union Commission",closestFW:"ITU Digital Strategy",simLevel:"Medium",oecd:[0.75,0.70,0.73,0.72,0.78],summary:"The AU's overarching 10-year digital transformation strategy. Endorsed 2019, adopted Feb 2020. Covers cybersecurity, infrastructure, e-commerce and data governance. Anchors all subsequent AU digital instruments.",areas:["Digital Economy","Continental Strategy"],updated:"Feb 2020",whoAffects:"All 55 AU member states.",sectorImpact:"All sectors across Africa",demand:"Drive Africa's digital transformation 2020-2030.",keyObs:"National policy alignment, infrastructure targets, cybersecurity capacity",tags:["Digital Economy","Continental","AU","Landmark","2020-2030"]},
+  {id:41,title:"Kenya Capital Markets (Amendment) Act 2022",country:"Kenya",flag:"🇰🇪",region:"East Africa",group:"EAC",year:2022,status:"in-force",area:"Digital Finance",instrument:"Legislation",act:"Capital Markets (Amendment) Act 2022",enacted:"2022",inForce:"2022",authority:"Capital Markets Authority",closestFW:"IOSCO Standards",simLevel:"Medium",oecd:[0.72,0.68,0.70,0.68,0.74],summary:"Kenya's expanded capital markets regulation covering digital assets. CMA began licensing virtual asset service providers. Part of Kenya's growing fintech regulatory framework.",areas:["Digital Finance","Legislation"],updated:"2022",whoAffects:"Capital markets participants, crypto, fintech.",sectorImpact:"Capital markets, crypto, fintech",demand:"Regulate digital assets within capital markets framework.",keyObs:"VASP licensing, consumer protection, AML/CFT",tags:["Digital Finance","Crypto","East Africa"]},
+  {id:42,title:"Nigeria FCCPC Digital Lending Guidelines 2022",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2022,status:"in-force",area:"Digital Finance",instrument:"Guidelines",act:"FCCPC Digital Lending Guidelines 2022",enacted:"Aug 2022",inForce:"Aug 2022",authority:"FCCPC",closestFW:"Consumer Finance Guidelines",simLevel:"Low",oecd:[0.65,0.72,0.65,0.60,0.68],summary:"Nigeria's guidelines for digital lending platforms following widespread consumer abuse. Prohibited contact harvesting, public shaming of borrowers. Part of region-wide crackdown on predatory digital lenders (Nigeria, Kenya, Ghana, Uganda).",areas:["Digital Finance","Guidelines"],updated:"Aug 2022",whoAffects:"Digital lending platforms, fintech apps.",sectorImpact:"Fintech, digital lending, mobile apps",demand:"Protect consumers from predatory digital lending practices.",keyObs:"No contact harvesting, no public shaming, data access restrictions",tags:["Digital Finance","Consumer Protection","West Africa","Digital Lending"]},
+  {id:43,title:"Tanzania Electronic & Postal Communications Act 2010",country:"Tanzania",flag:"🇹🇿",region:"East Africa",group:"EAC",year:2010,status:"in-force",area:"Digital Infrastructure",instrument:"Legislation",act:"EPOCA 2010",enacted:"2010",inForce:"2010",authority:"TCRA",closestFW:"ITU Telecom Regulations",simLevel:"Low",oecd:[0.60,0.55,0.58,0.62,0.60],summary:"Tanzania's electronic communications law establishing TCRA's regulatory mandate. Amended 2016 for broadband provisions. Foundational to Tanzania's telecom regulatory framework.",areas:["Digital Infrastructure","Legislation"],updated:"2010",whoAffects:"Telecoms operators, ISPs.",sectorImpact:"Telecoms, ISPs, postal services",demand:"Regulate electronic and postal communications in Tanzania.",keyObs:"Operator licensing, spectrum management, universal service",tags:["Digital Infrastructure","Telecoms","East Africa"]},
+  {id:44,title:"ECOWAS Supplementary Act on Personal Data 2010",country:"ECOWAS",flag:"🌍",region:"West Africa",group:"ECOWAS",year:2010,status:"in-force",area:"Data Protection",instrument:"Regional Act",act:"ECOWAS SA A/SA.1/01/10",enacted:"Jan 16, 2010",inForce:"Jan 16, 2010",authority:"ECOWAS Commission",closestFW:"EU Directive 95/46/EC",simLevel:"Medium",oecd:[0.68,0.65,0.66,0.60,0.70],summary:"The ECOWAS regional data protection framework. Considerable practical influence in West Africa. Influenced data protection laws in Nigeria, Ghana, Senegal and other ECOWAS states. Applied in over 10 member states.",areas:["Data Protection","Regional Act"],updated:"Jan 16, 2010",whoAffects:"All ECOWAS member states and data controllers.",sectorImpact:"All sectors in ECOWAS member states",demand:"Harmonise data protection across ECOWAS.",keyObs:"Harmonised standards, independent DPA, data subject rights, cross-border flows",tags:["Data Protection","West Africa","Regional","Landmark","Influential"]},
+  {id:45,title:"Nigeria E-Government Act 2023",country:"Nigeria",flag:"🇳🇬",region:"West Africa",group:"ECOWAS",year:2023,status:"in-force",area:"Digital Economy",instrument:"Legislation",act:"eGov Act 2023",enacted:"2023",inForce:"2023",authority:"Federal Ministry of Communications",closestFW:"UN E-Government Standards",simLevel:"Low",oecd:[0.68,0.62,0.65,0.60,0.66],summary:"Nigeria's e-government legislation mandating digital service delivery across federal ministries and departments. Part of Nigeria's broader digital economy transformation agenda.",areas:["Digital Economy","Legislation"],updated:"2023",whoAffects:"Federal government MDAs.",sectorImpact:"Federal government",demand:"Mandate digital-first government service delivery.",keyObs:"Digital-first delivery, e-procurement, interoperability",tags:["Digital Economy","E-Government","West Africa"]},
+  {id:46,title:"South Africa PAIA (Access to Information) 2000",country:"South Africa",flag:"🇿🇦",region:"Southern Africa",group:"SADC",year:2000,status:"in-force",area:"Digital Economy",instrument:"Legislation",act:"Act 2 of 2000",enacted:"2000",inForce:"2002",authority:"Parliament / Information Regulator",closestFW:"Freedom of Information Standards",simLevel:"Medium",oecd:[0.75,0.80,0.82,0.70,0.78],summary:"South Africa's access to information framework covering public and private bodies. Foundation of open government data policy alongside POPIA. Among Africa's most comprehensive open information frameworks.",areas:["Digital Economy","Information Rights"],updated:"2000",whoAffects:"All persons seeking access to government and private information.",sectorImpact:"Government, private sector",demand:"Promote openness and access to government-held information.",keyObs:"Information disclosure on request, privacy balancing, refusal records",tags:["Open Government","Digital Economy","Southern Africa","Foundational"]},
+  {id:47,title:"Rwanda E-Transactions Law 2016",country:"Rwanda",flag:"🇷🇼",region:"East Africa",group:"EAC",year:2016,status:"in-force",area:"Digital Economy",instrument:"Legislation",act:"Law No. 36/2016",enacted:"2016",inForce:"2016",authority:"RISA",closestFW:"UNCITRAL Model Law",simLevel:"Medium",oecd:[0.72,0.68,0.70,0.68,0.72],summary:"Rwanda's e-transactions framework enabling digital commerce and e-government. Legally recognises electronic contracts and digital signatures. Foundation of Rwanda's digital economy.",areas:["Digital Economy","Legislation"],updated:"2016",whoAffects:"E-commerce and digital government participants.",sectorImpact:"E-commerce, government, finance",demand:"Enable digital transactions and e-government in Rwanda.",keyObs:"E-signature standards, e-contract validity, consumer protection",tags:["Digital Economy","E-Commerce","East Africa"]},
+  {id:48,title:"Ghana National Cybersecurity Policy 2020",country:"Ghana",flag:"🇬🇭",region:"West Africa",group:"ECOWAS",year:2020,status:"in-force",area:"Cybersecurity",instrument:"Strategy",act:"National Cybersecurity Policy 2020",enacted:"2020",inForce:"2020",authority:"Cyber Security Authority (CSA)",closestFW:"NIST Cybersecurity Framework",simLevel:"High",oecd:[0.78,0.70,0.72,0.85,0.78],summary:"Ghana's 5-pillar national cybersecurity policy complementing the Cybersecurity Act 2020. Pillars: governance, CII protection, cybercrime, capacity building, international cooperation.",areas:["Cybersecurity","Strategy"],updated:"2020",whoAffects:"Government, CII operators, all digital sectors.",sectorImpact:"Government, CII, all digital sectors",demand:"Establish 5-pillar cybersecurity governance for Ghana.",keyObs:"CII protection, national CERT, capacity building, international cooperation",tags:["Cybersecurity","West Africa","Five-Pillar","Strategy"]},
+  {id:49,title:"Cameroon Data Protection Act 2024",country:"Cameroon",flag:"🇨🇲",region:"Central Africa",group:"CEMAC",year:2024,status:"in-force",area:"Data Protection",instrument:"Legislation",act:"Data Protection Act December 2024",enacted:"Dec 2024",inForce:"Dec 2024",authority:"Parliament / PDPA",closestFW:"GDPR (EU)",simLevel:"High",oecd:[0.75,0.70,0.73,0.65,0.74],summary:"Cameroon enacted comprehensive data protection legislation in December 2024. Establishes a Personal Data Protection Authority with compliance timelines. Joins the growing group of Central African nations with dedicated laws.",areas:["Data Protection","Legislation"],updated:"Dec 2024",whoAffects:"All organisations processing personal data in Cameroon.",sectorImpact:"All sectors",demand:"Establish data protection framework for Cameroon.",keyObs:"PDPA establishment, controller/processor obligations, compliance timelines",tags:["Data Protection","Central Africa","2024","New Law"]},
+  {id:50,title:"African Digital Compact 2024",country:"African Union",flag:"🌍",region:"Continental",group:"AU",year:2024,status:"in-force",area:"Digital Economy",instrument:"Continental Framework",act:"Endorsed June 2024",enacted:"June 2024",inForce:"June 2024",authority:"African Union Commission",closestFW:"UN Global Digital Compact",simLevel:"Medium",oecd:[0.78,0.74,0.76,0.72,0.80],summary:"The African Digital Compact — Africa's unified position on digital governance. Submitted to the UN Global Digital Compact and Summit of the Future, September 2024. Covers AI governance, data sovereignty, digital infrastructure and cybersecurity.",areas:["Digital Economy","Continental Framework"],updated:"Jun 2024",whoAffects:"All 55 AU member states and their digital sectors.",sectorImpact:"All sectors across Africa",demand:"Define Africa's digital governance position for the UN GDC.",keyObs:"Digital sovereignty, inclusive economy, AI harmonisation, cross-border data",tags:["Digital Economy","Continental","AU","UN GDC","2024","Landmark"]}
 ];
 const statusLabel={'in-force':'In Force','under-consultation':'Under Consultation','under-review':'Under Review','proposed':'Proposed'};
 const statusClass={'in-force':'b-in','under-consultation':'b-uc','under-review':'b-ur','proposed':'b-pr'};
 let selPolicy=policies[0];
 let activeTab='overview';
 let selOecdPols=[0,4,6];
+
+// ═══════════════ SIDEBAR MOBILE ═══════════════
+function openSidebar(){
+  const sb=document.getElementById('sidebar');
+  const ov=document.getElementById('sb-overlay');
+  sb.classList.add('open');
+  ov.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeSidebar(){
+  const sb=document.getElementById('sidebar');
+  const ov=document.getElementById('sb-overlay');
+  sb.classList.remove('open');
+  ov.classList.remove('show');
+  document.body.style.overflow='';
+}
+
+// Close sidebar on nav item click on mobile
+function nav(el){
+  const page=el.dataset.page;
+  setActive(page);
+  renderPage(page);
+  if(window.innerWidth<=900)closeSidebar();
+}
 
 // ═══════════════ ROUTING ═══════════════
 function goApp(page){
@@ -665,11 +874,6 @@ function goApp(page){
 function goLanding(){
   document.getElementById('app').style.display='none';
   document.getElementById('landing').style.display='flex';
-}
-function nav(el){
-  const page=el.dataset.page;
-  setActive(page);
-  renderPage(page);
 }
 function setActive(page){
   document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
@@ -692,34 +896,115 @@ function renderPage(page){
 }
 
 // ═══════════════ DASHBOARD ═══════════════
-function renderDashboard(){return`
-<div class="ph" style="padding-bottom:20px"><div class="ph-title">Dashboard</div><div class="ph-sub">Overview of Africa's digital policy landscape.</div></div>
-<div class="db-grid">
-  <div class="db-stat"><div><div class="db-sn">2,451</div><div class="db-sl">Total Policies Tracked</div><div class="db-change up">↑ +48 this month</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">📋</div></div>
-  <div class="db-stat"><div><div class="db-sn">55</div><div class="db-sl">AU Member States</div><div class="db-change up">↑ 94% coverage</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🌍</div></div>
-  <div class="db-stat"><div><div class="db-sn">28</div><div class="db-sl">Policy Areas</div><div class="db-change up">↑ 3 new areas</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🏷️</div></div>
-  <div class="db-stat"><div><div class="db-sn">7</div><div class="db-sl">Data Sources</div><div class="db-change" style="color:var(--text3)">Stable</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">⚡</div></div>
+// ═══════════ COMPUTED INSIGHTS ═══════════
+function computeInsights(){
+  const total=policies.length;
+  const byStatus={};
+  const byArea={};
+  const byCountry={};
+  const byYear={};
+  const byRegion={};
+  const byGroup={};
+  policies.forEach(p=>{
+    byStatus[p.status]=(byStatus[p.status]||0)+1;
+    byArea[p.area]=(byArea[p.area]||0)+1;
+    byCountry[p.country]=(byCountry[p.country]||0)+1;
+    byYear[p.year]=(byYear[p.year]||0)+1;
+    byRegion[p.region]=(byRegion[p.region]||0)+1;
+    byGroup[p.group]=(byGroup[p.group]||0)+1;
+  });
+  const countries=Object.keys(byCountry).length;
+  const inForce=byStatus['in-force']||0;
+  const topArea=Object.entries(byArea).sort((a,b)=>b[1]-a[1])[0];
+  const topCountry=Object.entries(byCountry).filter(([k])=>k!=='African Union'&&k!=='ECOWAS').sort((a,b)=>b[1]-a[1])[0];
+  const recentPols=policies.filter(p=>p.year>=2022).length;
+  const avgOecdAll=policies.filter(p=>p.oecd).map(p=>p.oecd.reduce((a,b)=>a+b,0)/5);
+  const avgOecd=(avgOecdAll.reduce((a,b)=>a+b,0)/avgOecdAll.length*100).toFixed(0);
+  return{total,byStatus,byArea,byCountry,byYear,byRegion,byGroup,countries,inForce,topArea,topCountry,recentPols,avgOecd};
+}
+
+// ═══════════ DASHBOARD ═══════════
+function renderDashboard(){
+  const ins=computeInsights();
+  const inForcePct=Math.round((ins.byStatus['in-force']||0)/ins.total*100);
+  const consultPct=Math.round(((ins.byStatus['under-consultation']||0)+(ins.byStatus['proposed']||0))/ins.total*100);
+  const reviewPct=Math.round((ins.byStatus['under-review']||0)/ins.total*100);
+  const areaEntries=Object.entries(ins.byArea).sort((a,b)=>b[1]-a[1]);
+  const countryEntries=Object.entries(ins.byCountry).filter(([k])=>k!=='African Union'&&k!=='ECOWAS').sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const recentPols=policies.filter(p=>p.year>=2022).sort((a,b)=>b.year-a.year).slice(0,6);
+  const gdprAligned=policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length;
+  return`
+<div class="ph" style="padding-bottom:20px">
+  <div class="ph-title">Dashboard</div>
+  <div class="ph-sub">Live intelligence overview — ${ins.total} real Sub-Saharan African digital policies from 2008–2024, parsed and classified.</div>
 </div>
-<div class="db-2col">
+<div class="db-grid">
+  <div class="db-stat"><div><div class="db-sn">${ins.total}</div><div class="db-sl">Policies Ingested</div><div class="db-change up">↑ ${ins.recentPols} from 2022–2024</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">📋</div></div>
+  <div class="db-stat"><div><div class="db-sn">${ins.countries}</div><div class="db-sl">Jurisdictions Covered</div><div class="db-change up">↑ incl. 3 regional bodies</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🌍</div></div>
+  <div class="db-stat"><div><div class="db-sn">${Object.keys(ins.byArea).length}</div><div class="db-sl">Policy Areas</div><div class="db-change up">↑ ${ins.topArea[0]} leads (${ins.topArea[1]})</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🏷️</div></div>
+  <div class="db-stat"><div><div class="db-sn">${ins.avgOecd}%</div><div class="db-sl">Avg OECD Alignment</div><div class="db-change up">↑ ${gdprAligned} GDPR-benchmarked</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">📐</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:0 32px 16px">
   <div class="db-recent">
-    <div class="db-rt"><span>Recent Policy Activity</span><span style="font-size:12px;color:var(--accent2);cursor:pointer;font-weight:500">View all →</span></div>
-    ${policies.slice(0,5).map(p=>`<div class="db-item"><span style="font-size:20px">${p.flag}</span><div style="flex:1"><div class="db-iname">${p.title}</div><div class="db-imeta">${p.country} · Updated ${p.updated}</div></div><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>`).join('')}
+    <div class="db-rt"><span>Status Breakdown</span></div>
+    ${[['In Force',inForcePct,'#0d3b2c'],['Draft/Consultation',consultPct,'#17c9a4'],['Under Review',reviewPct,'#fbbf24'],['Proposed',100-inForcePct-consultPct-reviewPct,'#9ca3af']].map(([l,v,c])=>`
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12.5px;font-weight:600">${l}</span><span style="font-size:12.5px;font-weight:700">${v}%</span></div>
+      <div style="height:7px;background:var(--border2);border-radius:4px;overflow:hidden"><div style="height:100%;background:${c};border-radius:4px;width:${v}%"></div></div>
+    </div>`).join('')}
   </div>
-  <div>
-    <div class="db-cov">
-      <div style="font-size:13px;color:var(--text3);font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Policy Coverage</div>
-      <div class="db-cov-num">94%</div>
-      <div class="db-cov-sub">of AU member states covered</div>
-      <div class="db-cov-bar"><div class="db-cov-fill"></div></div>
-      <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%">
-        ${[['In Force','65%','b-in'],['Under Consultation','12%','b-uc'],['Under Review','10%','b-ur'],['Proposed','13%','b-pr']].map(([l,v,c])=>`<div style="text-align:left"><div class="db-sl" style="font-size:11px;margin-bottom:3px">${l}</div><span class="badge ${c}">${v}</span></div>`).join('')}
-      </div>
+  <div class="db-recent">
+    <div class="db-rt"><span>By Policy Area</span></div>
+    ${areaEntries.map(([area,count])=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <span style="font-size:12px;flex:1;font-weight:600;color:var(--text2)">${area}</span>
+      <div style="width:80px;height:6px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--primary);border-radius:3px;width:${Math.round(count/areaEntries[0][1]*100)}%"></div></div>
+      <span style="font-size:12px;font-weight:700;width:16px;text-align:right">${count}</span>
+    </div>`).join('')}
+  </div>
+  <div class="db-recent">
+    <div class="db-rt"><span>Top Jurisdictions</span></div>
+    ${countryEntries.map(([c,n])=>{const p=policies.find(x=>x.country===c);return`
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border2)">
+      <span style="font-size:18px">${p?p.flag:'🌍'}</span>
+      <span style="font-size:13px;font-weight:600;flex:1">${c}</span>
+      <span style="font-size:13px;font-weight:700;color:var(--primary)">${n}</span>
+    </div>`}).join('')}
+    <div style="margin-top:10px;padding:10px;background:var(--bg);border-radius:6px;font-size:12px;color:var(--text2)">
+      <div style="font-weight:700;margin-bottom:4px">🔍 Key Insight</div>
+      Nigeria leads with the most policies tracked (${ins.byCountry['Nigeria']||0}), followed by Kenya (${ins.byCountry['Kenya']||0}) and South Africa (${ins.byCountry['South Africa']||0}).
     </div>
   </div>
 </div>
-`}
+<div class="db-2col">
+  <div class="db-recent">
+    <div class="db-rt"><span>Recent Policy Activity (2022–2024)</span><span style="font-size:12px;color:var(--accent2);cursor:pointer;font-weight:500" onclick="goApp('all-policies')">View all →</span></div>
+    ${recentPols.map(p=>`<div class="db-item"><span style="font-size:20px">${p.flag}</span><div style="flex:1"><div class="db-iname">${p.title}</div><div class="db-imeta">${p.country} · ${p.year} · ${p.area}</div></div><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>`).join('')}
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="db-recent">
+      <div class="db-rt"><span>Regional Distribution</span></div>
+      ${Object.entries(ins.byRegion).sort((a,b)=>b[1]-a[1]).map(([r,n])=>`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="font-size:12px;flex:1;color:var(--text2)">${r}</span>
+        <div style="width:80px;height:5px;background:var(--border2);border-radius:3px;overflow:hidden"><div style="height:100%;background:var(--accent);border-radius:3px;width:${Math.round(n/ins.total*100)*2.5}%"></div></div>
+        <span style="font-size:12px;font-weight:700;width:16px">${n}</span>
+      </div>`).join('')}
+    </div>
+    <div class="db-recent" style="background:var(--primary);border-color:var(--primary)">
+      <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:10px">📊 Intelligence Summary</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.7">
+        <div style="margin-bottom:6px">• <strong style="color:#fff">${inForcePct}%</strong> of tracked policies are In Force</div>
+        <div style="margin-bottom:6px">• <strong style="color:#fff">Data Protection</strong> is the most legislated area</div>
+        <div style="margin-bottom:6px">• <strong style="color:#fff">${gdprAligned}</strong> policies benchmark against GDPR</div>
+        <div style="margin-bottom:6px">• <strong style="color:#fff">${ins.recentPols}</strong> new policies enacted since 2022</div>
+        <div>• <strong style="color:#fff">East Africa</strong> leads in AI governance adoption</div>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
 
-// ═══════════════ EXPLORER ═══════════════
 function renderExplorer(){return`
 <div class="ph"><div class="ph-title">Explore Policies</div><div class="ph-sub">Browse, filter and analyse digital policies across Africa.</div></div>
 <div class="pfilt">
@@ -1042,95 +1327,112 @@ function renderTaxonomy(){return`
 </div>`}
 
 // ═══════════════ TRENDS ═══════════════
-function renderTrends(){return`
+// ═══════════ TRENDS (REAL DATA) ═══════════
+function renderTrends(){
+  const ins=computeInsights();
+  const yearData={};
+  policies.forEach(p=>{if(p.year>=2008&&p.year<=2024){yearData[p.year]=(yearData[p.year]||0)+1}});
+  const dpByYear={},cyberByYear={},aiByYear={};
+  policies.forEach(p=>{
+    if(p.year<2008||p.year>2024)return;
+    if(p.area==='Data Protection'){dpByYear[p.year]=(dpByYear[p.year]||0)+1}
+    if(p.area==='Cybersecurity'){cyberByYear[p.year]=(cyberByYear[p.year]||0)+1}
+    if(p.area==='Artificial Intelligence'){aiByYear[p.year]=(aiByYear[p.year]||0)+1}
+  });
+  return`
 <div class="ph" style="padding-bottom:14px">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
-    <div><div class="ph-title">Policy Trends Analysis</div><div class="ph-sub">Analyze digital policy adoption trends, regional legislative momentum, and emerging regulatory frameworks across the African continent.</div></div>
+    <div><div class="ph-title">Policy Trends Analysis</div><div class="ph-sub">Based on ${policies.length} real Sub-Saharan African digital policies (2008–2024). Data sourced and parsed by DPA methodology.</div></div>
     <button class="filt-btn primary" style="margin-top:4px;flex-shrink:0">⬇ Export Report</button>
   </div>
 </div>
-<div class="pfilt" style="padding-top:0"><button class="filt-btn">All Regions ▾</button><button class="filt-btn">All Policy Areas ▾</button><button class="filt-btn">📅 Date Range: Last 5 Years ▾</button></div>
+<div class="pfilt" style="padding-top:0"><button class="filt-btn">All Regions ▾</button><button class="filt-btn">All Policy Areas ▾</button><button class="filt-btn">📅 2008–2024 ▾</button></div>
 <div class="tr-top">
   <div class="tc">
-    <div class="tc-t">Policy Adoption Velocity <span class="tc-leg"><div class="tc-li"><div class="tc-ld" style="background:var(--primary)"></div>Data Protection</div><div class="tc-li"><div class="tc-ld" style="background:var(--accent)"></div>AI Governance</div></span></div>
-    <div class="tc-sub">Cumulative growth of enacted digital policies (2018 – Present)</div>
+    <div class="tc-t">Policy Enactment by Year <span class="tc-leg"><div class="tc-li"><div class="tc-ld" style="background:var(--primary)"></div>Data Protection</div><div class="tc-li"><div class="tc-ld" style="background:var(--accent)"></div>AI Governance</div></span></div>
+    <div class="tc-sub">Annual count of enacted digital policies — Sub-Saharan Africa 2008–2024</div>
     <canvas id="trend-chart" width="580" height="220"></canvas>
   </div>
   <div class="tc">
     <div class="tc-t">Legislative Status</div>
-    <div class="tc-sub">Current state of tracked instruments</div>
+    <div class="tc-sub">Distribution across ${policies.length} tracked policies</div>
     <div style="margin-top:24px">
-      ${[['In Force',65,var_primary],[' Draft/Bill',20,'#5a8a78'],['Under Rev…',10,'#a8c9bc'],['Proposed',5,'#d4e8e2']].map(([l,v,c])=>`
+      ${Object.entries({
+        'In Force': Math.round((ins.byStatus['in-force']||0)/ins.total*100),
+        'Under Review': Math.round((ins.byStatus['under-review']||0)/ins.total*100),
+        'Proposed': Math.round((ins.byStatus['proposed']||0)/ins.total*100),
+        'Consultation': Math.round((ins.byStatus['under-consultation']||0)/ins.total*100)
+      }).map(([l,v])=>`
       <div class="ls-row">
         <span class="ls-label">${l}</span>
-        <div class="ls-bar-wrap"><div class="ls-bar" style="width:${v}%;background:${c}"></div></div>
+        <div class="ls-bar-wrap"><div class="ls-bar" style="width:${v}%;background:${l==='In Force'?'var(--primary)':l==='Under Review'?'#fbbf24':l==='Proposed'?'#a5b4fc':'var(--accent)'}"></div></div>
         <span class="ls-pct">${v}%</span>
       </div>`).join('')}
+    </div>
+    <div style="margin-top:16px;padding:12px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.6">
+      <strong>${ins.inForce} of ${ins.total}</strong> policies are actively in force across Sub-Saharan Africa.
     </div>
   </div>
 </div>
 <div class="tr-bot">
   <div class="tc">
-    <div class="tc-t">Emerging Topics <span style="font-size:13px">↗</span></div>
-    <div class="tc-sub">Topics showing the highest month-over-month increase in legislative mentions.</div>
+    <div class="tc-t">Emerging Policy Topics <span style="font-size:13px">↗</span></div>
+    <div class="tc-sub">Fastest growing by year-on-year enactment velocity (2020–2024).</div>
     <div style="margin-top:12px">
-      ${[['Cross-Border Data Flows','+42% velocity in West Africa','#1'],['Algorithmic Accountability','Drafts initiating in Kenya, SA','#2'],['Digital Identity Infrastructure','Consistent steady growth','#3']].map(([n,s,num])=>`
+      ${[
+        ['Data Protection Wave','14 laws in 5 years — fastest growing area in SSA','#1'],
+        ['CBDC & Digital Finance','Nigeria eNaira (2021) triggered regional fintech wave','#2'],
+        ['AI Governance Emergence','From 0 strategies in 2017 to 5 by 2023','#3'],
+        ['Cross-Border Data Frameworks','AU-driven harmonisation gaining momentum','#4']
+      ].map(([n,s,num])=>`
       <div class="et-item"><div><div class="et-name">${n}</div><div class="et-sub">${s}</div></div><span class="et-num">${num}</span></div>`).join('')}
     </div>
   </div>
   <div class="tc">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><div class="tc-t" style="margin:0">Regional Density</div><span style="font-size:12.5px;color:var(--accent2);cursor:pointer;font-weight:500">View Map</span></div>
-    <div class="tc-sub">Policy concentration by region</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><div class="tc-t" style="margin:0">Regional Policy Density</div></div>
+    <div class="tc-sub">Policy concentration by regional economic community</div>
     <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px">
-      <div class="tm-block" style="background:#1a3d2e;color:#fff;grid-column:1;grid-row:1 2;min-height:120px"><div class="tm-n">ECOWAS</div><div class="tm-s">High Density</div></div>
-      <div class="tm-block" style="background:#e6f5ee;border:1px solid var(--border);grid-column:2;grid-row:1"><div class="tm-n" style="font-size:12px">EAC</div><div class="tm-s" style="color:var(--text3)">Medium</div></div>
-      <div class="tm-block" style="background:#ccecdf;grid-column:2;grid-row:2"><div class="tm-n" style="font-size:12px">SADC</div><div class="tm-s" style="color:var(--text2)">Growing</div></div>
-      <div class="tm-block" style="background:var(--bg);border:1px solid var(--border);grid-column:1 2;min-height:50px"><div class="tm-n" style="font-size:11.5px;color:var(--text3)">Other Regions</div></div>
+      <div class="tm-block" style="background:#1a3d2e;color:#fff;grid-column:1;grid-row:1 / span 2;min-height:130px;justify-content:flex-start;padding:14px">
+        <div class="tm-n" style="font-size:13px">ECOWAS</div>
+        <div class="tm-s" style="color:rgba(255,255,255,.6)">West Africa</div>
+        <div style="font-size:26px;font-weight:800;color:#fff;margin-top:10px">${policies.filter(p=>p.group==='ECOWAS').length}</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.5)">policies</div>
+      </div>
+      <div class="tm-block" style="background:#e6f5ee;border:1px solid var(--border)">
+        <div class="tm-n" style="font-size:12px">EAC</div>
+        <div style="font-size:20px;font-weight:800">${policies.filter(p=>p.group==='EAC').length}</div>
+      </div>
+      <div class="tm-block" style="background:#ccecdf;">
+        <div class="tm-n" style="font-size:12px">SADC</div>
+        <div style="font-size:20px;font-weight:800">${policies.filter(p=>p.group==='SADC').length}</div>
+      </div>
+      <div class="tm-block" style="background:var(--bg);border:1px solid var(--border);grid-column:1 / span 2;min-height:40px;flex-direction:row;gap:12px">
+        <span style="font-size:11.5px;color:var(--text3)">AU: ${policies.filter(p=>p.group==='AU').length}</span>
+        <span style="font-size:11.5px;color:var(--text3)">IGAD: ${policies.filter(p=>p.group==='IGAD').length}</span>
+        <span style="font-size:11.5px;color:var(--text3)">CEMAC: ${policies.filter(p=>p.group==='CEMAC').length}</span>
+        <span style="font-size:11.5px;color:var(--text3)">COMESA: ${policies.filter(p=>p.group==='COMESA').length}</span>
+      </div>
     </div>
   </div>
   <div class="tc">
-    <div class="tc-t">Global Benchmarking <span style="font-size:13px">🌐</span></div>
-    <div class="tc-sub">Alignment of African draft policies against major global frameworks.</div>
+    <div class="tc-t">Global Framework Alignment <span style="font-size:13px">🌐</span></div>
+    <div class="tc-sub">How SSA policies benchmark against global frameworks.</div>
     <div style="margin-top:16px">
-      ${[['GDPR (EU) Alignment','High',90,'hi','Strong correlation in Data Subject Rights.'],['OECD AI Principles','Moderate',55,'mo','Divergence in accountability definitions.'],['NIST Cybersecurity','High',85,'hi','Adopted structurally in 4 new draft bills.']].map(([n,v,pct,cls,sub])=>`
-      <div class="gb-row"><div class="gb-hd"><span class="gb-name">${n}</span><span class="gb-val ${cls}">${v}</span></div><div class="gb-bar"><div class="gb-fill" style="width:${pct}%;background:${cls==='hi'?'var(--primary)':cls==='mo'?'var(--accent)':'#e5e7eb'}"></div></div><div class="gb-sub">${sub}</div></div>`).join('')}
+      ${[
+        ['GDPR (EU) Alignment',policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length,'hi','Strongest influence — '+policies.filter(p=>p.closestFW&&p.closestFW.includes('GDPR')).length+' policies cite GDPR as closest comparator.'],
+        ['Budapest Convention',policies.filter(p=>p.closestFW&&p.closestFW.includes('Budapest')).length,'me','Primary cybercrime benchmark for 6 national frameworks.'],
+        ['OECD AI Principles',policies.filter(p=>p.closestFW&&p.closestFW.includes('OECD')).length,'me','Growing adoption across AI strategies and policies.'],
+        ['NIST Cybersecurity',policies.filter(p=>p.closestFW&&p.closestFW.includes('NIST')).length,'mo','Referenced by 2 cybersecurity frameworks (Rwanda, Ghana).']
+      ].map(([n,count,cls,sub])=>`
+      <div class="gb-row">
+        <div class="gb-hd"><span class="gb-name">${n}</span><span class="gb-val ${cls}">${count} policies</span></div>
+        <div class="gb-bar"><div class="gb-fill" style="width:${Math.round(count/ins.total*100)*4}%;background:${cls==='hi'?'var(--primary)':cls==='me'?'var(--accent)':'#d1d5db'}"></div></div>
+        <div class="gb-sub">${sub}</div>
+      </div>`).join('')}
     </div>
   </div>
-</div>`}
-
-const var_primary='#0d3b2c';
-
-function drawTrendsChart(){
-  const c=document.getElementById('trend-chart');if(!c)return;
-  const ctx=c.getContext('2d'),W=c.width,H=c.height;
-  const pad={l:36,r:20,t:16,b:36};
-  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
-  const yVals=[0,50,100,150];
-  const dpData=[18,28,45,70,100,128,148];
-  const aiData=[2,6,14,28,50,90,148];
-  const years=['2018','2019','2020','2021','2022','2023','2024'];
-  const maxY=150;
-  ctx.clearRect(0,0,W,H);
-  // Grid
-  ctx.strokeStyle='#edf2ef';ctx.lineWidth=1;
-  yVals.forEach(y=>{const gy=pad.t+ch-(y/maxY)*ch;ctx.beginPath();ctx.moveTo(pad.l,gy);ctx.lineTo(pad.l+cw,gy);ctx.stroke();ctx.fillStyle='#9ca3af';ctx.font='10px Plus Jakarta Sans,sans-serif';ctx.textAlign='right';ctx.fillText(y,pad.l-6,gy+3)});
-  // X labels
-  years.forEach((y,i)=>{const x=pad.l+i/(years.length-1)*cw;ctx.fillStyle='#9ca3af';ctx.font='10px Plus Jakarta Sans,sans-serif';ctx.textAlign='center';ctx.fillText(y,x,H-6)});
-  function drawLine(data,color,dotColor){
-    ctx.beginPath();
-    data.forEach((v,i)=>{const x=pad.l+i/(data.length-1)*cw,y=pad.t+ch-(v/maxY)*ch;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
-    ctx.strokeStyle=color;ctx.lineWidth=3;ctx.lineJoin='round';ctx.stroke();
-    data.forEach((v,i)=>{const x=pad.l+i/(data.length-1)*cw,y=pad.t+ch-(v/maxY)*ch;
-      ctx.beginPath();ctx.arc(x,y,10,0,2*Math.PI);ctx.fillStyle=color+'22';ctx.fill();
-      ctx.beginPath();ctx.arc(x,y,6,0,2*Math.PI);ctx.fillStyle=dotColor;ctx.fill();
-      ctx.beginPath();ctx.arc(x,y,6,0,2*Math.PI);ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
-    });
-  }
-  drawLine(dpData,'#0d3b2c','#0d3b2c');
-  drawLine(aiData,'#17c9a4','#17c9a4');
+</div>`;
 }
-
-// ═══════════════ OECD ═══════════════
 function renderOECD(){return`
 <div class="ph" style="padding-bottom:14px">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
@@ -1179,8 +1481,69 @@ function renderOECD(){return`
   </div>
 </div>`}
 
+function drawTrendsChart(){
+  const c=document.getElementById('trend-chart');if(!c)return;
+  // Resize canvas to container width on mobile
+  const parent=c.parentElement;
+  const mw=parent?parent.clientWidth-32:580;
+  c.width=Math.min(580,mw);
+  const ctx=c.getContext('2d'),W=c.width,H=c.height;
+  const pad={l:40,r:20,t:16,b:36};
+  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const years=[2008,2010,2012,2014,2016,2018,2019,2020,2021,2022,2023,2024];
+  // Real cumulative data from our 50 policies
+  function cumulative(area){
+    let cum=0;const out=[];
+    years.forEach(y=>{
+      cum+=policies.filter(p=>p.year===y&&p.area===area).length;
+      out.push(cum);
+    });
+    return out;
+  }
+  const dpData=cumulative('Data Protection');
+  const aiData=cumulative('Artificial Intelligence');
+  const cyberData=cumulative('Cybersecurity');
+  const maxY=Math.max(...dpData,...cyberData)+2;
+  const yTicks=[0,5,10,15,20];
+  ctx.clearRect(0,0,W,H);
+  // Grid lines
+  yTicks.forEach(y=>{
+    const gy=pad.t+ch-(y/maxY)*ch;
+    ctx.beginPath();ctx.moveTo(pad.l,gy);ctx.lineTo(pad.l+cw,gy);
+    ctx.strokeStyle='#edf2ef';ctx.lineWidth=1;ctx.stroke();
+    ctx.fillStyle='#9ca3af';ctx.font='9.5px Plus Jakarta Sans,sans-serif';ctx.textAlign='right';
+    ctx.fillText(y,pad.l-5,gy+3);
+  });
+  // X labels
+  years.forEach((y,i)=>{
+    const x=pad.l+i/(years.length-1)*cw;
+    ctx.fillStyle='#9ca3af';ctx.font='9px Plus Jakarta Sans,sans-serif';ctx.textAlign='center';
+    if(i%2===0)ctx.fillText(y,x,H-6);
+  });
+  function drawLine(data,color){
+    ctx.beginPath();
+    data.forEach((v,i)=>{
+      const x=pad.l+i/(data.length-1)*cw,y=pad.t+ch-(v/maxY)*ch;
+      i?ctx.lineTo(x,y):ctx.moveTo(x,y);
+    });
+    ctx.strokeStyle=color;ctx.lineWidth=3;ctx.lineJoin='round';ctx.stroke();
+    data.forEach((v,i)=>{
+      if(v===0&&i>0&&data[i-1]===0)return;
+      const x=pad.l+i/(data.length-1)*cw,y=pad.t+ch-(v/maxY)*ch;
+      ctx.beginPath();ctx.arc(x,y,9,0,2*Math.PI);ctx.fillStyle=color+'22';ctx.fill();
+      ctx.beginPath();ctx.arc(x,y,5.5,0,2*Math.PI);ctx.fillStyle=color;ctx.fill();
+      ctx.beginPath();ctx.arc(x,y,5.5,0,2*Math.PI);ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+    });
+  }
+  drawLine(cyberData,'#6b7280');
+  drawLine(dpData,'#0d3b2c');
+  drawLine(aiData,'#17c9a4');
+}
 function drawRadar(canvasId,datasets){
   const c=document.getElementById(canvasId);if(!c)return;
+  const parent=c.parentElement;
+  const mw=parent?Math.min(480,parent.clientWidth-32):480;
+  c.width=mw;c.height=Math.round(mw*.625);
   const ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+14,R=Math.min(W,H)*.32,n=5;
   const labs=['Inclusive\nGrowth','Fairness','Transparency','Robustness','Accountability'];
   const colors=['#0d3b2c','#17c9a4','#9ca3af'];
@@ -1204,7 +1567,13 @@ function drawRadar(canvasId,datasets){
 
 // ═══════════════ INIT ═══════════════
 window.addEventListener('load',()=>{
-  // landing shows by default
+  // nothing on load — landing shows by default
+});
+window.addEventListener('resize',()=>{
+  // Redraw any visible charts on resize/rotation
+  if(document.getElementById('trend-chart'))drawTrendsChart();
+  if(document.getElementById('oecd-canvas'))drawRadar('oecd-canvas',[[.72,.68,.75,.60,.70],[.80,.75,.78,.72,.82],[.65,.60,.68,.62,.70]]);
+  if(document.getElementById('small-radar')){const p=policies.find(x=>x.id===(window._selId||1));if(p)drawSmallRadar(p);}
 });
 </script>
 </body>
