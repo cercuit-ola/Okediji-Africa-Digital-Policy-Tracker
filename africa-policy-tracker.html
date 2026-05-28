@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa Digital Policy Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --font:'Plus Jakarta Sans',sans-serif;
+  --primary:#0d3b2c;
+  --accent:#17c9a4;
+  --accent2:#00c97a;
+  --accent-bg:#e6faf5;
+  --text:#111827;
+  --text2:#4b5563;
+  --text3:#9ca3af;
+  --border:#e5e9e7;
+  --border2:#f0f4f2;
+  --bg:#f4f7f5;
+  --card:#fff;
+  --r:10px;--r2:7px;
+  --sb:220px;--tb:58px;
+}
+html,body{font-family:var(--font);font-size:14px;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);cursor:pointer}
+
+/* ═══ LANDING ═══ */
+#landing{background:#fff;min-height:100vh;display:flex;flex-direction:column}
+.ln{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 32px;gap:0}
+.ln-logo{display:flex;align-items:center;gap:10px;margin-right:36px;flex-shrink:0;cursor:pointer}
+.ln-box{width:34px;height:34px;border-radius:7px;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ln-txt{font-size:11.5px;font-weight:700;line-height:1.3}
+.ln-links{display:flex;align-items:center;gap:2px;flex:1}
+.ln-link{padding:7px 13px;border-radius:6px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s}
+.ln-link:hover{color:var(--text);background:var(--bg)}
+.ln-acts{display:flex;align-items:center;gap:8px}
+.btn-gh{display:inline-flex;align-items:center;gap:6px;padding:8px 15px;border:1px solid var(--border);border-radius:7px;background:#fff;font-size:13.5px;font-weight:500;cursor:pointer;transition:all .15s}
+.btn-gh:hover{background:var(--bg);border-color:#bbb}
+.btn-os{display:inline-flex;align-items:center;padding:8px 18px;border:none;border-radius:7px;background:var(--primary);font-size:13.5px;font-weight:600;color:#fff;cursor:pointer;transition:background .15s}
+.btn-os:hover{background:#0a2e21}
+.hero{max-width:1180px;margin:0 auto;padding:52px 32px 44px;display:grid;grid-template-columns:1fr 460px;gap:32px;align-items:center}
+.live-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:6px;background:#f0faf5;border:1px solid #c6ead8;font-size:12.5px;margin-bottom:22px}
+.l-dot{width:7px;height:7px;background:var(--accent2);border-radius:50%;flex-shrink:0;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.l-lbl{font-weight:700;font-size:12px;letter-spacing:.03em;color:var(--primary)}
+.l-txt{color:#1a5c3e;font-size:12.5px}.l-lnk{text-decoration:underline;color:#1a5c3e;font-weight:500}
+.h1{font-size:52px;font-weight:800;line-height:1.07;letter-spacing:-.02em;color:var(--text)}
+.h1-g{color:var(--accent2);display:block}
+.hdesc{font-size:15px;color:var(--text2);line-height:1.7;margin:20px 0 28px;max-width:460px}
+.stats-row{display:flex;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;width:fit-content;margin-bottom:28px}
+.stat{display:flex;align-items:center;gap:11px;padding:14px 20px;background:#fff;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.si{width:34px;height:34px;flex-shrink:0}
+.sn{font-size:20px;font-weight:800;line-height:1}
+.sl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-top:2px;line-height:1.2}
+.cta-row{display:flex;gap:10px;margin-bottom:34px;flex-wrap:wrap}
+.btn-ep{display:inline-flex;align-items:center;gap:5px;padding:11px 22px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14.5px;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-ep:hover{background:#0a2e21}
+.btn-ol{display:inline-flex;align-items:center;gap:5px;padding:10px 18px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-ol:hover{border-color:var(--primary);color:var(--primary);background:#f0faf5}
+.built{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--border)}
+.b-lbl{font-size:13px;color:var(--text3);font-weight:500}
+.b-items{display:flex;gap:18px;flex-wrap:wrap}
+.b-item{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:500;color:var(--text2)}
+.globe-wrap{width:460px;height:460px;flex-shrink:0}
+.globe{width:460px;height:460px;border-radius:50%;background:radial-gradient(ellipse at 38% 40%,#2a4a3e 0%,#182f28 30%,#0e1e19 60%,#080e0c 100%);overflow:hidden;position:relative;box-shadow:0 28px 80px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.2)}
+.globe svg{position:absolute;top:0;left:0;width:100%;height:100%}
+.sec-div{border:none;border-top:1px solid var(--border)}
+.secs{background:var(--bg);padding:40px 0}
+.secs-in{max-width:1180px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:16px}
+.row2c{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:28px 26px;position:relative;overflow:hidden}
+.c-title{font-size:17px;font-weight:800;margin-bottom:20px}
+.flow-row{display:flex;align-items:flex-start}
+.f-step{display:flex;flex-direction:column;align-items:center;gap:9px;flex:1}
+.f-ico{width:52px;height:52px;border-radius:50%;background:#f0f5f3;border:1.5px solid #dbe8e2;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.f-lbl{font-size:11px;font-weight:600;color:var(--text2);text-align:center;line-height:1.35}
+.f-arr{color:#c0cfc8;font-size:16px;margin-top:16px;flex-shrink:0;padding:0 2px}
+.gl-link{display:inline-flex;align-items:center;gap:4px;color:var(--accent2);font-size:14px;font-weight:600;cursor:pointer;margin-top:auto}
+.row-why{display:grid;grid-template-columns:1fr 2fr;gap:16px}
+.why-desc{font-size:13.5px;color:var(--text2);line-height:1.7}
+.why-sh{position:absolute;bottom:20px;right:14px;opacity:.1}
+.live-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--border2)}
+.live-row:last-of-type{border-bottom:none}
+.lf{width:26px;height:18px;border-radius:3px;overflow:hidden;flex-shrink:0}
+.ln-inf{flex:1}
+.ln-n{font-size:13.5px;font-weight:700}
+.ln-s{font-size:12px;margin-top:2px;display:flex;align-items:center;gap:4px}
+.s-in{color:var(--accent2);font-weight:600}
+.s-dr{background:#fff8f0;color:#c67700;font-weight:600;padding:1px 6px;border-radius:4px;font-size:11px}
+.s-uc{color:var(--text3)}
+.ln-t{font-size:12px;color:var(--text3);flex-shrink:0;white-space:nowrap}
+.va-lnk{display:inline-flex;align-items:center;gap:4px;color:var(--accent2);font-size:14px;font-weight:600;cursor:pointer}
+.foot{background:var(--primary);padding:52px 32px 28px}
+.foot-in{max-width:1180px;margin:0 auto}
+.foot-top{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.flogo{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.fbox{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ftxt{font-size:11px;font-weight:700;line-height:1.3;color:#fff}
+.fdesc{font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:18px;max-width:210px}
+.fsoc{display:flex;gap:10px}
+.fsi{width:30px;height:30px;border-radius:5px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s}
+.fsi:hover{background:rgba(255,255,255,.2)}
+.fc-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:14px}
+.fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fl a{font-size:13px;color:rgba(255,255,255,.5);cursor:pointer;transition:color .15s}
+.fl a:hover{color:rgba(255,255,255,.9)}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;display:flex;justify-content:flex-end}
+.fcp{font-size:12px;color:rgba(255,255,255,.3)}
+
+/* ═══ APP SHELL ═══ */
+#app{display:none;height:100vh;flex-direction:row}
+.sb{width:var(--sb);background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;height:100vh;position:fixed;left:0;top:0;overflow-y:auto;z-index:50;flex-shrink:0}
+.sb-head{padding:14px 16px 10px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.sb-logo-ico{width:30px;height:30px;border-radius:7px;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-logo-txt{font-size:11px;font-weight:700;line-height:1.35;cursor:pointer}
+.sb-body{flex:1;padding:8px 0;overflow-y:auto}
+.sb-sec{margin-bottom:4px}
+.sb-lbl{padding:8px 16px 3px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em}
+.sb-item{display:flex;align-items:center;gap:8px;padding:7px 12px;margin:1px 8px;border-radius:7px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .12s}
+.sb-item:hover{background:var(--bg);color:var(--text)}
+.sb-item.active{background:var(--accent);color:#fff;font-weight:600}
+.sb-item.active .sb-icon{color:#fff}
+.sb-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.sb-foot{padding:14px 12px;border-top:1px solid var(--border2);flex-shrink:0}
+.sb-contrib{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;background:#fff;width:100%;transition:all .15s;margin-bottom:8px}
+.sb-contrib:hover{background:var(--bg)}
+.sb-mit{font-size:11px;color:var(--text3);padding:0 4px;display:flex;align-items:center;gap:4px}
+.app-right{margin-left:var(--sb);display:flex;flex-direction:column;min-height:100vh;background:var(--bg)}
+.tb{height:var(--tb);background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:12px;flex-shrink:0;position:sticky;top:0;z-index:40}
+.tb-brand{font-size:13.5px;font-weight:700;white-space:nowrap;flex-shrink:0;color:var(--text)}
+.tb-search{flex:1;max-width:420px;position:relative}
+.tb-search input{width:100%;padding:7px 12px 7px 32px;border:1px solid var(--border);border-radius:7px;font-size:13px;background:var(--bg);color:var(--text);outline:none;font-family:var(--font)}
+.tb-search input:focus{border-color:var(--accent);background:#fff}
+.tb-si{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text3);pointer-events:none}
+.tb-kbd{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;color:var(--text3);background:var(--border2);padding:2px 5px;border-radius:4px}
+.tb-sp{flex:1}
+.tb-ico{width:34px;height:34px;border-radius:7px;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;flex-shrink:0}
+.tb-ico:hover{background:var(--bg)}
+.tb-av{width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;cursor:pointer}
+.tb-notif{position:relative}
+.tb-notif-dot{position:absolute;top:6px;right:7px;width:6px;height:6px;background:#ef4444;border-radius:50%;border:1.5px solid #fff}
+.page{flex:1;overflow-y:auto;padding:0}
+#main-content{min-height:100%}
+
+/* ═══ SHARED UI ═══ */
+.ph{padding:28px 32px 0}
+.ph-title{font-size:28px;font-weight:800;letter-spacing:-.01em;margin-bottom:6px}
+.ph-sub{font-size:14px;color:var(--text2);line-height:1.6;max-width:700px}
+.pfilt{display:flex;align-items:center;gap:8px;padding:18px 32px;flex-wrap:wrap}
+.filt-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border:1px solid var(--border);border-radius:7px;background:#fff;font-size:13px;font-weight:500;cursor:pointer;transition:all .12s;white-space:nowrap}
+.filt-btn:hover{border-color:#aaa;background:var(--bg)}
+.filt-btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.filt-btn.primary:hover{background:#0a2e21}
+.fc-sp{flex:1}
+.res-count{font-size:13px;font-weight:600;color:var(--text2)}
+.view-tog{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.vt-btn{width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:#fff;border:none;font-size:13px;cursor:pointer;color:var(--text3)}
+.vt-btn.active,.vt-btn:hover{background:var(--bg);color:var(--text)}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap}
+.b-in{background:#dcfce7;color:#16a34a}
+.b-uc{background:#fef3c7;color:#c97706}
+.b-ur{background:#fef9c3;color:#a16207}
+.b-pr{background:#dbeafe;color:#2563eb}
+.b-adv{background:#dcfce7;color:#16a34a}
+.b-dev{background:#fef3c7;color:#c97706}
+.b-ha{background:#dcfce7;color:#16a34a}
+.b-em{background:#f3e8ff;color:#9333ea}
+.b-est{background:#f3f4f6;color:#6b7280}
+.b-act{background:#dcfce7;color:#16a34a}
+.b-dr{background:#f3f4f6;color:#6b7280}
+.b-ad{background:#dbeafe;color:#2563eb}
+.b-leg{background:var(--accent-bg);color:#0f7860}
+.pcont{padding:0 32px 32px}
+
+/* ═══ EXPLORER ═══ */
+.ex-layout{display:grid;grid-template-columns:360px 1fr;gap:0;height:calc(100vh - var(--tb) - 130px);margin:0 32px 24px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:#fff}
+.ex-list{border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column}
+.pc{padding:14px 16px;border-bottom:1px solid var(--border2);cursor:pointer;transition:background .1s;border-left:3px solid transparent}
+.pc:hover{background:#fafcfb}
+.pc.sel{background:#f0faf5;border-left-color:var(--accent)}
+.pc-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px}
+.pc-flag{font-size:17px;flex-shrink:0}
+.pc-name{font-size:13.5px;font-weight:700;flex:1;line-height:1.3}
+.pc-meta{font-size:11.5px;color:var(--text3)}
+.pc-meta .cn{color:var(--text2);font-weight:500}
+.ex-pag{padding:14px 16px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:center;gap:4px;flex-shrink:0}
+.pg-btn{width:32px;height:32px;border-radius:6px;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;cursor:pointer;transition:all .12s}
+.pg-btn:hover{background:var(--bg)}
+.pg-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.ex-detail{overflow-y:auto;display:flex;flex-direction:column}
+.ed-hd{padding:18px 22px 0;border-bottom:1px solid var(--border2);position:sticky;top:0;background:#fff;z-index:5}
+.ed-tr{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.ed-title{font-size:20px;font-weight:800;line-height:1.2}
+.ed-act{font-size:12px;color:var(--text3);margin-top:3px}
+.ed-dl{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border:none;border-radius:7px;background:var(--primary);color:#fff;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0}
+.ed-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--text2);margin-bottom:12px;flex-wrap:wrap}
+.ed-mi{display:flex;align-items:center;gap:4px}
+.ed-tabs{display:flex;gap:0;overflow-x:auto}
+.ed-tab{padding:8px 16px;font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.ed-tab.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
+.ed-tab:hover:not(.active){color:var(--text)}
+.ed-body{padding:18px 22px;flex:1}
+.ed-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ed-box{background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:14px}
+.eb-lbl{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.eb-row{margin-bottom:10px}
+.eb-key{font-size:10.5px;color:var(--text3);margin-bottom:2px}
+.eb-val{font-size:13px;font-weight:600;color:var(--text)}
+
+/* ═══ KNOWLEDGE GRAPH ═══ */
+.kg-layout{display:grid;grid-template-columns:1fr 240px;gap:0;margin:0 32px 24px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:#fff;height:calc(100vh - var(--tb) - 140px)}
+.kg-canvas{position:relative;overflow:hidden;background:#f7f9fb}
+.kg-canvas svg{width:100%;height:100%}
+.kg-legend{position:absolute;bottom:16px;left:16px;background:#fff;border:1px solid var(--border);border-radius:7px;padding:10px 14px;display:flex;gap:14px}
+.kg-li{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500;color:var(--text2)}
+.kg-li-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.kg-minimap{position:absolute;bottom:16px;right:16px;width:90px;height:70px;background:#fff;border:1px solid var(--border);border-radius:5px;overflow:hidden}
+.kg-panel{border-left:1px solid var(--border);overflow-y:auto;padding:16px}
+.kg-pt{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.kg-node-hd{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px}
+.kg-node-ico{width:32px;height:32px;border-radius:50%;background:var(--accent-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kg-node-name{font-size:14px;font-weight:700;line-height:1.25;margin-top:2px}
+.kg-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.kg-sect{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.kg-conn{background:var(--bg);border:1px solid var(--border2);border-radius:7px;padding:10px 12px;margin-bottom:6px}
+.kg-cn{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.kg-cr{font-size:11.5px;color:var(--text2);display:flex;align-items:center;justify-content:space-between}
+.kg-rel{font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:4px;background:#dbeafe;color:#2563eb}
+.kg-meta-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px}
+.kg-meta-row:last-child{border-bottom:none}
+.kg-meta-k{color:var(--text2)}
+.kg-meta-v{font-weight:600}
+.kg-full{width:100%;padding:9px;background:var(--primary);color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;margin-top:14px;transition:background .15s}
+.kg-full:hover{background:#0a2e21}
+
+/* ═══ COUNTRIES ═══ */
+.cc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cc{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 18px 16px;cursor:pointer;transition:all .15s}
+.cc:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.cc-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.cc-flag{font-size:28px}
+.cc-name{font-size:16px;font-weight:800;margin-bottom:3px;margin-top:6px}
+.cc-reg{font-size:12px;color:var(--text3)}
+.cc-div{border-top:1px solid var(--border2);margin:12px 0 10px}
+.cc-bot{display:flex;align-items:center;justify-content:space-between}
+.cc-num{font-size:22px;font-weight:800}
+.cc-sub{font-size:11px;color:var(--text3);font-weight:500}
+.lm-btn{display:flex;align-items:center;justify-content:center;margin:28px auto 0;padding:11px 28px;border:1.5px solid var(--border);border-radius:40px;background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;width:fit-content}
+.lm-btn:hover{border-color:var(--primary);color:var(--primary)}
+
+/* ═══ POLICY AREAS ═══ */
+.pa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pa-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px;cursor:pointer;transition:all .15s}
+.pa-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.pa-ico-wrap{width:42px;height:42px;border-radius:9px;background:#f0f5f3;border:1.5px solid #dbe8e2;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.pa-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.pa-t{font-size:16px;font-weight:800;margin-bottom:6px}
+.pa-desc{font-size:12.5px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.pa-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.pa-stat{background:var(--bg);border:1px solid var(--border2);border-radius:7px;padding:10px 12px}
+.pa-stat-k{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+.pa-stat-v{font-size:20px;font-weight:800}
+.pa-div{border-top:1px solid var(--border2);margin-bottom:12px}
+.pa-tags{display:flex;gap:5px;flex-wrap:wrap}
+.pa-tag{padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:11.5px;font-weight:500;color:var(--text2)}
+
+/* ═══ TAXONOMY ═══ */
+.tax-layout{display:grid;grid-template-columns:260px 1fr;gap:0;margin:0 32px 24px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;height:calc(100vh - var(--tb) - 130px)}
+.tax-tree{border-right:1px solid var(--border);overflow-y:auto;background:#fff}
+.tt-hd{padding:12px 14px;border-bottom:1px solid var(--border2);font-size:12px;font-weight:600;color:var(--text2)}
+.tt-item{display:flex;align-items:center;gap:0;padding:7px 10px;cursor:pointer;transition:background .1s;position:relative}
+.tt-item:hover{background:var(--bg)}
+.tt-item.sel{background:#f0faf5}
+.tt-item.sel .tt-name{color:var(--primary);font-weight:700}
+.tt-indent{padding-left:16px}
+.tt-indent2{padding-left:32px}
+.tt-expand{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--text3);flex-shrink:0;margin-right:4px}
+.tt-name{font-size:13px;color:var(--text2);flex:1}
+.tt-num{font-size:11px;color:var(--text3);background:var(--bg);padding:1px 7px;border-radius:10px;font-weight:600;flex-shrink:0}
+.tt-num.act{background:var(--accent);color:#fff}
+.tax-detail{overflow-y:auto;padding:20px 24px;background:#fff}
+.td-bc{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3);margin-bottom:12px}
+.td-bc-arr{color:var(--text3)}
+.td-hd{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.td-title{font-size:22px;font-weight:800}
+.td-desc{font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:18px}
+.td-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.td-box{background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:14px}
+.td-bk{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.td-stat-num{font-size:32px;font-weight:800;margin-bottom:3px}
+.td-stat-sub{font-size:12px;color:var(--text3)}
+.td-prog{margin-top:10px}
+.td-prog-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.td-prog-label{font-size:12px;color:var(--text2)}
+.td-prog-val{font-size:12px;font-weight:600}
+.td-pbar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.td-pfill{height:100%;background:var(--primary);border-radius:3px}
+.td-pfill.t{background:var(--accent)}
+.onto-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:6px}
+.onto-col-t{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+.onto-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:12.5px;font-weight:500;margin:3px 0;cursor:pointer;transition:all .12s}
+.onto-tag:hover{border-color:var(--accent);background:var(--accent-bg)}
+.td-policy-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border2)}
+.td-policy-item:last-child{border-bottom:none}
+.cc-code{width:32px;height:32px;border-radius:7px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--primary);border:1px solid var(--border);flex-shrink:0}
+.td-pi-name{font-size:13.5px;font-weight:600;flex:1}
+.td-pi-sub{font-size:12px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:4px}
+
+/* ═══ TRENDS ═══ */
+.tr-top{display:grid;grid-template-columns:1fr 280px;gap:16px;margin:0 32px 14px}
+.tr-bot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:0 32px 24px}
+.tc{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;overflow:hidden}
+.tc-t{font-size:14px;font-weight:700;margin-bottom:3px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.tc-sub{font-size:12px;color:var(--text3);margin-bottom:14px}
+.tc-leg{display:flex;gap:14px}
+.tc-li{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:500}
+.tc-ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ls-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.ls-label{font-size:12.5px;color:var(--text2);width:80px;flex-shrink:0}
+.ls-bar-wrap{flex:1;height:8px;background:var(--border2);border-radius:4px;overflow:hidden}
+.ls-bar{height:100%;border-radius:4px}
+.ls-pct{font-size:12px;font-weight:700;color:var(--text2);width:32px;text-align:right;flex-shrink:0}
+.et-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.et-name{font-size:13px;font-weight:700}
+.et-sub{font-size:11.5px;color:var(--text3);margin-top:2px}
+.et-num{font-size:13px;font-weight:700;color:var(--text3);flex-shrink:0}
+.tm-wrap{display:grid;grid-template-rows:auto auto;gap:8px}
+.tm-row{display:grid;gap:8px}
+.tm-block{border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;min-height:60px}
+.tm-n{font-size:13px;font-weight:700;text-align:center}
+.tm-s{font-size:11px;font-weight:500;text-align:center;margin-top:2px;opacity:.8}
+.gb-row{margin-bottom:12px}
+.gb-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.gb-name{font-size:12.5px;font-weight:600}
+.gb-val{font-size:12px;font-weight:700}
+.gb-bar{height:7px;background:var(--border2);border-radius:4px;overflow:hidden;margin-bottom:3px}
+.gb-fill{height:100%;border-radius:4px;background:var(--primary)}
+.gb-sub{font-size:11px;color:var(--text3)}
+.gb-val.hi{color:#16a34a}.gb-val.mo{color:#c97706}.gb-val.lo{color:#dc2626}
+
+/* ═══ OECD ═══ */
+.oc-layout{display:grid;grid-template-columns:280px 1fr;gap:16px;margin:0 32px 24px;align-items:start}
+.oc-left{display:flex;flex-direction:column;gap:14px}
+.oc-config{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px}
+.oc-field{margin-bottom:14px}
+.oc-field:last-child{margin-bottom:0}
+.oc-fl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.oc-sel{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:7px;font-size:13px;background:#fff;cursor:pointer;font-family:var(--font);color:var(--text);outline:none}
+.oc-sel:focus{border-color:var(--accent)}
+.oc-pols{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.oc-ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.oc-pt{font-size:13px;font-weight:700}
+.oc-ca{font-size:12px;color:var(--accent2);cursor:pointer;font-weight:500}
+.oc-pi{border:1px solid var(--border);border-radius:8px;padding:11px 12px;margin-bottom:7px;cursor:pointer;transition:all .12s}
+.oc-pi:hover{border-color:var(--accent)}
+.oc-pi.sel{border-color:var(--primary);background:#f0faf5}
+.oc-pi-hd{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.oc-pi-name{font-size:13px;font-weight:700;flex:1}
+.oc-pi-pct{display:flex;align-items:center;gap:5px;font-size:12px}
+.oc-pi-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.oc-pi-pct span{font-weight:500}
+.oc-add{display:flex;align-items:center;gap:6px;padding:9px;border:1px dashed var(--border);border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;width:100%;background:none;justify-content:center;transition:all .12s}
+.oc-add:hover{border-color:var(--accent);color:var(--accent2)}
+.oc-right{display:flex;flex-direction:column;gap:14px}
+.oc-radar-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.oc-rt{font-size:16px;font-weight:800;margin-bottom:3px}
+.oc-rs{font-size:12.5px;color:var(--text3);margin-bottom:16px}
+.oc-rleg{display:flex;gap:14px;margin-top:12px;flex-wrap:wrap}
+.oc-rli{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500}
+.oc-table-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.oc-table-hd{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--border)}
+.oc-table-t{font-size:14px;font-weight:700}
+.oc-table{width:100%;border-collapse:collapse}
+.oc-th{text-align:left;padding:10px 16px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border)}
+.oc-td{padding:14px 16px;font-size:12.5px;vertical-align:top;border-bottom:1px solid var(--border2)}
+.oc-tr:last-child .oc-td{border-bottom:none}
+.oc-tr:hover .oc-td{background:#fafcfb}
+.oc-pr-name{font-size:12.5px;font-weight:700;margin-bottom:3px}
+.oc-pr-desc{font-size:11.5px;color:var(--text2);line-height:1.5}
+.oc-warn{background:#fff8f0;border:1px solid #fed7aa;border-radius:6px;padding:8px 10px;font-size:11.5px;color:#c97706}
+.oc-al-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:3px;width:80px}
+.oc-al-fill{height:100%;border-radius:4px}
+.oc-al-fill.hi{background:var(--primary)}.oc-al-fill.me{background:var(--accent)}.oc-al-fill.lo{background:#e5e7eb}
+.oc-al-txt{font-size:11px;font-weight:700;color:var(--text2)}
+.oc-vf{display:flex;align-items:center;justify-content:center;padding:14px;border-top:1px solid var(--border)}
+.oc-vf-btn{font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:5px}
+.oc-vf-btn:hover{color:var(--primary)}
+
+/* ═══ DASHBOARD ═══ */
+.db-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 32px 20px}
+.db-stat{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px;display:flex;align-items:flex-start;justify-content:space-between}
+.db-sn{font-size:28px;font-weight:800;margin-bottom:3px}
+.db-sl{font-size:12px;color:var(--text3);font-weight:500}
+.db-si{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.db-change{font-size:11.5px;font-weight:600;margin-top:4px}
+.db-change.up{color:#16a34a}.db-change.dw{color:#dc2626}
+.db-2col{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin:0 32px 14px}
+.db-recent{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 20px}
+.db-rt{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.db-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border2)}
+.db-item:last-child{border-bottom:none}
+.db-iname{font-size:13px;font-weight:600;flex:1}
+.db-imeta{font-size:12px;color:var(--text3);margin-top:2px}
+.db-cov{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.db-cov-num{font-size:52px;font-weight:800;color:var(--primary);line-height:1}
+.db-cov-sub{font-size:13px;color:var(--text2);margin-top:5px}
+.db-cov-bar{width:100%;height:8px;background:var(--border2);border-radius:4px;overflow:hidden;margin-top:14px}
+.db-cov-fill{height:100%;background:var(--accent);border-radius:4px;width:94%}
+
+/* scrollbar */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text3)}
+::-webkit-scrollbar-track{background:transparent}
+</style>
+</head>
+<body>
+
+<!-- ════ LANDING ════ -->
+<div id="landing">
+  <nav class="ln">
+    <div class="ln-logo" onclick="goApp('all-policies')">
+      <div class="ln-box">
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M11 2L18 6.2V14.8L11 19L4 14.8V6.2L11 2Z" stroke="rgba(255,255,255,.85)" stroke-width="1.5" fill="none"/><circle cx="11" cy="11" r="3" fill="rgba(255,255,255,.7)"/></svg>
+      </div>
+      <div class="ln-txt">Africa Digital<br>Policy Tracker</div>
+    </div>
+    <div class="ln-links">
+      <span class="ln-link" onclick="goApp('all-policies')">Explore</span>
+      <span class="ln-link" onclick="goApp('countries')">Countries</span>
+      <span class="ln-link" onclick="goApp('policy-areas')">Policy Areas</span>
+      <span class="ln-link" onclick="goApp('taxonomy')">Taxonomy</span>
+      <span class="ln-link" onclick="goApp('api')">API</span>
+      <span class="ln-link">About</span>
+    </div>
+    <div class="ln-acts">
+      <button class="btn-gh"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Star on GitHub</button>
+      <button class="btn-os" onclick="goApp('all-policies')">Open Source</button>
+    </div>
+  </nav>
+  <div class="hero">
+    <div>
+      <div class="live-badge"><div class="l-dot"></div><span class="l-lbl">LIVE</span><span class="l-txt">&nbsp;Monitoring digital policy across all <span class="l-lnk">55 African Union member states</span></span></div>
+      <h1 class="h1">Africa's Digital<br>Policy Intelligence<br><span class="h1-g">Infrastructure</span></h1>
+      <p class="hdesc">We track, classify and analyse laws, regulations and policy initiatives on AI, data protection, cybersecurity, digital finance and more — across Africa.</p>
+      <div class="stats-row">
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><path d="M8 24V16M13 24V11M18 24V18M23 24V9" stroke="#17a865" stroke-width="1.8" stroke-linecap="round"/></svg><div><div class="sn">2,451</div><div class="sl">Policies<br>Tracked</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><path d="M17 8C17 8 10 12 10 18c0 3.86 3.13 7 7 7s7-3.14 7-7c0-6-7-10-7-10z" stroke="#17a865" stroke-width="1.6" fill="none"/><circle cx="17" cy="18" r="2.2" fill="#17a865"/></svg><div><div class="sn">55</div><div class="sl">AU Member<br>States</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><rect x="7" y="8" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="18" y="8" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="7" y="18" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="18" y="18" width="8" height="8" rx="1.5" stroke="#17a865" stroke-width="1.5"/></svg><div><div class="sn">28</div><div class="sl">Policy<br>Areas</div></div></div>
+        <div class="stat"><svg class="si" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#e8f5ee"/><ellipse cx="17" cy="13" rx="7" ry="3.5" stroke="#17a865" stroke-width="1.5"/><path d="M10 13v5c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-5" stroke="#17a865" stroke-width="1.5" fill="none"/><path d="M10 18v4c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-4" stroke="#17a865" stroke-width="1.5" fill="none"/></svg><div><div class="sn">7</div><div class="sl">Data<br>Sources</div></div></div>
+      </div>
+      <div class="cta-row">
+        <button class="btn-ep" onclick="goApp('all-policies')">Explore Policies &nbsp;→</button>
+        <button class="btn-ol" onclick="goApp('dashboard')">View Dashboard</button>
+        <button class="btn-ol">&lt;/&gt;&nbsp; API Documentation</button>
+      </div>
+      <div class="built">
+        <span class="b-lbl">Built for:</span>
+        <div class="b-items">
+          <div class="b-item">🔬 Researchers</div>
+          <div class="b-item">🏛️ Policymakers</div>
+          <div class="b-item">📰 Journalists</div>
+          <div class="b-item">🤝 Civil Society</div>
+          <div class="b-item">🏢 Businesses</div>
+        </div>
+      </div>
+    </div>
+    <!-- Globe -->
+    <div class="globe-wrap">
+      <div class="globe">
+        <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="ng" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="sg" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- continent fill glow -->
+          <path d="M170,58 C182,52 196,47 215,44 C232,41 252,42 268,46 C282,49 296,54 308,62 C318,68 326,76 332,86 C338,97 340,110 339,123 C338,134 336,143 338,153 C341,165 348,176 355,188 C361,200 365,213 364,226 C363,238 358,248 352,258 C348,265 345,272 347,280 C349,289 355,297 360,306 C364,315 366,325 364,335 C362,345 356,354 349,362 C341,371 332,378 322,385 C312,392 302,399 292,407 C282,415 272,424 264,434 C257,443 252,453 248,462 C244,471 242,479 238,482 C234,484 229,481 224,475 C218,467 212,456 204,445 C195,433 183,421 170,409 C157,397 142,384 129,370 C116,356 104,340 96,323 C89,308 86,291 87,275 C88,261 93,248 96,234 C98,222 97,210 92,199 C87,188 79,179 75,168 C71,158 70,147 72,135 C74,123 79,111 85,100 C92,88 102,78 113,70 C124,62 138,57 152,55 C161,53 166,58 170,58 Z" fill="rgba(0,180,110,.08)" filter="url(#sg)"/>
+          <path d="M170,58 C182,52 196,47 215,44 C232,41 252,42 268,46 C282,49 296,54 308,62 C318,68 326,76 332,86 C338,97 340,110 339,123 C338,134 336,143 338,153 C341,165 348,176 355,188 C361,200 365,213 364,226 C363,238 358,248 352,258 C348,265 345,272 347,280 C349,289 355,297 360,306 C364,315 366,325 364,335 C362,345 356,354 349,362 C341,371 332,378 322,385 C312,392 302,399 292,407 C282,415 272,424 264,434 C257,443 252,453 248,462 C244,471 242,479 238,482 C234,484 229,481 224,475 C218,467 212,456 204,445 C195,433 183,421 170,409 C157,397 142,384 129,370 C116,356 104,340 96,323 C89,308 86,291 87,275 C88,261 93,248 96,234 C98,222 97,210 92,199 C87,188 79,179 75,168 C71,158 70,147 72,135 C74,123 79,111 85,100 C92,88 102,78 113,70 C124,62 138,57 152,55 C161,53 166,58 170,58 Z" fill="none" stroke="#00d4a0" stroke-width="1.6" opacity=".7" filter="url(#sg)"/>
+          <!-- country lines -->
+          <g stroke="#1d6e50" stroke-width=".7" fill="none" opacity=".5">
+            <path d="M88,145 Q150,138 215,135 Q270,132 335,140"/><path d="M90,190 Q155,183 220,180 Q285,177 360,192"/>
+            <path d="M90,235 Q160,228 230,225 Q300,222 362,232"/><path d="M100,285 Q170,278 235,276 Q305,274 358,285"/>
+            <path d="M118,330 Q180,324 240,322 Q300,320 350,330"/>
+            <path d="M220,55 Q218,200 215,480"/><path d="M275,65 Q272,200 268,400"/><path d="M165,65 Q163,200 162,395"/>
+          </g>
+          <!-- Horn -->
+          <path d="M338,153 Q355,144 372,145 Q382,148 375,162 Q366,172 348,168 Q338,165 337,158 Z" fill="rgba(0,180,110,.05)" stroke="#00d4a0" stroke-width="1.3" opacity=".55"/>
+          <!-- Madagascar -->
+          <ellipse cx="385" cy="308" rx="11" ry="22" fill="rgba(0,180,110,.06)" stroke="#00c496" stroke-width="1.1" opacity=".55" transform="rotate(15,385,308)"/>
+          <!-- Connection lines -->
+          <g stroke="#00c97a" stroke-width=".8" opacity=".25">
+            <line x1="185" y1="253" x2="302" y2="240"/><line x1="185" y1="253" x2="218" y2="388"/>
+            <line x1="302" y1="240" x2="315" y2="196"/><line x1="185" y1="253" x2="148" y2="248"/>
+            <line x1="302" y1="240" x2="282" y2="290"/><line x1="270" y1="88" x2="302" y2="240"/>
+            <line x1="270" y1="88" x2="185" y2="253"/><line x1="218" y1="388" x2="282" y2="290"/>
+            <line x1="148" y1="248" x2="130" y2="220"/><line x1="245" y1="280" x2="302" y2="240"/>
+          </g>
+          <!-- City nodes -->
+          <circle cx="185" cy="253" r="9" fill="rgba(0,201,122,.18)" filter="url(#ng)"/><circle cx="185" cy="253" r="5.5" fill="#00c97a" opacity=".95" filter="url(#ng)"/><circle cx="185" cy="253" r="2.4" fill="white"/>
+          <circle cx="302" cy="240" r="8" fill="rgba(0,201,122,.16)" filter="url(#ng)"/><circle cx="302" cy="240" r="5" fill="#00c97a" opacity=".92" filter="url(#ng)"/><circle cx="302" cy="240" r="2" fill="white"/>
+          <circle cx="270" cy="88" r="6" fill="rgba(100,180,255,.18)"/><circle cx="270" cy="88" r="4" fill="#5bc8ff" opacity=".9"/><circle cx="270" cy="88" r="1.8" fill="white"/>
+          <circle cx="218" cy="388" r="7" fill="rgba(0,201,122,.16)"/><circle cx="218" cy="388" r="4.2" fill="#00c97a" opacity=".88"/><circle cx="218" cy="388" r="1.8" fill="white"/>
+          <circle cx="148" cy="248" r="5" fill="rgba(0,201,122,.14)"/><circle cx="148" cy="248" r="3.2" fill="#00c97a" opacity=".82"/>
+          <circle cx="315" cy="196" r="5" fill="rgba(255,180,80,.18)"/><circle cx="315" cy="196" r="3.2" fill="#ffa94d" opacity=".88"/>
+          <circle cx="282" cy="277" r="4.5" fill="rgba(0,201,122,.14)"/><circle cx="282" cy="277" r="2.8" fill="#00c97a" opacity=".78"/>
+          <circle cx="245" cy="280" r="5" fill="rgba(180,120,255,.16)"/><circle cx="245" cy="280" r="3" fill="#b87cff" opacity=".78"/>
+          <circle cx="165" cy="98" r="4" fill="rgba(0,201,122,.12)"/><circle cx="165" cy="98" r="2.5" fill="#00c97a" opacity=".72"/>
+          <circle cx="232" cy="68" r="3.8" fill="rgba(100,180,255,.14)"/><circle cx="232" cy="68" r="2.4" fill="#5bc8ff" opacity=".7"/>
+          <!-- Ambient dots -->
+          <circle cx="200" cy="143" r="2" fill="#00c97a" opacity=".45"/><circle cx="243" cy="130" r="2" fill="#00c97a" opacity=".4"/>
+          <circle cx="175" cy="178" r="2" fill="#00c97a" opacity=".45"/><circle cx="260" cy="210" r="1.8" fill="#00c97a" opacity=".4"/>
+          <circle cx="165" cy="315" r="1.8" fill="#00c97a" opacity=".4"/><circle cx="145" cy="170" r="1.8" fill="#ffa94d" opacity=".4"/>
+          <!-- Pulse rings -->
+          <circle cx="185" cy="253" r="14" fill="none" stroke="#00c97a" stroke-width=".8" opacity=".18"/>
+          <circle cx="302" cy="240" r="12" fill="none" stroke="#00c97a" stroke-width=".7" opacity=".16"/>
+          <circle cx="230" cy="230" r="226" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="8"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <hr class="sec-div">
+  <div class="secs">
+    <div class="secs-in">
+      <div class="row2c">
+        <div class="card">
+          <div class="c-title">From Document to Intelligence</div>
+          <div class="flow-row">
+            <div class="f-step"><div class="f-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="4" y="2" width="14" height="18" rx="2" stroke="#17a865" stroke-width="1.5"/><path d="M7 7h8M7 11h6M7 15h4" stroke="#17a865" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="f-lbl">Document<br>Ingestion</div></div>
+            <div class="f-arr">→</div>
+            <div class="f-step"><div class="f-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="#17a865" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#17a865" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="f-lbl">AI Parsing &amp;<br>Extraction</div></div>
+            <div class="f-arr">→</div>
+            <div class="f-step"><div class="f-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="1.5" stroke="#17a865" stroke-width="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5" stroke="#17a865" stroke-width="1.5"/></svg></div><div class="f-lbl">Taxonomy<br>Classification</div></div>
+            <div class="f-arr">→</div>
+            <div class="f-step"><div class="f-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#17a865" stroke-width="1.5"/><path d="M6 11h10M11 6v10" stroke="#17a865" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="f-lbl">Policy<br>Intelligence</div></div>
+            <div class="f-arr">→</div>
+            <div class="f-step"><div class="f-ico"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 16V11M8 16V8M12 16V12M16 16V6" stroke="#17a865" stroke-width="1.6" stroke-linecap="round"/><path d="M3 19h16" stroke="#17a865" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="f-lbl">Insights &amp;<br>Comparisons</div></div>
+          </div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column">
+          <div class="c-title">Open. Transparent. Collaborative.</div>
+          <div style="display:flex;gap:14px;align-items:flex-start;flex:1">
+            <div style="flex:1">
+              <p style="font-size:14px;color:var(--text2);line-height:1.65;flex:1;margin-bottom:18px">An open-source public good to promote transparent and evidence-based digital governance in Africa.</p>
+              <div class="gl-link">View on GitHub &nbsp;→</div>
+            </div>
+            <svg width="100" height="120" viewBox="0 0 100 120" fill="none" style="flex-shrink:0;opacity:.55">
+              <defs><clipPath id="ac"><path d="M35,4 C40,2 48,1 54,2 C60,3 66,5 71,9 C76,13 79,18 80,24 C81,30 80,36 81,41 C83,47 87,52 89,58 C91,64 91,71 89,77 C87,82 83,86 82,91 C81,96 82,102 80,107 C78,112 73,116 68,119 C63,122 57,123 52,121 C47,119 43,114 39,109 C35,104 31,98 27,92 C23,86 18,79 16,72 C14,65 14,57 16,50 C18,44 22,39 25,33 C28,27 28,21 31,15 C33,10 34,6 35,4 Z"/></clipPath></defs>
+              <g clip-path="url(#ac)" fill="#17a865" opacity=".5">
+                <circle cx="38" cy="10" r="1.4"/><circle cx="46" cy="8" r="1.4"/><circle cx="54" cy="8" r="1.4"/><circle cx="62" cy="10" r="1.4"/><circle cx="34" cy="18" r="1.4"/><circle cx="42" cy="16" r="1.4"/><circle cx="50" cy="14" r="1.4"/><circle cx="58" cy="14" r="1.4"/><circle cx="66" cy="16" r="1.4"/><circle cx="74" cy="20" r="1.4"/><circle cx="30" cy="26" r="1.4"/><circle cx="38" cy="24" r="1.4"/><circle cx="46" cy="22" r="1.4"/><circle cx="54" cy="22" r="1.4"/><circle cx="62" cy="22" r="1.4"/><circle cx="70" cy="24" r="1.4"/><circle cx="78" cy="28" r="1.4"/><circle cx="28" cy="34" r="1.4"/><circle cx="36" cy="32" r="1.4"/><circle cx="44" cy="30" r="1.4"/><circle cx="52" cy="30" r="1.4"/><circle cx="60" cy="30" r="1.4"/><circle cx="68" cy="31" r="1.4"/><circle cx="76" cy="34" r="1.4"/><circle cx="26" cy="42" r="1.4"/><circle cx="34" cy="40" r="1.4"/><circle cx="42" cy="38" r="1.4"/><circle cx="50" cy="38" r="1.4"/><circle cx="58" cy="38" r="1.4"/><circle cx="66" cy="39" r="1.4"/><circle cx="74" cy="42" r="1.4"/><circle cx="82" cy="46" r="1.4"/><circle cx="24" cy="50" r="1.4"/><circle cx="32" cy="48" r="1.4"/><circle cx="40" cy="46" r="1.4"/><circle cx="48" cy="46" r="1.4"/><circle cx="56" cy="46" r="1.4"/><circle cx="64" cy="47" r="1.4"/><circle cx="72" cy="50" r="1.4"/><circle cx="80" cy="53" r="1.4"/><circle cx="88" cy="56" r="1.4"/><circle cx="22" cy="58" r="1.4"/><circle cx="30" cy="56" r="1.4"/><circle cx="38" cy="54" r="1.4"/><circle cx="46" cy="54" r="1.4"/><circle cx="54" cy="54" r="1.4"/><circle cx="62" cy="55" r="1.4"/><circle cx="70" cy="58" r="1.4"/><circle cx="78" cy="60" r="1.4"/><circle cx="86" cy="62" r="1.4"/><circle cx="22" cy="66" r="1.4"/><circle cx="30" cy="64" r="1.4"/><circle cx="38" cy="62" r="1.4"/><circle cx="46" cy="62" r="1.4"/><circle cx="54" cy="62" r="1.4"/><circle cx="62" cy="63" r="1.4"/><circle cx="70" cy="66" r="1.4"/><circle cx="78" cy="68" r="1.4"/><circle cx="24" cy="74" r="1.4"/><circle cx="32" cy="72" r="1.4"/><circle cx="40" cy="70" r="1.4"/><circle cx="48" cy="70" r="1.4"/><circle cx="56" cy="70" r="1.4"/><circle cx="64" cy="71" r="1.4"/><circle cx="72" cy="74" r="1.4"/><circle cx="28" cy="82" r="1.4"/><circle cx="36" cy="80" r="1.4"/><circle cx="44" cy="78" r="1.4"/><circle cx="52" cy="78" r="1.4"/><circle cx="60" cy="79" r="1.4"/><circle cx="68" cy="82" r="1.4"/><circle cx="34" cy="90" r="1.4"/><circle cx="42" cy="88" r="1.4"/><circle cx="50" cy="87" r="1.4"/><circle cx="58" cy="87" r="1.4"/><circle cx="42" cy="97" r="1.4"/><circle cx="50" cy="95" r="1.4"/><circle cx="58" cy="95" r="1.4"/><circle cx="48" cy="104" r="1.4"/><circle cx="56" cy="103" r="1.4"/>
+              </g>
+              <path d="M35,4 C40,2 48,1 54,2 C60,3 66,5 71,9 C76,13 79,18 80,24 C81,30 80,36 81,41 C83,47 87,52 89,58 C91,64 91,71 89,77 C87,82 83,86 82,91 C81,96 82,102 80,107 C78,112 73,116 68,119 C63,122 57,123 52,121 C47,119 43,114 39,109 C35,104 31,98 27,92 C23,86 18,79 16,72 C14,65 14,57 16,50 C18,44 22,39 25,33 C28,27 28,21 31,15 C33,10 34,6 35,4 Z" fill="none" stroke="#17a865" stroke-width="1" opacity=".35"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="row-why">
+        <div class="card" style="display:flex;flex-direction:column">
+          <div class="c-title">Why This Matters</div>
+          <p class="why-desc">Africa's digital future is being shaped by policy. Access to reliable, structured policy intelligence is essential for informed decisions, innovation, and protecting fundamental rights.</p>
+          <div class="gl-link" style="margin-top:auto;padding-top:16px">Learn more about our mission &nbsp;→</div>
+          <svg class="why-sh" width="110" height="110" viewBox="0 0 110 110" fill="none"><path d="M55 10L15 28V60C15 80 32 98 55 104C78 98 95 80 95 60V28L55 10Z" stroke="#17a865" stroke-width="2.5" fill="rgba(23,168,101,.05)"/><path d="M38 55l12 12 24-24" stroke="#17a865" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div class="c-title" style="margin:0">Live Policy Updates</div><div class="live-badge" style="margin:0"><div class="l-dot"></div><span class="l-lbl" style="font-size:11px">Live</span></div></div>
+          <div class="live-row"><div class="lf"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#006600"/><rect y="4.67" width="20" height="4.67" fill="#fff"/><rect y="5.6" width="20" height="2.8" fill="#000"/></svg></div><div class="ln-inf"><div class="ln-n">Kenya AI Strategy (Draft)</div><div class="ln-s"><span class="s-dr">Draft</span><span style="color:var(--text3)">•</span><span class="s-uc">Under Consultation</span></div></div><div class="ln-t">2h ago</div></div>
+          <div class="live-row"><div class="lf"><svg viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><rect width="6.67" height="14" fill="#008751"/><rect x="13.33" width="6.67" height="14" fill="#008751"/></svg></div><div class="ln-inf"><div class="ln-n">Nigeria Data Protection Act</div><div class="ln-s"><span class="s-in">In Force</span></div></div><div class="ln-t">5h ago</div></div>
+          <div class="live-row"><div class="lf"><svg viewBox="0 0 20 14"><rect width="20" height="4.67" fill="#CC2200"/><rect y="4.67" width="20" height="4.67" fill="#FFD700"/><rect y="9.33" width="20" height="4.67" fill="#006B3F"/><polygon points="10,3.5 11.2,7.1 14.9,7.1 11.9,9.2 13,12.8 10,10.7 7,12.8 8.1,9.2 5.1,7.1 8.8,7.1" fill="#000"/></svg></div><div class="ln-inf"><div class="ln-n">Ghana Cybersecurity Act</div><div class="ln-s"><span class="s-in">In Force</span></div></div><div class="ln-t">1d ago</div></div>
+          <div style="margin-top:12px;display:flex;justify-content:flex-end"><div class="va-lnk" onclick="goApp('all-policies')">View all updates →</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot">
+    <div class="foot-in">
+      <div class="foot-top">
+        <div><div class="flogo"><div class="fbox"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M11 2L18 6.2V14.8L11 19L4 14.8V6.2L11 2Z" stroke="rgba(255,255,255,.7)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="2.5" fill="rgba(255,255,255,.65)"/></svg></div><div class="ftxt">Africa Digital<br>Policy Tracker</div></div><p class="fdesc">Empowering Africa's digital future through transparent and accessible policy intelligence. A public good for research, innovation, and governance.</p><div class="fsoc"><div class="fsi"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></div><div class="fsi"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.65)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div></div></div>
+        <div><div class="fc-t">Product</div><ul class="fl"><li><a onclick="goApp('all-policies')">Explore Policies</a></li><li><a onclick="goApp('dashboard')">Dashboard</a></li><li><a>API</a></li><li><a onclick="goApp('taxonomy')">Taxonomy</a></li><li><a>Roadmap</a></li></ul></div>
+        <div><div class="fc-t">Resources</div><ul class="fl"><li><a>Documentation</a></li><li><a>Blog</a></li><li><a>Case Studies</a></li><li><a>FAQs</a></li><li><a>Community</a></li></ul></div>
+        <div><div class="fc-t">Company</div><ul class="fl"><li><a>About Us</a></li><li><a>Team</a></li><li><a>Careers</a></li><li><a>Contact</a></li><li><a>Privacy Policy</a></li></ul></div>
+      </div>
+      <div class="fbot"><span class="fcp">© 2024 Africa Digital Policy Tracker. Open Source. All rights reserved.</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════ APP SHELL ════ -->
+<div id="app">
+  <aside class="sb">
+    <div class="sb-head">
+      <div class="sb-logo-ico"><svg width="17" height="17" viewBox="0 0 22 22" fill="none"><path d="M11 2L18 6.2V14.8L11 19L4 14.8V6.2L11 2Z" stroke="rgba(255,255,255,.85)" stroke-width="1.5" fill="none"/><circle cx="11" cy="11" r="3" fill="rgba(255,255,255,.7)"/></svg></div>
+      <div class="sb-logo-txt" onclick="goLanding()">Africa Digital<br>Policy Tracker</div>
+    </div>
+    <div class="sb-body">
+      <div class="sb-sec">
+        <div class="sb-lbl">Overview</div>
+        <div class="sb-item" data-page="dashboard" onclick="nav(this)"><span class="sb-icon">⊞</span>Dashboard</div>
+      </div>
+      <div class="sb-sec">
+        <div class="sb-lbl">Explore</div>
+        <div class="sb-item" data-page="all-policies" onclick="nav(this)"><span class="sb-icon">◎</span>All Policies</div>
+        <div class="sb-item" data-page="countries" onclick="nav(this)"><span class="sb-icon">🌍</span>Countries</div>
+        <div class="sb-item" data-page="policy-areas" onclick="nav(this)"><span class="sb-icon">⊡</span>Policy Areas</div>
+        <div class="sb-item" data-page="comparisons" onclick="nav(this)"><span class="sb-icon">⇄</span>Comparisons</div>
+        <div class="sb-item" data-page="trends" onclick="nav(this)"><span class="sb-icon">↗</span>Trends</div>
+      </div>
+      <div class="sb-sec">
+        <div class="sb-lbl">Intelligence</div>
+        <div class="sb-item" data-page="taxonomy" onclick="nav(this)"><span class="sb-icon">⊞</span>Taxonomy Engine</div>
+        <div class="sb-item" data-page="oecd" onclick="nav(this)"><span class="sb-icon">🌐</span>OECD Mapping</div>
+        <div class="sb-item" data-page="knowledge-graph" onclick="nav(this)"><span class="sb-icon">✦</span>Knowledge Graph</div>
+      </div>
+      <div class="sb-sec">
+        <div class="sb-lbl">Resources</div>
+        <div class="sb-item" data-page="api" onclick="nav(this)"><span class="sb-icon">&lt;/&gt;</span>API</div>
+        <div class="sb-item" data-page="docs" onclick="nav(this)"><span class="sb-icon">📄</span>Documentation</div>
+        <div class="sb-item" data-page="reports" onclick="nav(this)"><span class="sb-icon">📊</span>Reports</div>
+      </div>
+    </div>
+    <div class="sb-foot">
+      <button class="sb-contrib"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.2 11.39.6.1.82-.26.82-.57v-2.23c-3.01.55-3.79-.73-4.04-1.41-.13-.34-.72-1.41-1.23-1.7-.42-.22-1.02-.77-.01-.79.94-.01 1.62.87 1.84 1.23 1.08 1.81 2.8 1.3 3.5.99.1-.78.42-1.3.76-1.6-2.67-.3-5.46-1.33-5.46-5.92 0-1.3.46-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.31 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.44.38.81 1.1.81 2.22v3.29c0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Contribute on GitHub</button>
+      <div class="sb-mit">⊙ MIT Licensed</div>
+    </div>
+  </aside>
+  <div class="app-right">
+    <header class="tb">
+      <span id="tb-brand" class="tb-brand" style="display:none">Africa Digital Policy Tracker</span>
+      <div class="tb-search"><span class="tb-si">🔍</span><input id="tb-input" type="text" placeholder="Search policies, countries, keywords..."><span class="tb-kbd">⌘K</span></div>
+      <div class="tb-sp"></div>
+      <div class="tb-ico tb-notif">🔔<div class="tb-notif-dot"></div></div>
+      <div class="tb-ico">?</div>
+      <div class="tb-av">AA</div>
+    </header>
+    <div class="page"><div id="main-content"></div></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════ DATA ═══════════════
+const policies=[
+  {id:1,title:'Nigeria Data Protection Act 2023',country:'Nigeria',flag:'🇳🇬',areas:['Data Protection','Legislation'],status:'in-force',updated:'May 3, 2024',act:'Act No. 3 of 2023',enacted:'June 12, 2023',inForce:'June 12, 2023',instrument:'Legislation',area:'Data Protection',authority:'National Assembly',whoAffects:'Data controllers, processors, public & private entities operating in Nigeria.',sectorImpact:'All sectors handling personal data',demand:'To protect fundamental rights to privacy and regulate processing of personal data.',keyObs:'Lawful processing, data minimization, security safeguards'},
+  {id:2,title:'Kenya AI Strategy (Draft)',country:'Kenya',flag:'🇰🇪',areas:['AI Governance','Strategy'],status:'under-consultation',updated:'May 2, 2024',act:'Draft — 2024',enacted:'Under Consultation',inForce:'TBD',instrument:'Strategy',area:'AI Governance',authority:'Ministry of ICT',whoAffects:'Government agencies, private sector, AI developers in Kenya.',sectorImpact:'Technology, government, research',demand:'To guide responsible AI development and deployment.',keyObs:'Transparency requirements, human oversight, fairness assessments'},
+  {id:3,title:'EU AI Act (Regulation 2024/1689)',country:'European Union',flag:'🇪🇺',areas:['AI Governance','Regulation'],status:'in-force',updated:'Apr 30, 2024',act:'Regulation (EU) 2024/1689',enacted:'Aug 1, 2024',inForce:'Aug 1, 2024',instrument:'Regulation',area:'AI Governance',authority:'European Parliament',whoAffects:'AI providers and deployers in the EU.',sectorImpact:'All AI-related sectors',demand:'Ensure AI systems are safe and respect fundamental rights.',keyObs:'Risk classification, conformity assessment, transparency'},
+  {id:4,title:'South Africa Cybercrimes Act',country:'South Africa',flag:'🇿🇦',areas:['Cybersecurity','Draft Bill'],status:'under-review',updated:'Apr 28, 2024',act:'Amendment Bill 2024',enacted:'Under Review',inForce:'TBD',instrument:'Draft Bill',area:'Cybersecurity',authority:'National Assembly',whoAffects:'All SA residents and digital service providers.',sectorImpact:'ISPs, financial institutions, government',demand:'Strengthen cybercrime prosecution and digital security.',keyObs:'Criminal liability, reporting obligations, investigation powers'},
+  {id:5,title:'Rwanda Personal Data Protection Law',country:'Rwanda',flag:'🇷🇼',areas:['Data Protection','Legislation'],status:'in-force',updated:'Apr 25, 2024',act:'Law No. 058/2021',enacted:'Oct 15, 2021',inForce:'Oct 15, 2021',instrument:'Legislation',area:'Data Protection',authority:'RURA',whoAffects:'Data subjects and controllers in Rwanda.',sectorImpact:'All organizations processing personal data',demand:'Protect personal data and privacy rights of Rwandan citizens.',keyObs:'Consent, data subject rights, DPO requirement'},
+  {id:6,title:'Ghana Data Protection Act 2012',country:'Ghana',flag:'🇬🇭',areas:['Data Protection','Legislation'],status:'in-force',updated:'Apr 20, 2024',act:'Act 843 of 2012',enacted:'May 16, 2012',inForce:'May 16, 2012',instrument:'Legislation',area:'Data Protection',authority:'Data Protection Commission',whoAffects:'Data controllers and processors in Ghana.',sectorImpact:'All sectors',demand:'Protect privacy and personal data of individuals.',keyObs:'Data quality, purpose specification, security'},
+  {id:7,title:'Egypt Fintech Regulatory Framework',country:'Egypt',flag:'🇪🇬',areas:['Digital Finance','Framework'],status:'proposed',updated:'Apr 18, 2024',act:'Proposed Framework 2024',enacted:'Proposed',inForce:'TBD',instrument:'Framework',area:'Digital Finance',authority:'Central Bank of Egypt',whoAffects:'Fintech companies and digital payment providers.',sectorImpact:'Finance, banking, fintech',demand:'Create supportive regulatory environment for fintech.',keyObs:'Regulatory sandbox, licensing regime, consumer protection'}
+];
+const statusLabel={'in-force':'In Force','under-consultation':'Under Consultation','under-review':'Under Review','proposed':'Proposed'};
+const statusClass={'in-force':'b-in','under-consultation':'b-uc','under-review':'b-ur','proposed':'b-pr'};
+let selPolicy=policies[0];
+let activeTab='overview';
+let selOecdPols=[0,4,6];
+
+// ═══════════════ ROUTING ═══════════════
+function goApp(page){
+  document.getElementById('landing').style.display='none';
+  document.getElementById('app').style.display='flex';
+  setActive(page);
+  renderPage(page);
+}
+function goLanding(){
+  document.getElementById('app').style.display='none';
+  document.getElementById('landing').style.display='flex';
+}
+function nav(el){
+  const page=el.dataset.page;
+  setActive(page);
+  renderPage(page);
+}
+function setActive(page){
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  const item=document.querySelector(`.sb-item[data-page="${page}"]`);
+  if(item)item.classList.add('active');
+}
+function renderPage(page){
+  const mc=document.getElementById('main-content');
+  switch(page){
+    case'dashboard':mc.innerHTML=renderDashboard();break;
+    case'all-policies':mc.innerHTML=renderExplorer();setTimeout(()=>initExplorer(),50);break;
+    case'countries':mc.innerHTML=renderCountries();break;
+    case'policy-areas':mc.innerHTML=renderPolicyAreas();break;
+    case'taxonomy':mc.innerHTML=renderTaxonomy();break;
+    case'trends':mc.innerHTML=renderTrends();setTimeout(()=>drawTrendsChart(),80);break;
+    case'oecd':mc.innerHTML=renderOECD();setTimeout(()=>drawRadar('oecd-canvas',[[.72,.68,.75,.60,.70],[.80,.75,.78,.72,.82],[.65,.60,.68,.62,.70]]),80);break;
+    case'knowledge-graph':mc.innerHTML=renderKG();break;
+    default:mc.innerHTML=renderDashboard();
+  }
+}
+
+// ═══════════════ DASHBOARD ═══════════════
+function renderDashboard(){return`
+<div class="ph" style="padding-bottom:20px"><div class="ph-title">Dashboard</div><div class="ph-sub">Overview of Africa's digital policy landscape.</div></div>
+<div class="db-grid">
+  <div class="db-stat"><div><div class="db-sn">2,451</div><div class="db-sl">Total Policies Tracked</div><div class="db-change up">↑ +48 this month</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">📋</div></div>
+  <div class="db-stat"><div><div class="db-sn">55</div><div class="db-sl">AU Member States</div><div class="db-change up">↑ 94% coverage</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🌍</div></div>
+  <div class="db-stat"><div><div class="db-sn">28</div><div class="db-sl">Policy Areas</div><div class="db-change up">↑ 3 new areas</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">🏷️</div></div>
+  <div class="db-stat"><div><div class="db-sn">7</div><div class="db-sl">Data Sources</div><div class="db-change" style="color:var(--text3)">Stable</div></div><div class="db-si" style="background:#e8f5ee;font-size:20px">⚡</div></div>
+</div>
+<div class="db-2col">
+  <div class="db-recent">
+    <div class="db-rt"><span>Recent Policy Activity</span><span style="font-size:12px;color:var(--accent2);cursor:pointer;font-weight:500">View all →</span></div>
+    ${policies.slice(0,5).map(p=>`<div class="db-item"><span style="font-size:20px">${p.flag}</span><div style="flex:1"><div class="db-iname">${p.title}</div><div class="db-imeta">${p.country} · Updated ${p.updated}</div></div><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>`).join('')}
+  </div>
+  <div>
+    <div class="db-cov">
+      <div style="font-size:13px;color:var(--text3);font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">Policy Coverage</div>
+      <div class="db-cov-num">94%</div>
+      <div class="db-cov-sub">of AU member states covered</div>
+      <div class="db-cov-bar"><div class="db-cov-fill"></div></div>
+      <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%">
+        ${[['In Force','65%','b-in'],['Under Consultation','12%','b-uc'],['Under Review','10%','b-ur'],['Proposed','13%','b-pr']].map(([l,v,c])=>`<div style="text-align:left"><div class="db-sl" style="font-size:11px;margin-bottom:3px">${l}</div><span class="badge ${c}">${v}</span></div>`).join('')}
+      </div>
+    </div>
+  </div>
+</div>
+`}
+
+// ═══════════════ EXPLORER ═══════════════
+function renderExplorer(){return`
+<div class="ph"><div class="ph-title">Explore Policies</div><div class="ph-sub">Browse, filter and analyse digital policies across Africa.</div></div>
+<div class="pfilt">
+  <button class="filt-btn">All Countries ▾</button>
+  <button class="filt-btn">All Policy Areas ▾</button>
+  <button class="filt-btn">All Statuses ▾</button>
+  <button class="filt-btn">Instrument Type ▾</button>
+  <div class="fc-sp"></div>
+  <button class="filt-btn">⚙ Filters</button>
+  <span class="res-count">2,451 results</span>
+</div>
+<div class="ex-layout">
+  <div class="ex-list">
+    <div id="policy-list">${policies.map(p=>`
+      <div class="pc${p.id===selPolicy.id?' sel':''}" onclick="selectPol(${p.id})">
+        <div class="pc-hd"><span class="pc-flag">${p.flag}</span><span class="pc-name">${p.title}</span><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>
+        <div class="pc-meta"><span class="cn">${p.country}</span> • ${p.areas.join(' • ')}</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">Updated: ${p.updated}</div>
+      </div>`).join('')}
+    </div>
+    <div class="ex-pag">
+      <div class="pg-btn">‹</div>
+      <div class="pg-btn active">1</div>
+      <div class="pg-btn">2</div>
+      <div class="pg-btn">3</div>
+      <div class="pg-btn" style="border:none;background:none">…</div>
+      <div class="pg-btn">›</div>
+    </div>
+  </div>
+  <div class="ex-detail" id="detail-panel">${renderDetail(selPolicy)}</div>
+</div>`}
+
+function initExplorer(){}
+
+function selectPol(id){
+  selPolicy=policies.find(p=>p.id===id);
+  activeTab='overview';
+  document.querySelectorAll('.pc').forEach(c=>c.classList.remove('sel'));
+  document.querySelectorAll('.pc')[id-1]?.classList.add('sel');
+  document.getElementById('detail-panel').innerHTML=renderDetail(selPolicy);
+  setTimeout(()=>{if(activeTab==='overview')drawSmallRadar(selPolicy)},60);
+}
+
+function renderDetail(p){return`
+<div class="ed-hd">
+  <div class="ed-tr">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span></div>
+      <div class="ed-title">${p.title}</div>
+      <div class="ed-act">${p.act}</div>
+    </div>
+    <button class="ed-dl">⬇ Download Source</button>
+  </div>
+  <div class="ed-meta">
+    <div class="ed-mi">◎ ${p.country}</div>
+    <div class="ed-mi">📅 Legislation: ${p.enacted==='Under Consultation'||p.enacted==='Proposed'||p.enacted==='Under Review'?p.enacted:p.enacted}</div>
+    ${p.inForce!=='TBD'?`<div class="ed-mi" style="color:var(--accent2)">✓ In Force: ${p.inForce}</div>`:''}
+  </div>
+  <div class="ed-tabs">
+    ${['overview','taxonomy','oecd-mapping','comparators'].map(t=>`<div class="ed-tab${activeTab===t?' active':''}" onclick="switchDetTab('${t}',${p.id})">${{overview:'Overview',taxonomy:'Taxonomy','oecd-mapping':'OECD Mapping',comparators:'Comparators'}[t]}</div>`).join('')}
+  </div>
+</div>
+<div class="ed-body" id="det-body">${detTabContent(p,activeTab)}</div>`}
+
+function switchDetTab(tab,pid){
+  activeTab=tab;
+  const p=policies.find(x=>x.id===pid);
+  document.querySelectorAll('.ed-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('det-body').innerHTML=detTabContent(p,tab);
+  if(tab==='overview')setTimeout(()=>drawSmallRadar(p),60);
+}
+
+function detTabContent(p,tab){
+  if(tab==='overview')return`
+<div class="ed-3col">
+  <div class="ed-box"><div class="eb-lbl">1. WHAT IS THIS?</div>
+    <div class="eb-row"><div class="eb-key">Instrument Type</div><div class="eb-val">${p.instrument}</div></div>
+    <div class="eb-row"><div class="eb-key">Issuing Authority</div><div class="eb-val">${p.authority}</div></div>
+    <div class="eb-row"><div class="eb-key">Policy Area</div><div class="eb-val">${p.area}</div></div>
+  </div>
+  <div class="ed-box"><div class="eb-lbl">2. WHO DOES IT AFFECT?</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:8px">${p.whoAffects}</div>
+    <div class="eb-key">Sector Impact</div><div class="eb-val">${p.sectorImpact}</div>
+  </div>
+  <div class="ed-box"><div class="eb-lbl">3. WHAT DOES IT DEMAND?</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.55;margin-bottom:8px">${p.demand}</div>
+    <div class="eb-key">Key Obligations</div><div class="eb-val">${p.keyObs}</div>
+  </div>
+</div>`;
+  if(tab==='taxonomy')return`<div class="ed-box" style="margin-bottom:12px"><div class="eb-lbl">Classification</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">${[...p.areas,p.area,p.instrument,p.country].filter((v,i,a)=>a.indexOf(v)===i).map(t=>`<span style="padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:4px;font-size:12px;font-weight:500">${t}</span>`).join('')}</div></div><div class="ed-box"><div class="eb-lbl">Sub-Area</div><div class="eb-val" style="margin-top:6px">${p.area} · ${p.instrument}</div></div>`;
+  if(tab==='oecd-mapping')return`<canvas id="small-radar" width="380" height="220" style="display:block;margin:0 auto"></canvas>`;
+  if(tab==='comparators')return`<div class="ed-box"><div class="eb-lbl">Closest Global Framework</div><div style="font-size:15px;font-weight:800;color:var(--primary);margin:8px 0 4px">GDPR (EU)</div><span class="badge b-in">High Similarity</span><div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6">Shares data subject rights framework, lawful basis requirements, and breach notification obligations.</div></div>`;
+  return '';
+}
+
+function drawSmallRadar(p){
+  const c=document.getElementById('small-radar');
+  if(!c)return;
+  const vals=[.82,.75,.88,.71,.85];
+  const ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+8,R=Math.min(W,H)*.32,n=5;
+  const labs=['Inclusive\nGrowth','Fairness','Transparency','Robustness','Accountability'];
+  ctx.clearRect(0,0,W,H);
+  function pt(i,r){const a=i/n*2*Math.PI-Math.PI/2;return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}}
+  for(let g=1;g<=5;g++){const r=g/5*R;ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,r);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.strokeStyle='#e0eae5';ctx.lineWidth=g===5?1.2:.6;ctx.stroke()}
+  for(let i=0;i<n;i++){const p=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#e0eae5';ctx.lineWidth=.7;ctx.stroke()}
+  ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,vals[i]*R);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.fillStyle='rgba(23,201,164,.18)';ctx.fill();ctx.strokeStyle='#17c9a4';ctx.lineWidth=2;ctx.stroke();
+  for(let i=0;i<n;i++){const p=pt(i,vals[i]*R);ctx.beginPath();ctx.arc(p.x,p.y,4,0,2*Math.PI);ctx.fillStyle='#17c9a4';ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke()}
+  ctx.font='9px Plus Jakarta Sans,sans-serif';ctx.fillStyle='#9ca3af';ctx.textAlign='center';ctx.textBaseline='middle';
+  for(let i=0;i<n;i++){const p=pt(i,R+20);const ls=labs[i].split('\n');ls.forEach((ln,li)=>ctx.fillText(ln,p.x,p.y+(li-(ls.length-1)/2)*11))}
+}
+
+// ═══════════════ KNOWLEDGE GRAPH ═══════════════
+function renderKG(){return`
+<div class="ph"><div class="ph-title">Knowledge Graph</div><div class="ph-sub">Explore relational connections between policies, institutions, and legal instruments.</div></div>
+<div class="pfilt" style="padding-top:10px">
+  <button class="filt-btn">⚙ Filters</button>
+  <button class="filt-btn">🔍 Zoom In</button>
+  <div class="fc-sp"></div>
+  <button class="filt-btn primary">⬇ Export</button>
+</div>
+<div class="kg-layout">
+  <div class="kg-canvas">
+    <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+      <!-- Connection lines -->
+      <line x1="310" y1="178" x2="305" y2="285" stroke="#c8d0cc" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="510" y1="195" x2="305" y2="285" stroke="#c8d0cc" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="430" y1="385" x2="305" y2="285" stroke="#c8d0cc" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="195" y1="390" x2="305" y2="285" stroke="#b8c8c0" stroke-width="2"/>
+      <!-- Node: Malabo Conv -->
+      <circle cx="310" cy="178" r="30" fill="#e6faf5" stroke="#17c9a4" stroke-width="2"/>
+      <text x="310" y="183" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" fill="#17c9a4">◎</text>
+      <text x="310" y="220" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11.5" fill="#4b5563" font-weight="600">Malabo Conv.</text>
+      <!-- Node: African Union (large) -->
+      <circle cx="305" cy="285" r="44" fill="#1e3d30" stroke="none"/>
+      <circle cx="305" cy="285" r="44" fill="none" stroke="#17c9a4" stroke-width="1.5" opacity=".3"/>
+      <text x="305" y="292" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="18" fill="white">◎</text>
+      <text x="305" y="340" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="12" fill="#4b5563" font-weight="700">African Union</text>
+      <!-- Node: Kenya -->
+      <circle cx="510" cy="195" r="34" fill="#374b42" stroke="none"/>
+      <text x="510" y="202" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="16" fill="white">🏛</text>
+      <text x="510" y="240" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11.5" fill="#4b5563" font-weight="600">Kenya</text>
+      <!-- Node: Data Protection Act -->
+      <circle cx="430" cy="385" r="28" fill="#e6faf5" stroke="#17c9a4" stroke-width="2"/>
+      <text x="430" y="390" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="13" fill="#17c9a4">◎</text>
+      <text x="430" y="424" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11.5" fill="#4b5563" font-weight="600">Data Protection Act</text>
+      <!-- Node: Nigeria -->
+      <circle cx="195" cy="390" r="34" fill="#374b42" stroke="none"/>
+      <text x="195" y="397" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="16" fill="white">🏛</text>
+      <text x="195" y="434" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11.5" fill="#4b5563" font-weight="600">Nigeria</text>
+    </svg>
+    <div class="kg-legend">
+      <div class="kg-li"><div class="kg-li-dot" style="background:#374b42"></div>Institution</div>
+      <div class="kg-li"><div class="kg-li-dot" style="background:#374b42"></div>Country</div>
+      <div class="kg-li"><div class="kg-li-dot" style="background:#17c9a4"></div>Policy</div>
+    </div>
+    <div class="kg-minimap"><svg viewBox="0 0 90 70" style="width:100%;height:100%"><rect width="90" height="70" fill="#f4f7f5"/><circle cx="45" cy="35" r="6" fill="#1e3d30"/><circle cx="25" cy="20" r="4" fill="#e6faf5" stroke="#17c9a4" stroke-width="1"/><circle cx="65" cy="22" r="4" fill="#374b42"/><circle cx="55" cy="50" r="3.5" fill="#e6faf5" stroke="#17c9a4" stroke-width="1"/><circle cx="28" cy="50" r="4" fill="#374b42"/><line x1="25" y1="20" x2="45" y2="35" stroke="#ccc" stroke-width=".8" stroke-dasharray="2,2"/><line x1="65" y1="22" x2="45" y2="35" stroke="#ccc" stroke-width=".8" stroke-dasharray="2,2"/><line x1="55" y1="50" x2="45" y2="35" stroke="#ccc" stroke-width=".8" stroke-dasharray="2,2"/><line x1="28" y1="50" x2="45" y2="35" stroke="#ccc" stroke-width=".8"/><rect x="18" y="15" width="14" height="10" fill="none" stroke="#17c9a4" stroke-width=".8"/></svg></div>
+  </div>
+  <div class="kg-panel">
+    <div class="kg-pt">Node Details <span style="cursor:pointer;color:var(--text3);font-size:16px;font-weight:400">×</span></div>
+    <div style="margin-bottom:10px"><span class="badge b-leg">Legislation</span></div>
+    <div class="kg-node-hd"><div class="kg-node-ico"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="4" y="2" width="14" height="18" rx="2" stroke="#17c9a4" stroke-width="1.5"/><path d="M7 7h8M7 11h6M7 15h4" stroke="#17c9a4" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="kg-node-name">Nigeria Data Protection Act 2023</div></div>
+    <div class="kg-desc">A comprehensive framework for the protection of personal data and regulates the processing activities of data controllers and processors.</div>
+    <div class="kg-sect">DIRECT CONNECTIONS (4)</div>
+    <div class="kg-conn"><div class="kg-cn">🏛 Nigeria</div><div class="kg-cr"><span>Jurisdiction</span><span class="kg-rel">Implies</span></div></div>
+    <div class="kg-conn"><div class="kg-cn"><span style="font-size:13px">◎</span> Malabo Convention</div><div class="kg-cr"><span>Regional Framework</span><span class="kg-rel">References</span></div></div>
+    <div class="kg-conn"><div class="kg-cn">🌐 GDPR (EU)</div><div class="kg-cr"><span>Global Comparator</span><span class="kg-rel" style="background:#dcfce7;color:#16a34a">Aligns With</span></div></div>
+    <div class="kg-sect" style="margin-top:14px">METADATA</div>
+    <div class="kg-meta-row"><span class="kg-meta-k">Status</span><span class="kg-meta-v">In Force</span></div>
+    <div class="kg-meta-row"><span class="kg-meta-k">Enacted</span><span class="kg-meta-v">June 12, 2023</span></div>
+    <div class="kg-meta-row"><span class="kg-meta-k">Policy Area</span><span class="kg-meta-v">Data Protection</span></div>
+    <button class="kg-full">View Full Policy Document</button>
+  </div>
+</div>`}
+
+// ═══════════════ COUNTRIES ═══════════════
+const countries=[
+  {flag:'🇿🇦',name:'South Africa',region:'Southern Africa',group:'SADC',status:'Advanced',policies:24},
+  {flag:'🇳🇬',name:'Nigeria',region:'West Africa',group:'ECOWAS',status:'Advanced',policies:18},
+  {flag:'🇰🇪',name:'Kenya',region:'East Africa',group:'EAC',status:'Developing',policies:15},
+  {flag:'🇪🇬',name:'Egypt',region:'North Africa',group:'COMESA',status:'Advanced',policies:21},
+  {flag:'🇷🇼',name:'Rwanda',region:'East Africa',group:'EAC',status:'Developing',policies:12},
+  {flag:'🇬🇭',name:'Ghana',region:'West Africa',group:'ECOWAS',status:'Advanced',policies:9},
+  {flag:'🇪🇹',name:'Ethiopia',region:'East Africa',group:'IGAD',status:'Developing',policies:8},
+  {flag:'🇹🇿',name:'Tanzania',region:'East Africa',group:'EAC',status:'Developing',policies:7},
+];
+function renderCountries(){return`
+<div class="ph"><div class="ph-title">Member States</div><div class="ph-sub">Track digital policy development and implementation status across all 55 African Union member states.</div></div>
+<div class="pfilt">
+  <button class="filt-btn">All Regions ▾</button>
+  <button class="filt-btn">Economic Grouping ▾</button>
+  <button class="filt-btn">Policy Status ▾</button>
+  <div class="fc-sp"></div>
+  <span class="res-count">Showing 55 countries</span>
+  <div class="view-tog"><button class="vt-btn active">⊞</button><button class="vt-btn">≡</button></div>
+</div>
+<div class="pcont">
+  <div class="cc-grid">
+    ${countries.map(c=>`
+    <div class="cc">
+      <div class="cc-hd"><span class="cc-flag">${c.flag}</span><span class="badge ${c.status==='Advanced'?'b-adv':'b-dev'}">${c.status}</span></div>
+      <div class="cc-name">${c.name}</div>
+      <div class="cc-reg">${c.region} • ${c.group}</div>
+      <div class="cc-div"></div>
+      <div class="cc-bot"><div><div class="cc-num">${c.policies}</div><div class="cc-sub">Tracked Policies</div></div><span style="color:var(--text3);font-size:16px">→</span></div>
+    </div>`).join('')}
+  </div>
+  <div class="lm-btn">Load More Countries</div>
+</div>`}
+
+// ═══════════════ POLICY AREAS ═══════════════
+const pAreas=[
+  {icon:'🛡',status:'High Activity',sc:'b-ha',title:'Data Protection & Privacy',desc:'Frameworks governing the collection, processing, and storage of personal data, heavily influenced by GDPR principles.',s1k:'ENACTED LAWS',s1v:34,s2k:'ACTIVE BILLS',s2v:12,tags:['Nigeria','Kenya','Rwanda']},
+  {icon:'🤖',status:'Emerging',sc:'b-em',title:'Artificial Intelligence',desc:'Strategies and initial regulatory approaches for AI development, deployment, and ethical governance.',s1k:'STRATEGIES',s1v:8,s2k:'DRAFT REGS',s2v:3,tags:['Mauritius','Egypt','Rwanda']},
+  {icon:'🔒',status:'Established',sc:'b-est',title:'Cybersecurity',desc:'Legislation addressing cybercrime, critical infrastructure protection, and incident response requirements.',s1k:'ENACTED LAWS',s1v:39,s2k:'ACTIVE BILLS',s2v:5,tags:['South Africa','Ghana']},
+  {icon:'💳',status:'Emerging',sc:'b-em',title:'Digital Finance',desc:'Regulatory frameworks for fintech, digital payments, cryptocurrency, and open banking.',s1k:'FRAMEWORKS',s1v:22,s2k:'DRAFT REGS',s2v:8,tags:['Egypt','Nigeria','Kenya']},
+  {icon:'📡',status:'Emerging',sc:'b-em',title:'Telecoms & Connectivity',desc:'Spectrum management, broadband policy, and universal access requirements.',s1k:'POLICIES',s1v:41,s2k:'ACTIVE BILLS',s2v:6,tags:['Kenya','South Africa','Rwanda']},
+  {icon:'🆔',status:'Established',sc:'b-est',title:'Digital Identity',desc:'National digital ID frameworks, biometric registration systems, and e-government identity management.',s1k:'ENACTED LAWS',s1v:28,s2k:'ACTIVE BILLS',s2v:4,tags:['Nigeria','Ghana','Kenya']},
+];
+function renderPolicyAreas(){return`
+<div class="ph"><div class="ph-title">Policy Areas</div><div class="ph-sub">Explore digital legislation categorized by critical thematic areas. Monitor the legislative landscape across Data Protection, AI, Cybersecurity, and more.</div></div>
+<div class="pfilt">
+  <button class="filt-btn">All Regions ▾</button>
+  <button class="filt-btn">Status: Any ▾</button>
+  <button class="filt-btn">⚙ Filters</button>
+  <div class="fc-sp"></div>
+  <span class="res-count">Showing 8 Areas</span>
+  <div class="view-tog"><button class="vt-btn active">⊞</button><button class="vt-btn">≡</button></div>
+</div>
+<div class="pcont">
+  <div class="pa-grid">
+    ${pAreas.map(a=>`
+    <div class="pa-card">
+      <div class="pa-hd"><div class="pa-ico-wrap" style="font-size:18px">${a.icon}</div><span class="badge ${a.sc}">${a.status}</span></div>
+      <div class="pa-t">${a.title}</div>
+      <div class="pa-desc">${a.desc}</div>
+      <div class="pa-stats">
+        <div class="pa-stat"><div class="pa-stat-k">${a.s1k}</div><div class="pa-stat-v">${a.s1v}</div></div>
+        <div class="pa-stat"><div class="pa-stat-k">${a.s2k}</div><div class="pa-stat-v">${a.s2v}</div></div>
+      </div>
+      <div class="pa-div"></div>
+      <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">${a.tags.length>0?a.s1k==='STRATEGIES'?'LEADING FRAMEWORKS':'TOP PERFORMING COUNTRIES':''}</div>
+      <div class="pa-tags">${a.tags.map(t=>`<span class="pa-tag">${t}</span>`).join('')}</div>
+    </div>`).join('')}
+  </div>
+</div>`}
+
+// ═══════════════ TAXONOMY ═══════════════
+function renderTaxonomy(){return`
+<div class="ph" style="padding-bottom:14px">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div><div class="ph-title">Taxonomy Engine</div><div class="ph-sub">A hierarchical classification system used to tag and organize digital policies</div></div>
+    <div style="display:flex;gap:8px;flex-shrink:0;margin-top:4px"><button class="filt-btn">⬇ Export</button><button class="filt-btn primary">+ New Term</button></div>
+  </div>
+</div>
+<div class="tax-layout">
+  <div class="tax-tree">
+    <div class="tt-hd">Flat List &nbsp;▾</div>
+    ${[
+      {name:'Data Protection',num:42,indent:0,sel:false,exp:true},
+      {name:'Personal Data',num:28,indent:1,sel:false},
+      {name:'Sensitive Data',num:14,indent:1,sel:false},
+      {name:'Artificial Intelligence',num:128,indent:0,sel:false,exp:true},
+      {name:'Machine Learning',num:85,indent:1,sel:false},
+      {name:'Ethics & Governance',num:64,indent:1,sel:false},
+      {name:'Infrastructure',num:37,indent:0,sel:false,exp:true},
+      {name:'Connectivity',num:31,indent:1,sel:true},
+      {name:'5G Networks',num:14,indent:2,sel:true},
+      {name:'Broadband Policy',num:17,indent:2,sel:false},
+      {name:'Spectrum Allocation',num:12,indent:2,sel:false},
+      {name:'Cybersecurity',num:89,indent:0,sel:false},
+      {name:'Digital Finance',num:56,indent:0,sel:false},
+    ].map(t=>`
+    <div class="tt-item${t.sel?' sel':''} ${t.indent===1?'tt-indent':t.indent===2?'tt-indent2':''}" onclick="document.querySelectorAll('.tt-item').forEach(i=>i.classList.remove('sel'));this.classList.add('sel')">
+      <div class="tt-expand">${t.exp?'▾':t.indent===0?'▸':''}</div>
+      <span class="tt-name">${t.name}</span>
+      <span class="tt-num${t.sel?' act':''}">${t.num}</span>
+    </div>`).join('')}
+  </div>
+  <div class="tax-detail">
+    <div class="td-bc"><span>Infrastructure</span><span class="td-bc-arr">›</span><span>Connectivity</span><span class="td-bc-arr">›</span><span style="color:var(--text)">5G Networks</span></div>
+    <div class="td-hd"><div class="td-title">5G Networks</div><span class="badge b-act" style="margin-left:8px">Active</span><span style="margin-left:auto;cursor:pointer;color:var(--text3);font-size:18px">✎</span><span style="cursor:pointer;color:var(--text3);font-size:16px;margin-left:8px">⏱</span></div>
+    <div class="td-desc">Policies, regulations, and strategic frameworks concerning the deployment, allocation of spectrum, security, and commercialization of fifth-generation mobile networks.</div>
+    <div class="td-2col">
+      <div class="td-box">
+        <div class="td-bk">📊 USAGE STATISTICS</div>
+        <div class="td-stat-num">14</div>
+        <div class="td-stat-sub">Policies tagged</div>
+        <div class="td-prog">
+          <div class="td-prog-row"><span class="td-prog-label">Draft</span><span class="td-prog-val">3</span></div>
+          <div class="td-pbar"><div class="td-pfill t" style="width:21%"></div></div>
+          <div class="td-prog-row"><span class="td-prog-label">In Force</span><span class="td-prog-val">11</span></div>
+          <div class="td-pbar"><div class="td-pfill" style="width:79%"></div></div>
+        </div>
+      </div>
+      <div class="td-box">
+        <div class="td-bk">⊞ RELATED ONTOLOGY</div>
+        <div class="onto-grid">
+          <div><div class="onto-col-t">Broader Terms</div><div class="onto-tag">↑ Connectivity</div></div>
+          <div><div class="onto-col-t">Narrower Terms</div><div class="onto-tag">Spectrum Allocation</div><div class="onto-tag" style="margin-top:4px">Open RAN</div></div>
+        </div>
+        <div style="margin-top:12px"><div class="onto-col-t">Cross-References</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><div class="onto-tag"><span style="margin-right:3px">⊞</span>Critical Infrastructure Security</div><div class="onto-tag"><span style="margin-right:3px">⊞</span>Foreign Investment Control</div></div></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:12px;font-weight:700;color:var(--text2);display:flex;align-items:center;gap:6px">◎ RECENTLY TAGGED POLICIES</div>
+      <span style="font-size:12.5px;color:var(--accent2);cursor:pointer;font-weight:500">View All 14</span>
+    </div>
+    ${[
+      {code:'ZA',name:'Policy on High Demand Spectrum and Policy Direction',country:'South Africa',date:'Oct 2023',status:'in-force'},
+      {code:'KE',name:'National Broadband Strategy 2023-2027',country:'Kenya',date:'Aug 2023',status:'in-force'},
+      {code:'NG',name:'National 5G Deployment Policy',country:'Nigeria',date:'Jan 2022',status:'in-force'},
+    ].map(p=>`
+    <div class="td-policy-item">
+      <div class="cc-code">${p.code}</div>
+      <div style="flex:1"><div class="td-pi-name">${p.name}</div><div class="td-pi-sub"><span>${p.country}</span><span>•</span><span>Updated: ${p.date}</span></div></div>
+      <span class="badge ${statusClass[p.status]}">${statusLabel[p.status]}</span>
+    </div>`).join('')}
+  </div>
+</div>`}
+
+// ═══════════════ TRENDS ═══════════════
+function renderTrends(){return`
+<div class="ph" style="padding-bottom:14px">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div><div class="ph-title">Policy Trends Analysis</div><div class="ph-sub">Analyze digital policy adoption trends, regional legislative momentum, and emerging regulatory frameworks across the African continent.</div></div>
+    <button class="filt-btn primary" style="margin-top:4px;flex-shrink:0">⬇ Export Report</button>
+  </div>
+</div>
+<div class="pfilt" style="padding-top:0"><button class="filt-btn">All Regions ▾</button><button class="filt-btn">All Policy Areas ▾</button><button class="filt-btn">📅 Date Range: Last 5 Years ▾</button></div>
+<div class="tr-top">
+  <div class="tc">
+    <div class="tc-t">Policy Adoption Velocity <span class="tc-leg"><div class="tc-li"><div class="tc-ld" style="background:var(--primary)"></div>Data Protection</div><div class="tc-li"><div class="tc-ld" style="background:var(--accent)"></div>AI Governance</div></span></div>
+    <div class="tc-sub">Cumulative growth of enacted digital policies (2018 – Present)</div>
+    <canvas id="trend-chart" width="580" height="220"></canvas>
+  </div>
+  <div class="tc">
+    <div class="tc-t">Legislative Status</div>
+    <div class="tc-sub">Current state of tracked instruments</div>
+    <div style="margin-top:24px">
+      ${[['In Force',65,var_primary],[' Draft/Bill',20,'#5a8a78'],['Under Rev…',10,'#a8c9bc'],['Proposed',5,'#d4e8e2']].map(([l,v,c])=>`
+      <div class="ls-row">
+        <span class="ls-label">${l}</span>
+        <div class="ls-bar-wrap"><div class="ls-bar" style="width:${v}%;background:${c}"></div></div>
+        <span class="ls-pct">${v}%</span>
+      </div>`).join('')}
+    </div>
+  </div>
+</div>
+<div class="tr-bot">
+  <div class="tc">
+    <div class="tc-t">Emerging Topics <span style="font-size:13px">↗</span></div>
+    <div class="tc-sub">Topics showing the highest month-over-month increase in legislative mentions.</div>
+    <div style="margin-top:12px">
+      ${[['Cross-Border Data Flows','+42% velocity in West Africa','#1'],['Algorithmic Accountability','Drafts initiating in Kenya, SA','#2'],['Digital Identity Infrastructure','Consistent steady growth','#3']].map(([n,s,num])=>`
+      <div class="et-item"><div><div class="et-name">${n}</div><div class="et-sub">${s}</div></div><span class="et-num">${num}</span></div>`).join('')}
+    </div>
+  </div>
+  <div class="tc">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><div class="tc-t" style="margin:0">Regional Density</div><span style="font-size:12.5px;color:var(--accent2);cursor:pointer;font-weight:500">View Map</span></div>
+    <div class="tc-sub">Policy concentration by region</div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px">
+      <div class="tm-block" style="background:#1a3d2e;color:#fff;grid-column:1;grid-row:1 2;min-height:120px"><div class="tm-n">ECOWAS</div><div class="tm-s">High Density</div></div>
+      <div class="tm-block" style="background:#e6f5ee;border:1px solid var(--border);grid-column:2;grid-row:1"><div class="tm-n" style="font-size:12px">EAC</div><div class="tm-s" style="color:var(--text3)">Medium</div></div>
+      <div class="tm-block" style="background:#ccecdf;grid-column:2;grid-row:2"><div class="tm-n" style="font-size:12px">SADC</div><div class="tm-s" style="color:var(--text2)">Growing</div></div>
+      <div class="tm-block" style="background:var(--bg);border:1px solid var(--border);grid-column:1 2;min-height:50px"><div class="tm-n" style="font-size:11.5px;color:var(--text3)">Other Regions</div></div>
+    </div>
+  </div>
+  <div class="tc">
+    <div class="tc-t">Global Benchmarking <span style="font-size:13px">🌐</span></div>
+    <div class="tc-sub">Alignment of African draft policies against major global frameworks.</div>
+    <div style="margin-top:16px">
+      ${[['GDPR (EU) Alignment','High',90,'hi','Strong correlation in Data Subject Rights.'],['OECD AI Principles','Moderate',55,'mo','Divergence in accountability definitions.'],['NIST Cybersecurity','High',85,'hi','Adopted structurally in 4 new draft bills.']].map(([n,v,pct,cls,sub])=>`
+      <div class="gb-row"><div class="gb-hd"><span class="gb-name">${n}</span><span class="gb-val ${cls}">${v}</span></div><div class="gb-bar"><div class="gb-fill" style="width:${pct}%;background:${cls==='hi'?'var(--primary)':cls==='mo'?'var(--accent)':'#e5e7eb'}"></div></div><div class="gb-sub">${sub}</div></div>`).join('')}
+    </div>
+  </div>
+</div>`}
+
+const var_primary='#0d3b2c';
+
+function drawTrendsChart(){
+  const c=document.getElementById('trend-chart');if(!c)return;
+  const ctx=c.getContext('2d'),W=c.width,H=c.height;
+  const pad={l:36,r:20,t:16,b:36};
+  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const yVals=[0,50,100,150];
+  const dpData=[18,28,45,70,100,128,148];
+  const aiData=[2,6,14,28,50,90,148];
+  const years=['2018','2019','2020','2021','2022','2023','2024'];
+  const maxY=150;
+  ctx.clearRect(0,0,W,H);
+  // Grid
+  ctx.strokeStyle='#edf2ef';ctx.lineWidth=1;
+  yVals.forEach(y=>{const gy=pad.t+ch-(y/maxY)*ch;ctx.beginPath();ctx.moveTo(pad.l,gy);ctx.lineTo(pad.l+cw,gy);ctx.stroke();ctx.fillStyle='#9ca3af';ctx.font='10px Plus Jakarta Sans,sans-serif';ctx.textAlign='right';ctx.fillText(y,pad.l-6,gy+3)});
+  // X labels
+  years.forEach((y,i)=>{const x=pad.l+i/(years.length-1)*cw;ctx.fillStyle='#9ca3af';ctx.font='10px Plus Jakarta Sans,sans-serif';ctx.textAlign='center';ctx.fillText(y,x,H-6)});
+  function drawLine(data,color,dotColor){
+    ctx.beginPath();
+    data.forEach((v,i)=>{const x=pad.l+i/(data.length-1)*cw,y=pad.t+ch-(v/maxY)*ch;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
+    ctx.strokeStyle=color;ctx.lineWidth=3;ctx.lineJoin='round';ctx.stroke();
+    data.forEach((v,i)=>{const x=pad.l+i/(data.length-1)*cw,y=pad.t+ch-(v/maxY)*ch;
+      ctx.beginPath();ctx.arc(x,y,10,0,2*Math.PI);ctx.fillStyle=color+'22';ctx.fill();
+      ctx.beginPath();ctx.arc(x,y,6,0,2*Math.PI);ctx.fillStyle=dotColor;ctx.fill();
+      ctx.beginPath();ctx.arc(x,y,6,0,2*Math.PI);ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
+    });
+  }
+  drawLine(dpData,'#0d3b2c','#0d3b2c');
+  drawLine(aiData,'#17c9a4','#17c9a4');
+}
+
+// ═══════════════ OECD ═══════════════
+function renderOECD(){return`
+<div class="ph" style="padding-bottom:14px">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+    <div><div class="ph-title">OECD AI Principles Mapping</div><div class="ph-sub">Analyze how African national AI strategies and data protection regulations align with the five OECD AI Principles. Select specific policies to view detailed radar charts and legal provision comparisons.</div></div>
+    <div style="display:flex;gap:8px;flex-shrink:0;margin-top:4px"><button class="filt-btn">⬇ Export Data</button><button class="filt-btn primary">⚙ Filter View</button></div>
+  </div>
+</div>
+<div class="oc-layout">
+  <div class="oc-left">
+    <div class="oc-config">
+      <div style="font-size:14px;font-weight:700;margin-bottom:14px">Configuration</div>
+      <div class="oc-field"><div class="oc-fl">REGION / COUNTRY</div><select class="oc-sel"><option>Kenya</option><option>Nigeria</option><option>Rwanda</option><option>Egypt</option><option>South Africa</option></select></div>
+      <div class="oc-field"><div class="oc-fl">POLICY TYPE</div><select class="oc-sel"><option>National AI Strategy</option><option>Data Protection Law</option><option>Cybersecurity Act</option></select></div>
+    </div>
+    <div class="oc-pols">
+      <div class="oc-ph"><span class="oc-pt">SELECTED POLICIES (3)</span><span class="oc-ca">Clear All</span></div>
+      <div class="oc-pi sel"><div class="oc-pi-hd"><span style="font-size:15px">🇰🇪</span><span class="oc-pi-name">Kenya AI Strategy (Draft)</span><span class="badge b-dr">DRAFT</span></div><div class="oc-pi-pct"><div class="oc-pi-dot" style="background:var(--primary)"></div><span>Moderate Alignment (68%)</span></div></div>
+      <div class="oc-pi"><div class="oc-pi-hd"><span style="font-size:15px">🇷🇼</span><span class="oc-pi-name">Rwanda AI Policy</span><span class="badge b-ad">ADOPTED</span></div><div class="oc-pi-pct"><div class="oc-pi-dot" style="background:var(--accent)"></div><span>High Alignment (85%)</span></div></div>
+      <div class="oc-pi"><div class="oc-pi-hd"><span style="font-size:15px">🇪🇬</span><span class="oc-pi-name">Egypt National AI Strategy</span><span class="badge b-ad">ADOPTED</span></div><div class="oc-pi-pct"><div class="oc-pi-dot" style="background:#a78bfa"></div><span>High Alignment (82%)</span></div></div>
+      <button class="oc-add">+ Compare another policy</button>
+    </div>
+  </div>
+  <div class="oc-right">
+    <div class="oc-radar-card">
+      <div class="oc-rt">OECD Alignment Radar</div>
+      <div class="oc-rs">Comparing 3 selected policies across the 5 core principles.</div>
+      <canvas id="oecd-canvas" width="480" height="300"></canvas>
+      <div class="oc-rleg">
+        <div class="oc-rli"><div style="width:14px;height:3px;background:var(--primary);border-radius:2px"></div>Kenya</div>
+        <div class="oc-rli"><div style="width:14px;height:3px;background:var(--accent);border-radius:2px"></div>Rwanda</div>
+        <div class="oc-rli"><div style="width:14px;height:3px;border-top:2px dashed #9ca3af;border-radius:0"></div>OECD Baseline</div>
+      </div>
+    </div>
+    <div class="oc-table-card">
+      <div class="oc-table-hd"><span class="oc-table-t">Provision Mapping Analysis</span><div style="display:flex;gap:8px"><span style="cursor:pointer;color:var(--text3);font-size:16px">🔍</span><span style="cursor:pointer;color:var(--text3);font-size:16px">⋮</span></div></div>
+      <table class="oc-table">
+        <thead><tr><th class="oc-th">OECD PRINCIPLE</th><th class="oc-th">KENYA AI STRATEGY</th><th class="oc-th">RWANDA AI POLICY</th><th class="oc-th">ALIGNMENT</th></tr></thead>
+        <tbody>
+          <tr class="oc-tr"><td class="oc-td"><div class="oc-pr-name">1.1 Inclusive Growth</div><div class="oc-pr-desc">AI should benefit people and the planet by driving inclusive growth, sustainable development and well-being.</div></td><td class="oc-td" style="font-size:12px">"Promote AI for socio-economic development across all counties." (Sec 3.1)</td><td class="oc-td" style="font-size:12px">Explicit focus on "AI for Good" and achieving SDGs. (Pillar 2)</td><td class="oc-td"><div class="oc-al-bar"><div class="oc-al-fill hi" style="width:88%"></div></div><div class="oc-al-txt">High</div></td></tr>
+          <tr class="oc-tr"><td class="oc-td"><div class="oc-pr-name">1.2 Fairness</div><div class="oc-pr-desc">AI systems should be designed in a way that respects the rule of law, human rights, democratic values and diversity.</div></td><td class="oc-td"><div class="oc-warn">⚠ Vague references to "ethics". No explicit human rights mapping.</div></td><td class="oc-td" style="font-size:12px">Requires bias auditing for high-risk public sector AI.</td><td class="oc-td"><div class="oc-al-bar"><div class="oc-al-fill lo" style="width:32%"></div></div><div class="oc-al-txt">Low</div></td></tr>
+          <tr class="oc-tr"><td class="oc-td"><div class="oc-pr-name">1.3 Transparency</div><div class="oc-pr-desc">There should be transparency and responsible disclosure around AI systems.</div></td><td class="oc-td" style="font-size:12px">Public registry proposed for government AI use cases.</td><td class="oc-td" style="font-size:12px">Mandatory explainability for decisions affecting legal rights.</td><td class="oc-td"><div class="oc-al-bar"><div class="oc-al-fill me" style="width:65%"></div></div><div class="oc-al-txt">Med</div></td></tr>
+        </tbody>
+      </table>
+      <div class="oc-vf"><div class="oc-vf-btn">View Full Mapping Table →</div></div>
+    </div>
+  </div>
+</div>`}
+
+function drawRadar(canvasId,datasets){
+  const c=document.getElementById(canvasId);if(!c)return;
+  const ctx=c.getContext('2d'),W=c.width,H=c.height,cx=W/2,cy=H/2+14,R=Math.min(W,H)*.32,n=5;
+  const labs=['Inclusive\nGrowth','Fairness','Transparency','Robustness','Accountability'];
+  const colors=['#0d3b2c','#17c9a4','#9ca3af'];
+  const fills=['rgba(13,59,44,.15)','rgba(23,201,164,.15)','rgba(156,163,175,.08)'];
+  ctx.clearRect(0,0,W,H);
+  function pt(i,r){const a=i/n*2*Math.PI-Math.PI/2;return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}}
+  // Grid
+  for(let g=1;g<=5;g++){const r=g/5*R;ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,r);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.strokeStyle='#e2e8e4';ctx.lineWidth=g===5?1.2:.65;ctx.stroke()}
+  for(let i=0;i<n;i++){const p=pt(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#e2e8e4';ctx.lineWidth=.7;ctx.stroke()}
+  // OECD baseline (dashed)
+  ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,R*.9);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.setLineDash([4,3]);ctx.strokeStyle='#9ca3af';ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([]);
+  // Datasets
+  datasets.forEach((vals,di)=>{
+    ctx.beginPath();for(let i=0;i<n;i++){const p=pt(i,vals[i]*R);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.fillStyle=fills[di];ctx.fill();ctx.strokeStyle=colors[di];ctx.lineWidth=2.5;ctx.stroke();
+    for(let i=0;i<n;i++){const p=pt(i,vals[i]*R);ctx.beginPath();ctx.arc(p.x,p.y,4.5,0,2*Math.PI);ctx.fillStyle=colors[di];ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke()}
+  });
+  // Labels
+  ctx.font='11px Plus Jakarta Sans,sans-serif';ctx.fillStyle='#6b7280';ctx.textAlign='center';ctx.textBaseline='middle';
+  for(let i=0;i<n;i++){const p=pt(i,R+24);const ls=labs[i].split('\n');ls.forEach((ln,li)=>ctx.fillText(ln,p.x,p.y+(li-(ls.length-1)/2)*13))}
+}
+
+// ═══════════════ INIT ═══════════════
+window.addEventListener('load',()=>{
+  // landing shows by default
+});
+</script>
+</body>
+</html>
