@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #0d3b2c;
+  --accent: #17c9a4;
+  --accent2: #00c97a;
+  --accent-bg: #e6faf5;
+  --bg: #f4f7f5;
+  --border: #e5e9e7;
+  --text: #111827;
+  --text2: #4b5563;
+  --text3: #9ca3af;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent2: var(--accent2);
+  --color-accent-bg: var(--accent-bg);
+  --color-app-bg: var(--bg);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text2: var(--text2);
+  --color-text3: var(--text3);
+  --font-jakarta: var(--font-jakarta);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text3);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
